@@ -1,0 +1,23 @@
+---
+title: "Problem Sets"
+subtitle: "Problem sets are your opportunity to work on the skills discussed in class."
+---
+
+::::: columns
+::: {.column width="60%"}
+### Problem Set Due Dates
+
+- Problem Set #1: Sept. 16th
+- Problem Set #2: Sept. 30th
+- Problem Set #3: Oct. 14th
+- Problem Set #4: Oct. 28th
+- Problem Set #5: Nov. 18th
+
+Problem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered `.html` Quarto file to Blackboard by **11:59pm** on the due date.
+
+*Problem set files will be posted here as the course progresses.*
+:::
+
+::: {.column width="40%"}
+:::
+:::::

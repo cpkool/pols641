@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>POLS 641: Introductory Analysis of Political Data – POLS 641: Research Methods</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de63f62b328812d8e578a4d74e282472.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-3ec94c05892decc904263a063af11aa6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">POLS 641: Research Methods</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> <i class="bi bi-house" role="img">
+</i> 
+<span class="menu-text"> </span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./syllabus.html" aria-current="page"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./slides.html"> 
+<span class="menu-text">Lecture Slides</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./readings.html"> 
+<span class="menu-text">Readings</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./rcode.html"> 
+<span class="menu-text">R Code</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./problemsets.html"> 
+<span class="menu-text">Problem Sets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./project.html"> 
+<span class="menu-text">Final Project</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resources.html"> 
+<span class="menu-text">Resources</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-description" id="toc-course-description" class="nav-link active" data-scroll-target="#course-description">Course Description</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#a-note-on-statistical-software" id="toc-a-note-on-statistical-software" class="nav-link" data-scroll-target="#a-note-on-statistical-software">A Note on Statistical Software</a></li>
+  <li><a href="#course-meetings" id="toc-course-meetings" class="nav-link" data-scroll-target="#course-meetings">Course Meetings</a></li>
+  <li><a href="#readings" id="toc-readings" class="nav-link" data-scroll-target="#readings">Readings</a></li>
+  <li><a href="#grading" id="toc-grading" class="nav-link" data-scroll-target="#grading">Grading</a></li>
+  <li><a href="#course-policies" id="toc-course-policies" class="nav-link" data-scroll-target="#course-policies">Course Policies</a></li>
+  <li><a href="#use-of-generative-ai" id="toc-use-of-generative-ai" class="nav-link" data-scroll-target="#use-of-generative-ai">Use of Generative AI</a></li>
+  <li><a href="#tentative-course-outline" id="toc-tentative-course-outline" class="nav-link" data-scroll-target="#tentative-course-outline">Tentative Course Outline</a></li>
+  <li><a href="#course-readings-and-due-dates" id="toc-course-readings-and-due-dates" class="nav-link" data-scroll-target="#course-readings-and-due-dates">Course Readings and Due Dates</a>
+  <ul class="collapse">
+  <li><a href="#week-1-aug-25-introductions" id="toc-week-1-aug-25-introductions" class="nav-link" data-scroll-target="#week-1-aug-25-introductions">Week 1 — Aug 25: Introductions</a></li>
+  <li><a href="#week-2-sep-1-causality-and-inference" id="toc-week-2-sep-1-causality-and-inference" class="nav-link" data-scroll-target="#week-2-sep-1-causality-and-inference">Week 2 — Sep 1: Causality and Inference</a></li>
+  <li><a href="#week-3-sep-8-probability-theory" id="toc-week-3-sep-8-probability-theory" class="nav-link" data-scroll-target="#week-3-sep-8-probability-theory">Week 3 — Sep 8: Probability Theory</a></li>
+  <li><a href="#week-4-sep-15-random-variables" id="toc-week-4-sep-15-random-variables" class="nav-link" data-scroll-target="#week-4-sep-15-random-variables">Week 4 — Sep 15: Random Variables</a></li>
+  <li><a href="#week-5-sep-22-measurement" id="toc-week-5-sep-22-measurement" class="nav-link" data-scroll-target="#week-5-sep-22-measurement">Week 5 — Sep 22: Measurement</a></li>
+  <li><a href="#week-6-sep-29-hypothesis-testing" id="toc-week-6-sep-29-hypothesis-testing" class="nav-link" data-scroll-target="#week-6-sep-29-hypothesis-testing">Week 6 — Sep 29: Hypothesis Testing</a></li>
+  <li><a href="#week-7-oct-6-bivariate-regression" id="toc-week-7-oct-6-bivariate-regression" class="nav-link" data-scroll-target="#week-7-oct-6-bivariate-regression">Week 7 — Oct 6: Bivariate Regression</a></li>
+  <li><a href="#week-8-oct-13-multivariate-regression" id="toc-week-8-oct-13-multivariate-regression" class="nav-link" data-scroll-target="#week-8-oct-13-multivariate-regression">Week 8 — Oct 13: Multivariate Regression</a></li>
+  <li><a href="#week-9-oct-20-binary-and-categorical-variables" id="toc-week-9-oct-20-binary-and-categorical-variables" class="nav-link" data-scroll-target="#week-9-oct-20-binary-and-categorical-variables">Week 9 — Oct 20: Binary and Categorical Variables</a></li>
+  <li><a href="#week-10-oct-27-model-specification" id="toc-week-10-oct-27-model-specification" class="nav-link" data-scroll-target="#week-10-oct-27-model-specification">Week 10 — Oct 27: Model Specification</a></li>
+  <li><a href="#week-11-nov-3-causal-inference-and-experiments" id="toc-week-11-nov-3-causal-inference-and-experiments" class="nav-link" data-scroll-target="#week-11-nov-3-causal-inference-and-experiments">Week 11 — Nov 3: Causal Inference and Experiments</a></li>
+  <li><a href="#week-12-nov-10-review-and-midterm" id="toc-week-12-nov-10-review-and-midterm" class="nav-link" data-scroll-target="#week-12-nov-10-review-and-midterm">Week 12 — Nov 10: Review and Midterm</a></li>
+  <li><a href="#week-13-nov-17-mixed-methods" id="toc-week-13-nov-17-mixed-methods" class="nav-link" data-scroll-target="#week-13-nov-17-mixed-methods">Week 13 — Nov 17: Mixed Methods</a></li>
+  <li><a href="#week-14-nov-24-hackathon-thanksgiving-week" id="toc-week-14-nov-24-hackathon-thanksgiving-week" class="nav-link" data-scroll-target="#week-14-nov-24-hackathon-thanksgiving-week">Week 14 — Nov 24: Hackathon (Thanksgiving Week)</a></li>
+  <li><a href="#week-15-dec-1-research-presentations" id="toc-week-15-dec-1-research-presentations" class="nav-link" data-scroll-target="#week-15-dec-1-research-presentations">Week 15 — Dec 1: Research Presentations</a></li>
+  </ul></li>
+  <li><a href="#recommended-books" id="toc-recommended-books" class="nav-link" data-scroll-target="#recommended-books">Recommended Books</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">POLS 641: Introductory Analysis of Political Data</h1>
+<p class="subtitle lead">Northern Illinois University | Fall 2026</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Tuesdays and Thursdays, 2:00–3:15 PM</strong></p>
+<hr>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Instructor:</strong> Dr.&nbsp;Colin Kuehl</td>
+<td style="text-align: left;"><strong>Email:</strong> <a href="mailto:ckuehl@niu.edu">ckuehl@niu.edu</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Office Hours:</strong> Tuesdays 10–11 AM &amp; Thursdays 3:30–4:30</td>
+<td style="text-align: left;"><strong>Office:</strong> Zulauf 410 and <a href="https://niu-edu.zoom.us/j/83652064075?pwd=FqcV687XUCPFvgpLew9zPDbrpErZkP.1&amp;from=addon">Zoom</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>R Guru:</strong> Abigail Tetteh</td>
+<td style="text-align: left;"><strong>Email:</strong> <a href="mailto:Z2003922@students.niu.edu">Z2003922@students.niu.edu</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section id="course-description" class="level2">
+<h2 class="anchored" data-anchor-id="course-description">Course Description</h2>
+<p>This course is the first in NIU Political Science Department’s graduate data analysis sequence. It is designed to provide students with an introduction to quantitative methodology used in political research. We will cover basic probability and statistics through multivariate regression with a focus on the use of these methods in the field of political science. This course concentrates on the consumption and application of quantitative methods. Accordingly, it does not focus on the elaborate math driving much of the statistical analysis. Instead, we will focus on the proper use of statistics and how to critically analyze quantitative research. As such, much of the course is focused on learning by doing. Students will learn to program using the R programming language (more below) and will conduct original quantitative analysis using existing data.</p>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>I assume only high school algebra and a tolerance for stubborn work. Regarding the latter, getting your head around the material and making your statistical software package do what you want it to do can sometimes be both frustrating and time consuming. I can only encourage you to keep trying. With persistence (and sometimes a little help), you will eventually figure it out. This is an essential part of the process. Trust me on this — I’ve been there, too. Regarding the former, calculus is helpful since some of the material we cover makes use of it. However, don’t panic: it is not necessary. I will show you some math from time to time in lecture, but this will be solely to provide you with motivating, behind-the-scenes intuition. You are not expected to be able to reproduce it in problem sets.</p>
+</section>
+<section id="a-note-on-statistical-software" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-statistical-software">A Note on Statistical Software</h2>
+<p>Knowledge of statistical software is an increasingly important component of any political scientist’s toolbox. The choice of statistical software is one of continuous debate. However, most quantitative researchers today use either STATA or R (others such as SPSS and SAS have dedicated niche followings, and Python is growing) to complete their analysis.</p>
+<p>This course will be taught using R for a number of reasons: (1) it’s free, which allows students to use R on their home computer and ensures access long past your time at NIU; (2) cutting-edge political methods work is increasingly done in R; (3) the things you can do using R and associated packages is far broader than in STATA or other packages; and (4) basic computer coding is an increasingly important skill across many domains (R’s developers actually describe it as a “computing environment” rather than statistical software). R does have a relatively high start-up cost — it has little to no point-and-click options — but I strongly believe it will be worth your investment.</p>
+<p>The course will also provide an introduction to Quarto document preparation software. Quarto is free and works well with R. If students are interested, we may also discuss LaTeX.</p>
+</section>
+<section id="course-meetings" class="level2">
+<h2 class="anchored" data-anchor-id="course-meetings">Course Meetings</h2>
+<p>We will meet once per week, divided into two sessions. The first portion will be a combination of lecture and discussion on fundamental concepts, such as research design, probability theory, etc. The second will focus on application and coding in R. Meetings will primarily be held in person, however depending on scheduling issues and student interest we may move some sessions online.</p>
+</section>
+<section id="readings" class="level2">
+<h2 class="anchored" data-anchor-id="readings">Readings</h2>
+<p>We have one assigned text for the course:</p>
+<blockquote class="blockquote">
+<p>Michael A. Bailey, <em>Real Stats: Using Econometrics for Political Science and Public Policy</em>, Oxford (second edition; first edition is OK).</p>
+<p><em>I recommend purchasing this book. You will continue to refer to it throughout your time here, and portions will also be used in POLS 642.</em></p>
+</blockquote>
+<p>Additional assigned readings will be found on the course website. The course website also contains links to helpful websites and online books, especially for R help.</p>
+</section>
+<section id="grading" class="level2">
+<h2 class="anchored" data-anchor-id="grading">Grading</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: center;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Final Project</td>
+<td style="text-align: center;">50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Problem Sets</td>
+<td style="text-align: center;">25%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Midterm</td>
+<td style="text-align: center;">10%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Datacamp</td>
+<td style="text-align: center;">5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Participation</td>
+<td style="text-align: center;">10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Final Project:</strong> Your final project will be an independent quantitative analysis of a political science topic of your choosing. You will obtain a dataset, formulate a hypothesis, conduct basic exploratory data analysis, and perform and correctly interpret a multivariate regression. You will present your results to the class at the end of the semester and write up your findings in the form of the empirical section of a journal article. An assignment sheet will be provided and we will discuss details in the following weeks. Your final project will be due <strong>December 13th</strong> by midnight by email.</p>
+<p><strong>Problem Sets:</strong> Throughout the semester you will complete a number of problem sets applying the R coding we are learning. Problem sets will be distributed on every other Friday starting in week 2 and will be due on Wednesday at midnight of the second week. I strongly encourage you to form small study groups — however, the write-ups <em>must be your own</em>. No late assignments will be accepted without prior permission. Extensions should be arranged at least twenty-four hours in advance.</p>
+<p>Problem Set Due Dates:</p>
+<ul>
+<li>Problem Set #1: Sept.&nbsp;16th</li>
+<li>Problem Set #2: Sept.&nbsp;30th</li>
+<li>Problem Set #3: Oct.&nbsp;14th</li>
+<li>Problem Set #4: Oct.&nbsp;28th</li>
+<li>Problem Set #5: Nov.&nbsp;18th <em>(extended for midterm)</em></li>
+</ul>
+<p><strong>Midterm:</strong> In class on <strong>November 12th</strong>. It will assess your understanding of fundamental aspects of research design and statistics as well as some basics of coding in R.</p>
+<p><strong>Participation:</strong> My expectation is that class will be a true discussion and students will ask questions when confused or having difficulties. Your active participation is especially important given the wide range of backgrounds and small class size.</p>
+<p><strong>Datacamp:</strong> During weeks in which no problem set is due you will be expected to complete selected Datacamp courses — an online platform for learning coding and data analysis. As a member of the class you will receive a complementary six-month membership.</p>
+</section>
+<section id="course-policies" class="level2">
+<h2 class="anchored" data-anchor-id="course-policies">Course Policies</h2>
+<p><strong>Attendance:</strong> Attendance is mandatory without prior arrangement. If circumstances prevent you from attending please let me know by email prior to the beginning of class. You will be responsible for covering the material you missed.</p>
+<p><strong>Academic Honesty:</strong> Cheating will not be tolerated. All students will be held to the highest standards of NIU’s student code of conduct. All cases will be referred to campus authorities. As noted above, helping each other will be key to your success in this class — however, the work you turn in must be your own.</p>
+<p><strong>Disability Services:</strong> If you need an accommodation for this class, please contact the Disability Resource Center as soon as possible. The DRC coordinates accommodations for students with disabilities. It is located on the 4th floor of the Health Services Building, and can be reached at 815-753-1303 or drc@niu.edu. Also, please contact me privately as soon as possible so we can discuss your accommodations.</p>
+<p><strong>Email:</strong> I am available through email M–F 8 am to 5 pm. I will respond to all emails within 24 hours during these times. If I forget, please send me a reminder.</p>
+<p><strong>Office Hours:</strong> I recommend you come to office hours early and often.</p>
+<p><strong>Mental Health:</strong> The first semester of graduate school is challenging and anxiety-inducing at the best of times. I understand this and have my own battles. Please take the time for self-care, and if you need extensions for mental health reasons do not hesitate to ask. Resources include the DRC, Student Counseling Services, or call 815-306-2777.</p>
+<p><strong>Health Precautions:</strong> Masks are not required for this class (subject to changes in university protocols). Please be respectful of others’ decisions. If you are feeling sick, stay home. If you might be sick, wear a mask.</p>
+<p><strong>Gender Identity:</strong> As a faculty member, I am committed to using your proper name and pronouns. We will take time during our first class to do introductions, at which point you can share what name and pronouns you use, as you are comfortable.</p>
+<p><strong>Active Duty Military and Veterans:</strong> If you are a veteran, on active duty, in the reserves, or a spouse or dependent, and an aspect of your service makes it difficult for you to fulfill the requirements of the course, keep me informed and I will work with you. The Office of Military and Veteran Services can be reached at (815) 753-0691 or mss@niu.edu.</p>
+<p><strong>Land Acknowledgement:</strong> Northern Illinois University operates and is built on the traditional lands of the Oceti Sakowin (Sioux), Miami, Bodewadmiakiwen (Potawatomi), Sauk and Meskwaki, and Peoria. These lands are subject to Cession 50 and 148, though their terms have been consistently violated. We seek to acknowledge this land and these peoples in order to honor the legacies, struggles, and current existence of Indigenous peoples; situate ourselves within settler-colonial projects; disrupt the erasure of Indigenous peoples; and begin/continue the work of collectively learning and fulfilling our obligations.</p>
+</section>
+<section id="use-of-generative-ai" class="level2">
+<h2 class="anchored" data-anchor-id="use-of-generative-ai">Use of Generative AI</h2>
+<p>Using AI (such as ChatGPT, Gemini, Claude, etc.) to assist in completing assignments will be allowed only in the following ways:</p>
+<ul>
+<li>GenAI may be used to <strong>find outside sources</strong> for assignments. You should verify and read all sources on your own.</li>
+<li>GenAI may be used to <strong>troubleshoot technical issues</strong> in downloading and installing R, RStudio, or Python, and for troubleshooting rendering and Git-related issues.</li>
+<li>GenAI may be used <strong>sparingly to debug error and warning messages</strong> while coding. You should write all code without GenAI first, and prompt GenAI to talk through errors with you rather than give you entire code chunks. You should review all code and understand how it is functioning at every stage.</li>
+<li>You may <strong>not</strong> upload any part of your textbook or any other course materials to GenAI.</li>
+<li>You should use GenAI through official university avenues (Copilot) for data security purposes.</li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Submitting any questions, assignments, notes, slides, or other instructor-produced course materials into Generative AI without permission is a violation of the faculty member’s exclusive rights and will be reported.</p>
+</div>
+</div>
+<p>Additional notes on AI use:</p>
+<ul>
+<li>You will not be able to use GenAI during exams, so you need to be able to think through problems, concepts, and code on your own.</li>
+<li>I highly recommend you first turn to <a href="https://stackoverflow.com/questions">Stack Overflow</a> or <a href="https://rstudio.github.io/cheatsheets/">RStudio/Posit’s cheat sheets</a> before GenAI. GenAI can make mistakes, and building your own debugging habits now will serve you far beyond this course.</li>
+<li>Be aware that AI-generated text often appears at the top of browser search results. Do not trust it blindly.</li>
+<li>You are permitted to use the free version of Grammarly and Microsoft Word’s spelling and grammar tool.</li>
+<li>This is primarily a process-based class. Focus on learning to think through the material yourself — you will not be able to extend what you learn into new contexts if you are overly reliant on GenAI.</li>
+</ul>
+<p><strong>All other use of AI is prohibited.</strong> Unauthorized use constitutes plagiarism and is subject to penalties in this class and sanctions by the university.</p>
+<hr>
+</section>
+<section id="tentative-course-outline" class="level2">
+<h2 class="anchored" data-anchor-id="tentative-course-outline">Tentative Course Outline</h2>
+<p>The tentative schedule is below. Some topics will take just a week, others more. Given our small size and wide variety of backgrounds, we will be flexible about pace. Treat this as a preliminary overview, not a complete roadmap. Reading assignments for the following week will be provided at the end of each class and posted on the course website.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Date (Tuesday)</th>
+<th style="text-align: left;">Discussion Topic</th>
+<th style="text-align: left;">Lab Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Aug 25</td>
+<td style="text-align: left;">Introductions</td>
+<td style="text-align: left;">Grad School Tech</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sep 1</td>
+<td style="text-align: left;">Causality and Inference</td>
+<td style="text-align: left;">R Basics &amp; Data Management</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Sep 8</td>
+<td style="text-align: left;">Probability Theory</td>
+<td style="text-align: left;">Probability and Loading Packages</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sep 15</td>
+<td style="text-align: left;">Random Variables and Measurement</td>
+<td style="text-align: left;">Getting to Know Your Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Sep 22</td>
+<td style="text-align: left;">Describing Data</td>
+<td style="text-align: left;">Validity, Cleaning Data</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sep 29</td>
+<td style="text-align: left;">Hypothesis Testing</td>
+<td style="text-align: left;">Looking at Relationships</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Oct 6</td>
+<td style="text-align: left;">Bivariate Regression</td>
+<td style="text-align: left;">Regression!</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Oct 13</td>
+<td style="text-align: left;">Multivariate Regression</td>
+<td style="text-align: left;">More Regression and Merging Data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Oct 20</td>
+<td style="text-align: left;">Binary and Categorical Variables</td>
+<td style="text-align: left;">Visualization</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Oct 27</td>
+<td style="text-align: left;">Model Specification, OLS Assumptions</td>
+<td style="text-align: left;">Regression Diagnostics</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Nov 3</td>
+<td style="text-align: left;">Causal Inference and Experiments</td>
+<td style="text-align: left;">Experiments, Power Analysis</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Nov 10</td>
+<td style="text-align: left;">Review</td>
+<td style="text-align: left;"><strong>Midterm</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Nov 17</td>
+<td style="text-align: left;">Mixed Methods</td>
+<td style="text-align: left;">Mixed Methods and Student Choice</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Nov 24</td>
+<td style="text-align: left;">Hackathon (Thanksgiving Week)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Dec 1</td>
+<td style="text-align: left;">Research Presentations</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Dec 8</td>
+<td style="text-align: left;">Finals Week / Papers Due</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<p><em>Optional Topics: Factor Analysis, ANOVA, Power Analysis, Mapping, LaTeX, Advanced Visualization</em></p>
+<hr>
+</section>
+<section id="course-readings-and-due-dates" class="level2">
+<h2 class="anchored" data-anchor-id="course-readings-and-due-dates">Course Readings and Due Dates</h2>
+<section id="week-1-aug-25-introductions" class="level3">
+<h3 class="anchored" data-anchor-id="week-1-aug-25-introductions">Week 1 — Aug 25: Introductions</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Mutz, Diana and Soha Rao. 2018. “The Real Reason Liberals Drink Lattes.” <em>PS: Political Science &amp; Politics</em> 51(4).</li>
+<li>Achen, Christopher. “Advice for Students Taking a First Political Science Graduate Course in Statistical Methods.” <em>The Political Methodologist</em>.</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Wheelan, Charles. 2012. “Why I Hate Calculus, but Love Statistics.” In <em>Naked Statistics</em>.</li>
+</ul>
+<hr>
+</section>
+<section id="week-2-sep-1-causality-and-inference" class="level3">
+<h3 class="anchored" data-anchor-id="week-2-sep-1-causality-and-inference">Week 2 — Sep 1: Causality and Inference</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 1</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Angrist, Joshua and Jörn-Steffen Pischke. 2009. “Questions about Questions.” In <em>Mostly Harmless Econometrics</em>.</li>
+</ul>
+<hr>
+</section>
+<section id="week-3-sep-8-probability-theory" class="level3">
+<h3 class="anchored" data-anchor-id="week-3-sep-8-probability-theory">Week 3 — Sep 8: Probability Theory</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Diez, David, Christopher Barr, and Mine Çetinkaya-Rundel. “Ch. 3: Probability.” <em>OpenIntro Statistics</em>.</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — Introduction to R</p>
+</div>
+<hr>
+</section>
+<section id="week-4-sep-15-random-variables" class="level3">
+<h3 class="anchored" data-anchor-id="week-4-sep-15-random-variables">Week 4 — Sep 15: Random Variables</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 3, pp.&nbsp;49–64</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Problem Set #1</p>
+</div>
+<hr>
+</section>
+<section id="week-5-sep-22-measurement" class="level3">
+<h3 class="anchored" data-anchor-id="week-5-sep-22-measurement">Week 5 — Sep 22: Measurement</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Adcock, Robert and David Collier. 2002. “Measurement Validity: A Shared Standard for Qualitative and Quantitative Research.” <em>American Political Science Review</em> 96(3). <em>(Read 1, skim 1)</em></li>
+<li>Pollock Ch. 1 and 2</li>
+<li>Imai, Kosuke. 2017. “Measurement.” In <em>Quantitative Social Science</em>.</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Gerring, John. “Concepts and Measures.” In <em>Social Science Methodology</em>.</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — Exploratory Data Analysis in R</p>
+</div>
+<hr>
+</section>
+<section id="week-6-sep-29-hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="week-6-sep-29-hypothesis-testing">Week 6 — Sep 29: Hypothesis Testing</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 4</li>
+<li>Resnick, Brian. 2019. “Statistical Significance.” <em>Vox</em>.</li>
+<li>Hullman, Jessica. 2019. “How to Get Better at Embracing Unknowns.” <em>Scientific American</em>.</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Explore “Seeing Theory”</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Problem Set #2</p>
+</div>
+<hr>
+</section>
+<section id="week-7-oct-6-bivariate-regression" class="level3">
+<h3 class="anchored" data-anchor-id="week-7-oct-6-bivariate-regression">Week 7 — Oct 6: Bivariate Regression</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 3</li>
+<li>Diez et al.&nbsp;“Ch. on Regression.” <em>OpenIntro Statistics</em> (skim).</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — Foundations of Inference</p>
+</div>
+<hr>
+</section>
+<section id="week-8-oct-13-multivariate-regression" class="level3">
+<h3 class="anchored" data-anchor-id="week-8-oct-13-multivariate-regression">Week 8 — Oct 13: Multivariate Regression</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 5</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Sykes, Alan O. 1993. “An Introduction to Regression Analysis.” Coase-Sandor Institute for Law and Economics Working Paper.</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Problem Set #3</p>
+</div>
+<hr>
+</section>
+<section id="week-9-oct-20-binary-and-categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="week-9-oct-20-binary-and-categorical-variables">Week 9 — Oct 20: Binary and Categorical Variables</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 6</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — Intro to Importing Data and Cleaning Data in R</p>
+</div>
+<hr>
+</section>
+<section id="week-10-oct-27-model-specification" class="level3">
+<h3 class="anchored" data-anchor-id="week-10-oct-27-model-specification">Week 10 — Oct 27: Model Specification</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey reskimming Ch. 3–5, Ch. 7</li>
+<li><a href="https://www.openintro.org/d?file=stat_extra_interaction_effects">Online Supplement: Interaction Effects</a></li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Xu, Yiqing. 2021. “A Basic Checklist for Observational Studies in Political Science.” [Working paper]</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Problem Set #4</p>
+</div>
+<hr>
+</section>
+<section id="week-11-nov-3-causal-inference-and-experiments" class="level3">
+<h3 class="anchored" data-anchor-id="week-11-nov-3-causal-inference-and-experiments">Week 11 — Nov 3: Causal Inference and Experiments</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 10</li>
+<li>Imbens, Guido and Donald Rubin. 2015. “Causality: The Basic Framework.” In <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em>.</li>
+<li>Healy, Kieran. 2019. Ch. 1. <em>Data Visualization: A Practical Introduction</em>.</li>
+<li>Hernán, M., J. Hsu, and B. Healy. 2019. “A Second Chance to Get Causal Inference Right.” <em>CHANCE</em> 32(1): 42–49.</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>List, John A., Sally Sadoff, and Mathis Wagner. 2010. “So You Want to Run an Experiment, Now What?” <em>Experimental Economics</em>.</li>
+<li>Tufte, Edward. 2001. <em>The Visual Display of Quantitative Information</em>.</li>
+<li>Rubin, Donald. 1974. “Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.” <em>Journal of Educational Psychology</em> 66(5).</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr</p>
+</div>
+<hr>
+</section>
+<section id="week-12-nov-10-review-and-midterm" class="level3">
+<h3 class="anchored" data-anchor-id="week-12-nov-10-review-and-midterm">Week 12 — Nov 10: Review and Midterm</h3>
+<hr>
+</section>
+<section id="week-13-nov-17-mixed-methods" class="level3">
+<h3 class="anchored" data-anchor-id="week-13-nov-17-mixed-methods">Week 13 — Nov 17: Mixed Methods</h3>
+<p><strong>Readings:</strong></p>
+<ul>
+<li>Bailey Ch. 12, Ch. 16</li>
+<li>Lieberman, Evan S. 2005. “Nested Analysis as a Mixed-Method Strategy for Comparative Research.” <em>American Political Science Review</em> 99(3).</li>
+<li>Weller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. <em>Finding Pathways</em>.</li>
+</ul>
+<p><strong>Recommended:</strong></p>
+<ul>
+<li>Seawright, Jason. 2016. <em>Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide</em>.</li>
+<li>Bowers, Jake and Maarten Voors. 2016. “How to Improve Your Relationship with Your Future Self.” <em>Revista de Ciencia Política</em> 34(3).</li>
+</ul>
+<div class="due">
+<p><strong>Due:</strong> Problem Set #5</p>
+</div>
+<hr>
+</section>
+<section id="week-14-nov-24-hackathon-thanksgiving-week" class="level3">
+<h3 class="anchored" data-anchor-id="week-14-nov-24-hackathon-thanksgiving-week">Week 14 — Nov 24: Hackathon (Thanksgiving Week)</h3>
+<div class="due">
+<p><strong>Due:</strong> Datacamp — At least one chapter of your choice</p>
+</div>
+<hr>
+</section>
+<section id="week-15-dec-1-research-presentations" class="level3">
+<h3 class="anchored" data-anchor-id="week-15-dec-1-research-presentations">Week 15 — Dec 1: Research Presentations</h3>
+<hr>
+</section>
+</section>
+<section id="recommended-books" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-books">Recommended Books</h2>
+<p><strong>“Pop” data science:</strong></p>
+<ul>
+<li>Carl Bergstrom &amp; Jevin West — <em>Calling Bullshit</em></li>
+<li>Nate Silver — <em>The Signal and the Noise</em></li>
+<li>Charles Wheelan — <em>Naked Statistics</em></li>
+<li>Tim Harford — <em>The Data Detective</em></li>
+</ul>
+<p><strong>Basic introductions:</strong></p>
+<ul>
+<li>Josh Starmer — <em>The StatQuest Illustrated Guide to Statistics</em></li>
+<li>Neil Salkind — <em>Statistics for People who (think they) Hate Statistics</em></li>
+<li>Scott Cunningham — <em>Causal Inference: The Mixtape</em></li>
+<li>Gary Klass — <em>Just Plain Data Analysis</em></li>
+</ul>
+<p><strong>Advanced texts:</strong></p>
+<ul>
+<li>Andrew Gelman and Jennifer Hill — <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em></li>
+<li>Damodar N. Gujarati — <em>Essentials of Econometrics</em></li>
+<li>Jeffrey Wooldridge — <em>Introductory Econometrics</em></li>
+<li>Elena Llaudet and Kosuke Imai — <em>Data Analysis for Social Science</em></li>
+<li>Jenine Harris — <em>Statistics with R</em></li>
+<li>Guido Imbens and Donald Rubin — <em>Causal Inference for Statistics, Social, and Biomedical Sciences</em></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

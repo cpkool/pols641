@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "*.qmd"
+    - "!ClassCode/"
+
+website:
+  title: "POLS 641: Research Methods"
+  navbar:
+    left:
+      - href: index.qmd
+        text: " "
+        icon: house
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: slides.qmd
+        text: Lecture Slides
+      - href: readings.qmd
+        text: Readings
+      - href: rcode.qmd
+        text: R Code
+      - href: problemsets.qmd
+        text: Problem Sets
+      - href: project.qmd
+        text: Final Project
+      - href: resources.qmd
+        text: Resources
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    highlight-style: github
+    code-copy: true
+    code-overflow: wrap
+
+editor: visual
+resources:
+    - "/Rcode"
+    - "/problemsets"
+    - "/Slides"

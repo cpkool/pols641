@@ -1,0 +1,5 @@
+---
+title: "About"
+---
+
+This is the course website for POLS 641: Research Methods, taught by Dr. Colin Kuehl at Northern Illinois University.

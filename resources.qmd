@@ -1,0 +1,57 @@
+---
+title: "Additional Resources"
+---
+
+# Open Access Methods Textbooks
+
+- [The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/)
+- [Empirical Methods in Political Science](https://nulib-oer.github.io/empirical-methods-polisci/)
+- [Quantitative Research Methods (QRM Book)](https://bookdown.org/josiesmith/qrmbook/)
+- [Quantitative Political Science](https://bkenkel.com/qps1/)
+
+
+
+# R Books and Other Resources
+
+- [R for Data Science (2e)](https://r4ds.hadley.nz/)
+- [Introduction to Data Science: Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook/)
+- [YaRrr! The Pirate's Guide to R](https://arc.net/l/quote/umhihgse)
+- [R Companion to *Real Econometrics*](https://bookdown.org/carillitony/bailey/)
+- [R Cheat Sheets](https://rstudio.github.io/cheatsheets/)
+- [R Youtube Tutorials from NIU Graduate Students](https://youtube.com/playlist?list=PLIGGSa-MAg47ZO1G-V8mykAkVgA_hci2G&si=ka79o3tvDJk8RdJk)
+
+
+
+# Data Visualization
+
+- [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
+- [Data Visualization: A Practical Introduction](https://socviz.co/)
+
+
+
+
+# More Books to Read
+
+### "Pop" data science books:
+
+-   Carl Bergstrom & Jevin West – *Calling Bullshit*
+-   Nate Silver – *The Signal and the Noise*
+-   Charles Wheelan – *Naked Statistics*
+-   Tim Harford – *The Data Detective*
+
+### Basic Introductions
+
+-   Neil Salkind – *Statistics for People who (think they) Hate Statistics*
+-   Scott Cunningham – *Causal Inference: The Mixtape*
+-   Gary Klass – *Just Plain Data Analysis*
+
+### Advanced Texts
+
+*For students looking to go beyond what is taught in the course:*
+
+-   Andrew Gelman and Jennifer Hill – *Data Analysis Using Regression and Multilevel/Hierarchical Models*
+-   Damodar N. Gujarati – *Essentials of Econometrics*
+-   Jeffrey Wooldridge – *Introductory Econometrics*
+-   Elena Llaudet and Kosuke Imai – *Data Analysis for Social Science*
+-   Jenine Harris – *Statistics with R*
+-   Guido Imbens and Donald Rubin – *Causal Inference for Statistics, Social, and Biomedical Sciences*

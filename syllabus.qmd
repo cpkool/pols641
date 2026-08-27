@@ -1,0 +1,375 @@
+---
+title: "POLS 641: Introductory Analysis of Political Data"
+subtitle: "Northern Illinois University | Fall 2026"
+---
+
+**Tuesdays and Thursdays, 2:00–3:15 PM**
+
+------------------------------------------------------------------------
+
+|  |  |
+|:-----------------------------------|:-----------------------------------|
+| **Instructor:** Dr. Colin Kuehl | **Email:** [ckuehl\@niu.edu](mailto:ckuehl@niu.edu) |
+| **Office Hours:** Tuesdays 10–11 AM & Thursdays 3:30–4:30 | **Office:** Zulauf 410 and [Zoom](https://niu-edu.zoom.us/j/83652064075?pwd=FqcV687XUCPFvgpLew9zPDbrpErZkP.1&from=addon) |
+| **R Guru:** Abigail Tetteh | **Email:** [Z2003922\@students.niu.edu](mailto:Z2003922@students.niu.edu) |
+
+------------------------------------------------------------------------
+
+## Course Description
+
+This course is the first in NIU Political Science Department's graduate data analysis sequence. It is designed to provide students with an introduction to quantitative methodology used in political research. We will cover basic probability and statistics through multivariate regression with a focus on the use of these methods in the field of political science. This course concentrates on the consumption and application of quantitative methods. Accordingly, it does not focus on the elaborate math driving much of the statistical analysis. Instead, we will focus on the proper use of statistics and how to critically analyze quantitative research. As such, much of the course is focused on learning by doing. Students will learn to program using the R programming language (more below) and will conduct original quantitative analysis using existing data.
+
+## Prerequisites
+
+I assume only high school algebra and a tolerance for stubborn work. Regarding the latter, getting your head around the material and making your statistical software package do what you want it to do can sometimes be both frustrating and time consuming. I can only encourage you to keep trying. With persistence (and sometimes a little help), you will eventually figure it out. This is an essential part of the process. Trust me on this — I've been there, too. Regarding the former, calculus is helpful since some of the material we cover makes use of it. However, don't panic: it is not necessary. I will show you some math from time to time in lecture, but this will be solely to provide you with motivating, behind-the-scenes intuition. You are not expected to be able to reproduce it in problem sets.
+
+## A Note on Statistical Software
+
+Knowledge of statistical software is an increasingly important component of any political scientist's toolbox. The choice of statistical software is one of continuous debate. However, most quantitative researchers today use either STATA or R (others such as SPSS and SAS have dedicated niche followings, and Python is growing) to complete their analysis.
+
+This course will be taught using R for a number of reasons: (1) it's free, which allows students to use R on their home computer and ensures access long past your time at NIU; (2) cutting-edge political methods work is increasingly done in R; (3) the things you can do using R and associated packages is far broader than in STATA or other packages; and (4) basic computer coding is an increasingly important skill across many domains (R's developers actually describe it as a "computing environment" rather than statistical software). R does have a relatively high start-up cost — it has little to no point-and-click options — but I strongly believe it will be worth your investment.
+
+The course will also provide an introduction to Quarto document preparation software. Quarto is free and works well with R. If students are interested, we may also discuss LaTeX.
+
+## Course Meetings
+
+We will meet once per week, divided into two sessions. The first portion will be a combination of lecture and discussion on fundamental concepts, such as research design, probability theory, etc. The second will focus on application and coding in R. Meetings will primarily be held in person, however depending on scheduling issues and student interest we may move some sessions online.
+
+## Readings
+
+We have one assigned text for the course:
+
+> Michael A. Bailey, *Real Stats: Using Econometrics for Political Science and Public Policy*, Oxford (second edition; first edition is OK).
+>
+> *I recommend purchasing this book. You will continue to refer to it throughout your time here, and portions will also be used in POLS 642.*
+
+Additional assigned readings will be found on the course website. The course website also contains links to helpful websites and online books, especially for R help.
+
+## Grading
+
+| Component     | Weight |
+|:--------------|:------:|
+| Final Project |  50%   |
+| Problem Sets  |  25%   |
+| Midterm       |  10%   |
+| Datacamp      |   5%   |
+| Participation |  10%   |
+
+**Final Project:** Your final project will be an independent quantitative analysis of a political science topic of your choosing. You will obtain a dataset, formulate a hypothesis, conduct basic exploratory data analysis, and perform and correctly interpret a multivariate regression. You will present your results to the class at the end of the semester and write up your findings in the form of the empirical section of a journal article. An assignment sheet will be provided and we will discuss details in the following weeks. Your final project will be due **December 13th** by midnight by email.
+
+**Problem Sets:** Throughout the semester you will complete a number of problem sets applying the R coding we are learning. Problem sets will be distributed on every other Friday starting in week 2 and will be due on Wednesday at midnight of the second week. I strongly encourage you to form small study groups — however, the write-ups *must be your own*. No late assignments will be accepted without prior permission. Extensions should be arranged at least twenty-four hours in advance.
+
+Problem Set Due Dates:
+
+- Problem Set #1: Sept. 16th
+- Problem Set #2: Sept. 30th
+- Problem Set #3: Oct. 14th
+- Problem Set #4: Oct. 28th
+- Problem Set #5: Nov. 18th *(extended for midterm)*
+
+**Midterm:** In class on **November 12th**. It will assess your understanding of fundamental aspects of research design and statistics as well as some basics of coding in R.
+
+**Participation:** My expectation is that class will be a true discussion and students will ask questions when confused or having difficulties. Your active participation is especially important given the wide range of backgrounds and small class size.
+
+**Datacamp:** During weeks in which no problem set is due you will be expected to complete selected Datacamp courses — an online platform for learning coding and data analysis. As a member of the class you will receive a complementary six-month membership.
+
+## Course Policies
+
+**Attendance:** Attendance is mandatory without prior arrangement. If circumstances prevent you from attending please let me know by email prior to the beginning of class. You will be responsible for covering the material you missed.
+
+**Academic Honesty:** Cheating will not be tolerated. All students will be held to the highest standards of NIU's student code of conduct. All cases will be referred to campus authorities. As noted above, helping each other will be key to your success in this class — however, the work you turn in must be your own.
+
+**Disability Services:** If you need an accommodation for this class, please contact the Disability Resource Center as soon as possible. The DRC coordinates accommodations for students with disabilities. It is located on the 4th floor of the Health Services Building, and can be reached at 815-753-1303 or drc\@niu.edu. Also, please contact me privately as soon as possible so we can discuss your accommodations.
+
+**Email:** I am available through email M–F 8 am to 5 pm. I will respond to all emails within 24 hours during these times. If I forget, please send me a reminder.
+
+**Office Hours:** I recommend you come to office hours early and often.
+
+**Mental Health:** The first semester of graduate school is challenging and anxiety-inducing at the best of times. I understand this and have my own battles. Please take the time for self-care, and if you need extensions for mental health reasons do not hesitate to ask. Resources include the DRC, Student Counseling Services, or call 815-306-2777.
+
+**Health Precautions:** Masks are not required for this class (subject to changes in university protocols). Please be respectful of others' decisions. If you are feeling sick, stay home. If you might be sick, wear a mask.
+
+**Gender Identity:** As a faculty member, I am committed to using your proper name and pronouns. We will take time during our first class to do introductions, at which point you can share what name and pronouns you use, as you are comfortable.
+
+**Active Duty Military and Veterans:** If you are a veteran, on active duty, in the reserves, or a spouse or dependent, and an aspect of your service makes it difficult for you to fulfill the requirements of the course, keep me informed and I will work with you. The Office of Military and Veteran Services can be reached at (815) 753-0691 or mss\@niu.edu.
+
+**Land Acknowledgement:** Northern Illinois University operates and is built on the traditional lands of the Oceti Sakowin (Sioux), Miami, Bodewadmiakiwen (Potawatomi), Sauk and Meskwaki, and Peoria. These lands are subject to Cession 50 and 148, though their terms have been consistently violated. We seek to acknowledge this land and these peoples in order to honor the legacies, struggles, and current existence of Indigenous peoples; situate ourselves within settler-colonial projects; disrupt the erasure of Indigenous peoples; and begin/continue the work of collectively learning and fulfilling our obligations.
+
+## Use of Generative AI
+
+Using AI (such as ChatGPT, Gemini, Claude, etc.) to assist in completing assignments will be allowed only in the following ways:
+
+- GenAI may be used to **find outside sources** for assignments. You should verify and read all sources on your own.
+- GenAI may be used to **troubleshoot technical issues** in downloading and installing R, RStudio, or Python, and for troubleshooting rendering and Git-related issues.
+- GenAI may be used **sparingly to debug error and warning messages** while coding. You should write all code without GenAI first, and prompt GenAI to talk through errors with you rather than give you entire code chunks. You should review all code and understand how it is functioning at every stage.
+- You may **not** upload any part of your textbook or any other course materials to GenAI.
+- You should use GenAI through official university avenues (Copilot) for data security purposes.
+
+::: callout-warning
+Submitting any questions, assignments, notes, slides, or other instructor-produced course materials into Generative AI without permission is a violation of the faculty member's exclusive rights and will be reported.
+:::
+
+Additional notes on AI use:
+
+- You will not be able to use GenAI during exams, so you need to be able to think through problems, concepts, and code on your own.
+- I highly recommend you first turn to [Stack Overflow](https://stackoverflow.com/questions) or [RStudio/Posit's cheat sheets](https://rstudio.github.io/cheatsheets/) before GenAI. GenAI can make mistakes, and building your own debugging habits now will serve you far beyond this course.
+- Be aware that AI-generated text often appears at the top of browser search results. Do not trust it blindly.
+- You are permitted to use the free version of Grammarly and Microsoft Word's spelling and grammar tool.
+- This is primarily a process-based class. Focus on learning to think through the material yourself — you will not be able to extend what you learn into new contexts if you are overly reliant on GenAI.
+
+**All other use of AI is prohibited.** Unauthorized use constitutes plagiarism and is subject to penalties in this class and sanctions by the university.
+
+------------------------------------------------------------------------
+
+## Tentative Course Outline
+
+The tentative schedule is below. Some topics will take just a week, others more. Given our small size and wide variety of backgrounds, we will be flexible about pace. Treat this as a preliminary overview, not a complete roadmap. Reading assignments for the following week will be provided at the end of each class and posted on the course website.
+
+| Date (Tuesday) | Discussion Topic | Lab Topic |
+|:--------------------------:|:---------------------|:---------------------|
+| Aug 25 | Introductions | Grad School Tech |
+| Sep 1 | Causality and Inference | R Basics & Data Management |
+| Sep 8 | Probability Theory | Probability and Loading Packages |
+| Sep 15 | Random Variables and Measurement | Getting to Know Your Data |
+| Sep 22 | Describing Data | Validity, Cleaning Data |
+| Sep 29 | Hypothesis Testing | Looking at Relationships |
+| Oct 6 | Bivariate Regression | Regression! |
+| Oct 13 | Multivariate Regression | More Regression and Merging Data |
+| Oct 20 | Binary and Categorical Variables | Visualization |
+| Oct 27 | Model Specification, OLS Assumptions | Regression Diagnostics |
+| Nov 3 | Causal Inference and Experiments | Experiments, Power Analysis |
+| Nov 10 | Review | **Midterm** |
+| Nov 17 | Mixed Methods | Mixed Methods and Student Choice |
+| Nov 24 | Hackathon (Thanksgiving Week) |  |
+| Dec 1 | Research Presentations |  |
+| Dec 8 | Finals Week / Papers Due |  |
+
+*Optional Topics: Factor Analysis, ANOVA, Power Analysis, Mapping, LaTeX, Advanced Visualization*
+
+------------------------------------------------------------------------
+
+## Course Readings and Due Dates
+
+### Week 1 — Aug 25: Introductions
+
+**Readings:**
+
+- Mutz, Diana and Soha Rao. 2018. "The Real Reason Liberals Drink Lattes." *PS: Political Science & Politics* 51(4).
+- Achen, Christopher. "Advice for Students Taking a First Political Science Graduate Course in Statistical Methods." *The Political Methodologist*.
+
+**Recommended:**
+
+- Wheelan, Charles. 2012. "Why I Hate Calculus, but Love Statistics." In *Naked Statistics*.
+
+------------------------------------------------------------------------
+
+### Week 2 — Sep 1: Causality and Inference
+
+**Readings:**
+
+- Bailey Ch. 1
+
+**Recommended:**
+
+- Angrist, Joshua and Jörn-Steffen Pischke. 2009. "Questions about Questions." In *Mostly Harmless Econometrics*.
+
+------------------------------------------------------------------------
+
+### Week 3 — Sep 8: Probability Theory
+
+**Readings:**
+
+- Diez, David, Christopher Barr, and Mine Çetinkaya-Rundel. "Ch. 3: Probability." *OpenIntro Statistics*.
+
+::: due
+**Due:** Datacamp — Introduction to R
+:::
+
+------------------------------------------------------------------------
+
+### Week 4 — Sep 15: Random Variables
+
+**Readings:**
+
+- Bailey Ch. 3, pp. 49–64
+
+::: due
+**Due:** Problem Set #1
+:::
+
+------------------------------------------------------------------------
+
+### Week 5 — Sep 22: Measurement
+
+**Readings:**
+
+- Adcock, Robert and David Collier. 2002. "Measurement Validity: A Shared Standard for Qualitative and Quantitative Research." *American Political Science Review* 96(3). *(Read 1, skim 1)*
+- Pollock Ch. 1 and 2
+- Imai, Kosuke. 2017. "Measurement." In *Quantitative Social Science*.
+
+**Recommended:**
+
+- Gerring, John. "Concepts and Measures." In *Social Science Methodology*.
+
+::: due
+**Due:** Datacamp — Exploratory Data Analysis in R
+:::
+
+------------------------------------------------------------------------
+
+### Week 6 — Sep 29: Hypothesis Testing
+
+**Readings:**
+
+- Bailey Ch. 4
+- Resnick, Brian. 2019. "Statistical Significance." *Vox*.
+- Hullman, Jessica. 2019. "How to Get Better at Embracing Unknowns." *Scientific American*.
+
+**Recommended:**
+
+- Explore "Seeing Theory"
+
+::: due
+**Due:** Problem Set #2
+:::
+
+------------------------------------------------------------------------
+
+### Week 7 — Oct 6: Bivariate Regression
+
+**Readings:**
+
+- Bailey Ch. 3
+- Diez et al. "Ch. on Regression." *OpenIntro Statistics* (skim).
+
+::: due
+**Due:** Datacamp — Foundations of Inference
+:::
+
+------------------------------------------------------------------------
+
+### Week 8 — Oct 13: Multivariate Regression
+
+**Readings:**
+
+- Bailey Ch. 5
+
+**Recommended:**
+
+- Sykes, Alan O. 1993. "An Introduction to Regression Analysis." Coase-Sandor Institute for Law and Economics Working Paper.
+
+::: due
+**Due:** Problem Set #3
+:::
+
+------------------------------------------------------------------------
+
+### Week 9 — Oct 20: Binary and Categorical Variables
+
+**Readings:**
+
+- Bailey Ch. 6
+
+::: due
+**Due:** Datacamp — Intro to Importing Data and Cleaning Data in R
+:::
+
+------------------------------------------------------------------------
+
+### Week 10 — Oct 27: Model Specification
+
+**Readings:**
+
+- Bailey reskimming Ch. 3–5, Ch. 7
+- [Online Supplement: Interaction Effects](https://www.openintro.org/d?file=stat_extra_interaction_effects)
+
+**Recommended:**
+
+- Xu, Yiqing. 2021. "A Basic Checklist for Observational Studies in Political Science." \[Working paper\]
+
+::: due
+**Due:** Problem Set #4
+:::
+
+------------------------------------------------------------------------
+
+### Week 11 — Nov 3: Causal Inference and Experiments
+
+**Readings:**
+
+- Bailey Ch. 10
+- Imbens, Guido and Donald Rubin. 2015. "Causality: The Basic Framework." In *Causal Inference for Statistics, Social, and Biomedical Sciences*.
+- Healy, Kieran. 2019. Ch. 1. *Data Visualization: A Practical Introduction*.
+- Hernán, M., J. Hsu, and B. Healy. 2019. "A Second Chance to Get Causal Inference Right." *CHANCE* 32(1): 42–49.
+
+**Recommended:**
+
+- List, John A., Sally Sadoff, and Mathis Wagner. 2010. "So You Want to Run an Experiment, Now What?" *Experimental Economics*.
+- Tufte, Edward. 2001. *The Visual Display of Quantitative Information*.
+- Rubin, Donald. 1974. "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies." *Journal of Educational Psychology* 66(5).
+
+::: due
+**Due:** Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr
+:::
+
+------------------------------------------------------------------------
+
+### Week 12 — Nov 10: Review and Midterm
+
+------------------------------------------------------------------------
+
+### Week 13 — Nov 17: Mixed Methods
+
+**Readings:**
+
+- Bailey Ch. 12, Ch. 16
+- Lieberman, Evan S. 2005. "Nested Analysis as a Mixed-Method Strategy for Comparative Research." *American Political Science Review* 99(3).
+- Weller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. *Finding Pathways*.
+
+**Recommended:**
+
+- Seawright, Jason. 2016. *Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide*.
+- Bowers, Jake and Maarten Voors. 2016. "How to Improve Your Relationship with Your Future Self." *Revista de Ciencia Política* 34(3).
+
+::: due
+**Due:** Problem Set #5
+:::
+
+------------------------------------------------------------------------
+
+### Week 14 — Nov 24: Hackathon (Thanksgiving Week)
+
+::: due
+**Due:** Datacamp — At least one chapter of your choice
+:::
+
+------------------------------------------------------------------------
+
+### Week 15 — Dec 1: Research Presentations
+
+------------------------------------------------------------------------
+
+## Recommended Books
+
+**"Pop" data science:**
+
+- Carl Bergstrom & Jevin West — *Calling Bullshit*
+- Nate Silver — *The Signal and the Noise*
+- Charles Wheelan — *Naked Statistics*
+- Tim Harford — *The Data Detective*
+
+**Basic introductions:**
+
+- Josh Starmer — *The StatQuest Illustrated Guide to Statistics*
+- Neil Salkind — *Statistics for People who (think they) Hate Statistics*
+- Scott Cunningham — *Causal Inference: The Mixtape*
+- Gary Klass — *Just Plain Data Analysis*
+
+**Advanced texts:**
+
+- Andrew Gelman and Jennifer Hill — *Data Analysis Using Regression and Multilevel/Hierarchical Models*
+- Damodar N. Gujarati — *Essentials of Econometrics*
+- Jeffrey Wooldridge — *Introductory Econometrics*
+- Elena Llaudet and Kosuke Imai — *Data Analysis for Social Science*
+- Jenine Harris — *Statistics with R*
+- Guido Imbens and Donald Rubin — *Causal Inference for Statistics, Social, and Biomedical Sciences*

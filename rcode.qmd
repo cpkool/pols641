@@ -1,0 +1,32 @@
+---
+title: "R Code"
+subtitle: "Annotated scripts from lecture, organized by topic."
+editor_options:
+  chunk_output_type: console
+---
+
+Code used in class will be posted here. Download to your own computer for use in class.
+
+------------------------------------------------------------------------
+
+## Setup: Installing R & RStudio
+
+1.  Install R from [cran.r-project.org](https://cran.r-project.org)
+2.  Install RStudio from [posit.co](https://posit.co/download/rstudio-desktop/)
+
+------------------------------------------------------------------------
+
+*Class code will be posted here as the course progresses.*
+
+## Day 1: Getting Started with R
+
+Download these three files and put in their own folder. Assuming you have R and Rstudio installed, start by clicking on the "Project" file. 
+
+[Week 1 Project](RCode/Week 1 - Intro/Week 1.Rproj){download="Week 1.Rproj"}
+
+
+[Data](RCode/Week 1 - Intro/wbdata.RData){download="wbdata.RData"}
+
+
+<a href="RCode/Week 1 - Intro/1 Intro.Rmd" download>Updated 1_Intro.Rmd</a>
+

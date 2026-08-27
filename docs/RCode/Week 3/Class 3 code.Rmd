@@ -1,0 +1,290 @@
+---
+title: "Class 3"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+This week we'll start by illustrating some probability concepts in R and then continue building R skills by looking at data from the Bush and Clayton article we read earlier week. 
+
+
+# Part 1: Probability
+#########################################################
+     ## R code to demonstrate probability distributions. You won't need to use this code later so don't worry if you are unclear what is going on. 
+ 
+ 
+ Brief illustration of the law the large numbers   
+```{r}
+#Don't worry about the code here. This is just an illustration. 
+n<-c(1:1000) #creates a vector of 1 to 100
+weight<-rnorm(1000,3,.5) #Create a vector of length 100, with a mean of 3, and sd of .5
+hist(weight)#quick histogram of what we just created
+s<-cumsum(weight) #cumulative sum
+wmean <- s/n #finds mean at each point
+plot(wmean,xlab="n",ylim=c(2,4),type="l",main="Law of Large Numbers")
+abline(h=3, col="red")#horizontal line at the mean
+#what happens if we change to a thousand
+```    
+     
+     
+## simulate die rolls
+```{r}                                           
+d1 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
+  d2 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
+
+  hist(d1)#Expected uniform distribution for a singe die
+                                     
+die.roll <- d1 + d2 #sum of 2 dice
+                                             
+hist(die.roll, breaks= seq(0, 12, by=.5), prob=FALSE, col="red", main="Frequency Dist, 100,000 die rolls", xlab = "Value of Roll", ylab="Frequency")
+summary(die.roll)
+
+table(die.roll)
+                                             
+  ## plot PMF 
+                                             
+  freq<-cbind(table(die.roll)) 
+                                             
+  prval<-freq/100000 
+                                                  roll<-cbind(2,3,4,5,6,7,8,9,10,11,12) 
+                                             
+plot(roll, prval, col="red", main="Probability Mass Function", xlab = "Value of Roll", ylab="Probability", pch=19, type="l")
+
+## plot CDF 
+  #CDF = cumulative distribution function - probability that X will take a value less than or equal to X
+cprval <- cumsum(prval) 
+                                             
+ plot(roll, cprval, col="red", main="Probability Mass Function", xlab = "Value of Roll",  ylab="Probability", pch=19)
+```
+
+Creating different distributions
+```{r}                                           
+## The uniform distribution
+                                             
+x <- runif(10000) 
+plot(x, x/x, type="l", col="red", main="PDF of Uniform", xlab = "X", ylab="Probability") 
+                                             
+lb <- 0.25 
+ub <- 0.75 
+polygon(c(lb,lb,ub,ub), c(0,1,1,0), col="red") 
+                                             
+ ## The normal distribution 
+ x <- sort(rnorm(10000)) 
+                                             
+plot(x, dnorm(x), type="l", col="red", main="PDF and CDF of Normal", xlab = "X",  ylab="Probability", ylim=c(0,1)) 
+lines(x, pnorm(x)) 
+abline(v=0) 
+```
+
+
+                                     
+
+##################################################################################################
+This week we'll use some packages. 
+Packages are mini pieces of software(sets of commands) that are loaded on top of base R. There are thousands to choose from and are very helpful for doing more specialized types of analysis.
+
+I recommend loading all the packages you need at the beginning of your code (along with setting your working directory and loading your data).
+
+
+The install command downloads the package to your computer. Once installed you don't need to reinstall every time. (in fact, sometimes its better not to in case of differences between versions)
+
+Two of the most commonly used are dplyr and ggplot 
+
+The library command unpacks(makes available) the package. Like taking it out off the shelf. 
+```{r}
+#install.packages("tidyverse") ## This package is used to tidydata. We'll use it later
+#install.packages("ggplot2") #Very popular graphing package
+
+library(tidyverse)
+library(ggplot2)
+```
+
+
+################################
+Instead of using an Rproject this week we are getting to manually set our working directory (Translation: File where everything will be saved.)Always set your wd before working in R. This ensures that all your work(graphics, subsets, etc) will be saved in the same place and that R will know where to look for your data. 
+
+After the setwd() command insert the file path to your own folder that you will use for this class(If it doesn't exist create it using finder or in windows).Make sure both files I emailed you, this .rmd file and the .rdata file are in that folder. 
+
+There are two ways to have R tell you the file path. First, you can use the file.choose() to find the file path.Just copy and paste from the console into this code. 
+The other is to load or set the wd directly in Rstudio, but if you do this you need paste into your code so it will knit. 
+
+This is perhaps the most counter-intuitive thing you'll do in R, but it is important. Remember, do not use point and click, you need the code to knit. 
+```{r}
+getwd() #Returns which directory you are currently working in
+setwd("/Users/colinkuehl/Dropbox/POLS 641/2025 641/Rcode F25/Week 3") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
+getwd() #make sure using right folder
+```
+
+
+
+
+
+We're going to use data from the article "Facing Change: Gender and Climate Change Attitudes Worldwide" by Bush and Clayton we read last week. Data can be found here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0Y8IKW
+
+
+This is just one of the many data sources they use. 
+```{r}
+pewdata <- read.csv("pewdata.csv") #If working directory is set correctly and this file is in it this command should work. 
+```
+
+
+
+
+Lets explore the data: Variable names, # of variables, # of respondents
+```{r}
+dim(pewdata)
+names(pewdata)
+
+```
+
+Thats a lot of respondents.
+```{r}
+table(pewdata$Country)
+length(unique(pewdata$Country))
+
+length(unique(pewdata$WorryType))
+
+prop.table(table(pewdata$Country))
+
+str(pewdata) #This tells us what type of data R thinks we have
+```
+
+
+
+
+Look at climate concern
+```{r}
+mean(pewdata$ClimConcen)#Doesn't know what to do with NAs
+mean(pewdata$ClimConcen, na.rm = T)
+median(pewdata$ClimConce, na.rm = T)
+summary(pewdata$ClimConcen)
+
+hist(pewdata$ClimConcen)
+
+#A good way to count NAs in a column
+sum(is.na(pewdata$ClimConcen))
+sum(is.na(pewdata$Ideo))
+
+table(pewdata$Country, pewdata$Ideo)
+```
+
+Sex differences
+```{r}
+males <- pewdata[which(pewdata$Female==0),]
+females <- pewdata[which(pewdata$Female==1),]
+
+summary(males$ClimConcen)
+summary(females$ClimConcen)
+```
+
+Lets say we we were interested in Income and climate concern . . . .
+
+Use base R to create scatterplot
+```{r}
+plot(pewdata$StandIncome, pewdata$ClimConcen) #Not very helpful
+```
+
+Reduce N to make more useful 
+```{r}
+pewsamp1 <- pewdata[sample(nrow(pewdata), 500), ]# a random sample of 500 ie a new subset
+
+mean(pewsamp1$ClimConcen, na.rm=T)
+mean(pewdata$ClimConcen, na.rm=T)
+
+plot(pewsamp1$StandIncome, pewsamp1$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(pewsamp1$ClimConcen~pewsamp1$StandIncome))
+```
+
+
+Using tidyverse
+```{r}
+pewsamp2 <- sample_n(pewdata, 500)#Notice how tidyverse uses a slighty different vocabulary and grammar
+
+mean(pewsamp2$ClimConcen, na.rm=T)#Ack! This is different from above
+
+#We can create the same figure with the ggplot package. ggplot uses a different grammar.
+ggplot(data=pewsamp2, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x)
+```
+
+
+There are many ways to code in R. Base R can do everything you need, but I find "the tidyverse" more intuitive so I am introducing it early with the assumption you'll find it easier as well. 
+
+
+This is interesting, but might want to look at one country at a time. 
+
+Subset the data
+```{r}
+usa <- pewdata[which(pewdata$Country=="United States"),]
+indo <- pewdata[which(pewdata$Country=="Indonesia"),]
+
+plot(usa$StandIncome, usa$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(usa$ClimConcen~usa$StandIncome), col="red")
+abline(lm(pewdata$ClimConcen~pewdata$StandIncome), col="blue")#add line for whole sample to make comparison
+abline(lm(indo$ClimConcen~indo$StandIncome), col="pink")
+```
+
+Create same graph using dplyr and ggplot
+```{r}
+USA <- filter(pewdata, Country=="United States") #This is dplyr version of what we did last time. Check out dplyr cheat sheet posted to dropbox
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("United States")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red", se=F)+geom_jitter() + theme_test()
+``` 
+
+An especially nice feature of tidy verse is that you can use piping(%>%) to do multiple things in a single line of code
+
+```{r}
+pewdata %>% filter(Country=="Russia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Russia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+#This can make it much easier to run similar versions of the same graph
+pewdata %>% filter(Country=="Australia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Australia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Country=="France") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("France")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Female==1, Country=="France") %>% ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Females")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+```
+
+
+Your turn to play - create for another county, or look at another DV
+```{r}
+
+
+```
+
+
+Recreating Figure 1
+```{r}
+ggplot(pewdata, aes(x=GDPPC)) + 
+  geom_density() #ggplot code for a histogram
+
+pewdata$female <- ifelse(pewdata$Female==1, "female", "male")
+
+bycountryg <- pewdata %>% group_by(Country, female) %>% summarise(Avgserios=mean(ClimSerious, na.rm=T), GDP=mean(GDPPC))%>% pivot_wider(names_from = female, values_from = Avgserios)%>% mutate(diff=female-male)
+bycountryg
+
+
+ggplot(bycountryg, aes(x=log(GDP), y=diff, label=Country))+geom_point()+geom_text()+ ggtitle("Gender Gap by GDP")+
+  xlab("GDP per Capita(logged)")+ ylab("Gender Gap")+geom_hline(yintercept=0, col="lightblue")+ geom_smooth(method='lm', formula= y~x, col="coral", se=F)
+```
+
+
+
+
+
+Make sure to knit and, if you'd like, save the data. 

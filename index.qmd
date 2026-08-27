@@ -1,0 +1,15 @@
+---
+title: "POLS 641: Research Methods - Dr. Colin Kuehl"
+subtitle: "Northern Illinois University | Department of Political Science | Fall 2026"
+---
+
+Welcome to the course website for POLS 641: Research Methods.
+
+This course introduces the fundamental concepts of research design and data analysis using R. No prior programming experience required.
+
+Please check out the Syllabus for detailed course information. This website will be updated as the semester approaches and then throughout the course.
+
+If you have questions please email Dr. Kuehl at ckuehl\@niu.edu
+
+::: bigskip
+:::

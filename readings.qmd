@@ -1,0 +1,28 @@
+---
+title: "Readings"
+subtitle: "Required and recommended readings, organized by week."
+---
+
+*Readings will be posted here as the course progresses.*
+
+### Week 1 — Aug 25: Introductions
+
+**Readings:**
+
+- Mutz, Diana and Soha Rao. 2018. ["The Real Reason Liberals Drink Lattes."](readings/LiberalsLattes.pdf) *PS: Political Science & Politics* 51(4).
+- Achen, Christopher. ["Advice for Students Taking a First Political Science Graduate Course in Statistical Methods."](readings/Achen%20Advice.pdf) *The Political Methodologist*.
+
+**Recommended:**
+
+- Wheelan, Charles. 2012. "Why I Hate Calculus, but Love Statistics." In *Naked Statistics*.
+
+
+### Week 2 — Sep 1: Causality and Inference
+
+**Readings:**
+
+- Bailey Ch. 1
+
+**Recommended:**
+
+- Angrist, Joshua and Jörn-Steffen Pischke. 2009. ["Questions about Questions."](readings/QuestionsAboutQuestions.pdf) In *Mostly Harmless Econometrics*.

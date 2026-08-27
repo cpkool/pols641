@@ -1,0 +1,170 @@
+---
+title: "Class 1 - POLS 641 2026"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Introducing R
+
+R is a computing language for performing a wide variety of statistical analysis. At its most most basic it works like a calculator. 
+
+To execute a command you can press the green button or put the cursor on the line of the command and press control+enter(command+enter on mac). This "runs" the code.
+
+text in between the ```indicates R code. All others is just text.The R code is then highlighted. 
+```{r}
+2+2
+75*20
+141251234/24
+4^2
+```
+
+
+The first step is loading data. If the data are in your working directory(aka the folder on your computer where the .rproj file is located) the command below should work.  For this section we're using wbdata.RData
+
+```{r}
+load("wbdata.RData")
+```
+
+If it isn't, you must specify the file path. You can ignore this for now, but notice how I have to give the exact path to the file.
+```{r}
+#load("/Users/colinkuehl/Dropbox/POLS 641/2026/Rcode641/Week 1/wbdata.RData")
+```
+We will talk later about loading in all sorts of different file types. 
+
+It is critical that you have an organized file structure and know how to use it for this class(and graduate school as well).
+
+
+This data comes from the World Bank. It shows country level statistics for the year 2021. 
+You'll know its loaded when it shows up in the upper right corner of R studio(in the "Environment"). 
+
+
+We can then look at the raw data. First we give a command and then in parenthesis what dataset that we've loaded is the target of the command
+```{r}
+head(wbdata)#gives first rows
+tail(wbdata) #gives last rows
+```
+A # indicates notes. R will not run what is after as code.ie it is a comment
+
+R is persnickety. Make sure everything is in order, only capitals are capitalized etc, and that you close quotations and parenthesis. 
+
+
+View(wbdata) shows data in an external window(or clicking on the table thing in the environment). Useful for seeing data as if in excelt, but does not work when knitting so we'll keep it outside the ```
+
+
+Variables and size of dataset
+```{r}
+names(wbdata) #Gives the name for each column aka each variable
+ 
+ncol(wbdata)#gives the number of rows aka observations aka our N
+nrow(wbdata)#number of rows - in this case our unit of analysis is countries
+
+dim(wbdata)
+```
+
+
+Looking at raw data doesn't really tell us much. So we might want to look at summary statistics of a specific variable. Again, we type a command followed by the object we're looking at in parenthesis. 
+
+
+```{r}
+mean(wbdata$GDPcap) #And boom you're using statistics 
+median(wbdata$GDPcap)
+mode(wbdata$GDPcap)###no repeats so it tells me the the data is numeric
+var(wbdata$GDPcap) #variance
+summary(wbdata$GDPcap)
+
+mean(wbdata$GDPgrowth)
+median(wbdata$Population)
+
+mean(wbdata$Population)
+
+median(wbdata$GDPgrowth)
+
+mean(wbdata$Mortalityrate)
+
+median(wbdata$Mortalityrate)
+```
+To use a variable we always use dataset$variablename - repeat after me "dataset-dollarsign-variable name, dataset-dollarsign-variable name, 
+dataset-dollarsign-variable name"
+
+
+Sometimes you just need a picture. A histogram shows the distribution of a single variable. 
+```{r}
+hist(wbdata$Mortalityrate)
+hist(wbdata$GDPgrowth)
+
+hist(wbdata$Mortalityrate, main="Distribution of Country Mortality Rates", ylab="Count", xlab="Mortality Rate", col="purple", border="pink", breaks=24) # R gives us all sorts of options to customize our graph - again, much more on this later
+```
+
+
+A scatterplot can show the relationship between two variables - you always want your independent variable on the X axis
+```{r}
+plot(wbdata$GDPcap, wbdata$Ruralpop, col="purple")
+```
+Thats not very helpful. 
+
+We  want a percentage of the population that is rural, not a total number. We can create it in R using simple division.
+Note here the <- is assigning a new variable called GDPcap. Notice dataset$variablename
+
+```{r}
+wbdata$Ruralpopperc <- wbdata$Ruralpop/wbdata$Population
+```
+
+New scatter plots with labels and a trendline
+```{r}
+plot(wbdata$GDPcap, wbdata$Ruralpopperc, xlab = "GDP per Capita", ylab="Rural Population Percentage", main="Wealth and Rural Population", sub="Data: 2021 World Bank", pch=7, col="grey")
+abline(lm(wbdata$Ruralpopperc ~ wbdata$GDPcap), col="hotpink")
+```
+
+
+Check-in Questions:
+What does the relationship look like between GDP per capita and mortality? Use code above to create a visualization. Can you change colors and label the axes? What other interesting things can you show?
+```{r}
+plot(wbdata$GDPcap, wbdata$Mortalityrate, xlab = "GDP per Capita", ylab="Mortality Rate", main="Wealth and Mortality", sub="Data: 2021 World Bank", pch=7, col="grey")
+abline(lm(wbdata$Mortalityrate ~ wbdata$GDPcap), col="hotpink")
+
+summary(lm(wbdata$Mortalityrate ~ wbdata$GDPcap))
+
+```
+
+
+When done with coding we need to "knit" our document to create an html file. If there are any errors you won't be able to knit. if you get an error R is usually helpful in finding the general area of the issue, but not what the problem is.For problem sets, you will need to submit the knit html file and the .rmd file. 
+
+
+More fun:
+
+A density plot
+```{r}
+plot((density(wbdata$GDPcap)),frame = FALSE, col = "black", 
+     main = "Density plot of GDP per Capita")
+polygon((density(wbdata$GDPcap)), col = "steelblue")
+```
+
+```{r}
+plot(wbdata$GDPcap, wbdata$Ruralpopperc, xlab = "GDP per Capita", ylab="Rural Population Percentage", main="Wealth and Rural Population", sub="Data: 2021 World Bank", type="n")
+text(wbdata$GDPcap, wbdata$Ruralpopperc, labels=wbdata$CCode, cex=.5)#with labels
+abline(lm(wbdata$Ruralpopperc ~ wbdata$GDPcap, col="skyblue"))
+
+
+#Zoomed in
+plot(wbdata$GDPcap, wbdata$Ruralpopperc, xlab = "GDP per Capita", ylab="Rural Population Percentage", main="Wealth and Rural Population", sub="Data: 2021 World Bank", type="n", xlim=c(0,6000))
+text(wbdata$GDPcap, wbdata$Ruralpopperc, labels=wbdata$CCode, cex=.8)
+
+```
+
+
+Check in question answer:
+```{r}
+
+plot(wbdata$GDPcap, wbdata$Mortalityrate, xlab = "GDP per Capita", ylab="Mortality Rate", main="Wealth and Rural Population", sub="Data: 2021 World Bank", pch=4, col="darkgreen")
+abline(lm(wbdata$Mortalityrate~ wbdata$GDPcap), col="skyblue")
+
+```
+

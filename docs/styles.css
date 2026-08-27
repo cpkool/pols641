@@ -1,0 +1,31 @@
+/* ── NIU Brand Colors: Cardinal Red #CC0000 | Black #1a1a1a ─────────────── */
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar { background-color: #1a1a1a !important; border-bottom: 3px solid #CC0000 !important; }
+.navbar-brand { color: #ffffff !important; }
+.nav-link { color: #cccccc !important; }
+.nav-link:hover, .nav-link.active { color: #ffffff !important; }
+
+/* ── Page background & text ──────────────────────────────────────────────── */
+body { background-color: #ffffff !important; color: #1a1a1a !important; }
+
+/* ── Headings ────────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 { color: #1a1a1a !important; }
+h2 { border-left: 5px solid #CC0000 !important; padding-left: 0.75rem !important; border-bottom: none !important; }
+
+/* ── Links ───────────────────────────────────────────────────────────────── */
+a { color: #CC0000 !important; }
+a:hover { color: #990000 !important; }
+
+/* ── Tables ──────────────────────────────────────────────────────────────── */
+thead, thead tr, thead th { background-color: #1a1a1a !important; color: #ffffff !important; }
+tbody tr:nth-child(even) { background-color: #f5f5f5 !important; }
+
+/* ── Code ────────────────────────────────────────────────────────────────── */
+pre.sourceCode { border-left: 4px solid #CC0000 !important; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.nav-footer { background-color: #1a1a1a !important; color: #cccccc !important; }
+
+/* ── Due dates ───────────────────────────────────────────────────────────── */
+.due { background-color: #fff3f3; border-left: 4px solid #CC0000; padding: 0.5rem 0.75rem; margin: 0.75rem 0; border-radius: 0 4px 4px 0; }

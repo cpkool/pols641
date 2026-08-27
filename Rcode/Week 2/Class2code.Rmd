@@ -1,0 +1,307 @@
+---
+title: "Class 2"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+Today we have two datasets to explore. We'll continue our exploration using R to understand and visualize data. 
+
+
+# Part 1: Donuts
+
+Make sure you have opened the Rproject and that the rmd and data files are in the same folder. 
+
+Load the Simpson's dataset from the book chapter assigned this week. 
+```{r}
+load("donutd.RData")
+```
+
+
+Looking over the data
+```{r}
+head(donutd)
+tail(donutd)
+summary(donutd)
+dim(donutd) #Count of how many observations and variables
+```
+
+Male and name are not continuous(numeric in R speak) variables.They are categorical and we can get counts in each category.
+
+frequency tables: 
+```{r}
+table(donutd$male) #gives count of different categories
+table(donutd$name)
+
+prop.table(table(donutd$male)) #gives percentages
+```
+I use this command all the time to get a sense of the data. 
+
+
+What percentage of the individuals in the dataset are children?
+```{r}
+prop.table(table(donutd$child))
+```
+
+More review:
+```{r}
+summary(donutd$weight)
+hist(donutd$weight)
+
+# check-in:  What is the average number of donuts consumed? Who eats the most?
+summary(donutd$donuts)
+
+```
+
+
+Plot the relationship between donuts and weight
+```{r}
+plot(donutd$donuts, donutd$weight) #scatterplot (X then Y)
+abline(lm(donutd$weight~donutd$donuts)) #add trend line (Y then X) 
+```
+
+Make plot look a bit more professional
+```{r}
+plot(donutd$donuts, donutd$weight, main="Relationship between Donut Consumption and Weight", xlab="Donuts", ylab="Weight", xlim=c(-5,25), ylim=c(50, 350))
+abline(lm(donutd$weight~donutd$donuts)) #and boom, you've already ran your 2nd regression
+text(donutd$donuts+1, donutd$weight+12, donutd$name)#add labels(the -12 is to offset the label)
+```
+Does there appear to be a relationship in the sample?
+
+What about with just males?
+There are multiple ways to do this:
+
+
+First off, if we don't think we'll reuse the dataset we can pull out what using []
+```{r}
+plot(donutd$donuts[donutd$male==0], donutd$weight[donutd$male==0], main="Relationship between Donut Consumption and Weight(Males Only)", xlab="Donuts", ylab="Weight") #The [donutd$male==1] is telling R to only include dots where male=1, ie only males.
+abline(lm(donutd$weight[donutd$male==0]~donutd$donuts[donutd$male==0])) #
+
+```
+
+Or we can create a new dataset ie a subset(I almost choose this option)
+```{r}
+males <- donutd[which(donutd$male==0),]
+
+plot(males$donuts, males$weight, main="Relationship between Donut Consumption and Weight", xlab="Donuts", ylab="Weight")
+abline(lm(males$weight~males$donuts)) #and boom, you've already ran your 2nd regression
+text(males$donuts, males$weight-12, males$name)
+```
+Heads Up: We will practice this a third way using the dplyr package in the coming weeks
+
+
+
+Exclude kids
+```{r}
+adults <- donutd[which(donutd$child!=-1),] # the != does not equal
+```
+
+Exclude overweight - use greater than or less than
+```{r}
+normweight <- donutd[which(donutd$weight< 250),] # less than 250
+```
+
+
+Try creating a scatterplot with just the 1) females OR 2) characters who at least eat donuts. 
+```{r}
+
+eaters <- donutd[which(donutd$donuts > 1),]
+
+plot(eaters$donuts, eaters$weight, main="Relationship between Donut Consumption and Weight", xlab="Donuts", ylab="Weight", xlim=c(-2, 25), pch=14)
+abline(lm(eaters$weight~eaters$donuts)) #and boom, you've already ran your 2nd regression
+text(eaters$donuts, eaters$weight-12, eaters$name)
+
+
+```
+
+
+#####################################################################
+
+# Part 3: Congressional Age
+
+
+#Looking at a different dataset: 
+Time to look at something a bit more fun. The age of congress. The data are from this article: https://fivethirtyeight.com/features/aging-congress-boomers/ from a few years ago. 
+
+We want to load a csv file into R. Here's how you do it. Make that sure when you do this, your data is in the same working directory that your project is in. It is easy save excel files as csv. 
+```{r}
+oldc <- read.csv("data_aging_congress.csv", header=T)
+```
+Different file formats have different load commands. If your data is already saved as an .RData file, then run this code:load("name_of_data_set.RData")
+
+We're not going to run it here, because we only have a CSV dataset.R can load excel, spss, stata, text, etc. if you use the right command. For any data you find online you should be able to load it into R after some quick googling. 
+
+In R studio it is easy to load data by clicking it on it using the files window(bottom right). This is great, however you need to put it in your code or it will not knit
+
+
+As usual, look at the first and last 5 lines of the data frame
+```{r}
+head(oldc)
+tail(oldc)
+
+
+str(oldc) #This tells us what kind of data R thinks each variable is - we'll talk about this later
+```
+Look at variable names
+```{r}
+names(oldc)
+```
+Number of rows in your data? What is our unit of analysis?
+```{r}
+nrow(oldc)
+```
+
+Dimensions of your data? # Observations then # of Variables
+```{r}
+dim(oldc)
+```
+
+congress and generation
+```{r}
+table(oldc$congress)
+table(oldc$generation)
+
+table(oldc$generation, oldc$congress)
+
+table(oldc$party_code)
+```
+
+
+Count unique representatives
+```{r}
+length(unique(oldc$bioguide_id))
+length(unique(oldc$bioname))
+```
+
+
+
+
+Summary of the data will give you mean, minimum, maximum values, etc.
+```{r}
+summary(oldc$age_years)
+summary(oldc) # Runs for all numeric variables in the dataset
+```
+Mean age?
+```{r}
+mean(oldc$age_years)
+```
+Minimum of age?
+```{r}
+min(oldc$age_years)
+```
+Maximum age?
+```{r}
+max(oldc$age_years) 
+```
+Range of ages in this data
+```{r}
+range(oldc$age_years) 
+```
+
+Check: What is the average cumulative time in congress(cmltv_cong)
+```{r}
+
+```
+
+Bonus check: Play around with the data and tell the class something interesting. 
+```{r}
+
+
+```
+
+
+
+Create a histogram for age in years
+```{r}
+hist(oldc$age_years)
+abline(v=mean(oldc$age_years), col="blue", lwd=2)
+abline(v=median(oldc$age_years), col="red", lwd=2)
+```
+abline gives us a line. v is for vertical
+
+
+Density plots and boxplots show us similar information
+```{r}
+boxplot(oldc$age_years)
+
+plot(density(oldc$age_years))
+
+#How can we find out who the outliers are?
+```
+
+Check: How many democrats and republicans are in the sample
+```{r}
+
+
+```
+
+
+Average age by party
+```{r}
+mean(oldc$age_years[oldc$party_code==100]) #average for Democrats
+mean(oldc$age_years[oldc$party_code==200]) #average for Republicans
+
+#find the mean for the house
+
+```
+
+
+
+
+
+
+Let's make a simple scatterplot with congress # on the horizontal axis, and age on the vertical axis.
+A regression allows us to look at the relationship between variables
+linear regression model, and you're looking at the effect of the IV on the DV
+```{r}
+plot(oldc$congress, oldc$age_years, ylab = "Age", xlab = "Congress", main = "Age Across Sessions of Congress")
+abline(lm(oldc$age_years ~ oldc$congress), col="red", lwd=2) # What type of relationship is this?
+abline(h=mean(oldc$age_years), col="blue", lwd=2)
+```
+
+
+That is a bit overwhelming lets just look at the Senate - ie lets create a subset
+```{r}
+senate <- oldc[which(oldc$chamber=="Senate"),]
+
+#New Graph
+plot(senate$congress, senate$age_years, ylab = "Age", xlab = "Congress", main = "Age Across Sessions of Senate", col=factor(senate$generation))
+abline(lm(senate$age_years ~ senate$congress), col="red", lwd=2)
+legend("topleft", legend = levels(factor(senate$generatio)), pch=19,col = factor(levels(factor(senate$generatio))))
+
+#I want to add labels for specific senators
+#only want last time - take the characters prior to the comma
+senate$lastname <- gsub(",.*$", "", senate$bioname)#You can ignore this line of code. I just googled how to do this and found the answer here https://stackoverflow.com/questions/19320966/get-the-strings-before-the-comma-with-r
+senate$stars <- ifelse(senate$lastname=="BIDEN"|senate$lastname=="THURMOND", senate$lastname, "") #create a new variable for notable Senators, all else with be empty. 
+text(senate$congress, senate$age_years-.4, senate$stars, cex=.4)
+```
+
+Check: Can you create the same basic figure for the house
+```{r}
+
+```
+
+
+
+A boxplot for each session can show us how the distribution has changed over time
+```{r}
+boxplot(senate$age_years~senate$congress, xlab = "Congressional Session", ylab="Average Age", border = "steelblue")
+```
+
+
+I've clearly had too much fun. Your turn to make something interesting. 
+```{r}
+
+
+
+```
+
+
+Since we've created some new variables we may want to save our data:
+```{r}
+write.csv(senate, "senate.csv") #writes a csv to your working directory that you can open in excel
+save(senate, file="senate.Rdata") #saves Rdata format to your working directory
+```
+
+
