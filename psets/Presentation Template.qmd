@@ -1,0 +1,261 @@
+---
+title: "Research Title Here"
+subtitle: "Subtitle"
+author: "Your Name"
+institute: "Northern Illinois University"
+date: today
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    progress: true
+    transition: fade
+    footer: "Author (Year) | Policy Brief "
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(knitr)
+library(kableExtra)#for tables
+library(modelsummary)
+
+# ── This makes up data that is then used throughout the template. Delete this and all other references for your actual presentation ──────────────────────────────────────────────────────────
+set.seed(42)
+n <- 200
+
+df <- tibble(
+  country     = paste0("Country_", 1:n),
+  gdp_pc      = exp(rnorm(n, 9, 1)),
+  democracy   = rbinom(n, 1, 0.5),
+  trade_open  = runif(n, 10, 100),
+  outcome     = 2 + 0.3 * log(gdp_pc) + 0.8 * democracy +
+                0.01 * trade_open + rnorm(n)
+)
+```
+
+## Title Slide {.center}
+
+------------------------------------------------------------------------
+
+## Research Puzzle
+
+::::: columns
+::: {.column width="55%"}
+**Motivating Question**
+
+This is a bulleted list - First bullet - Second bullet - **Third Bullet in Bold**
+:::
+
+::: {.column width="45%"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Background and Literature
+
+**What we know**
+
+**What remains unresolved**
+
+- Gap 1 — brief description
+- Gap 2 — brief description
+
+**This paper's answers this question**
+
+::: notes
+Speaker notes: These don't show up on the screen, but can be useful when building
+:::
+
+------------------------------------------------------------------------
+
+## Hypotheses
+
+Based on \[theory / mechanism\], I derive the following expectations:
+
+::: incremental
+- **H1 (Main):** As *X* increases, *Y* increases, because \[mechanism\].
+
+- **Null Hypothesis** If \[rival theory\] holds, we would instead expect \[alternative pattern\].
+:::
+
+------------------------------------------------------------------------
+
+## Measurement
+
+## Descriptive Statistics
+
+```{r}
+#| label: tbl-descriptives
+#| tbl-cap: "Summary Statistics"
+
+desc_vars <- df |>
+  select(
+    `GDP per Capita`  = gdp_pc,
+    `Democracy`       = democracy,
+    `Trade Openness`  = trade_open,
+    `Outcome`         = outcome
+  )
+
+datasummary_skim(
+  desc_vars,
+  output = "kableExtra",
+  fmt    = 2
+) |>
+  kable_styling(
+    font_size         = 20,
+    bootstrap_options = c("striped", "hover"),
+    full_width        = FALSE
+  )
+```
+
+------------------------------------------------------------------------
+
+## Descriptive Statistics (cont.)
+
+```{r}
+#| label: fig-distribution
+#| fig-cap: "Distribution of Outcome by Regime Type"
+#| fig-height: 4.5
+
+df |>
+  mutate(Regime = if_else(democracy == 1, "Democracy", "Autocracy")) |>
+  ggplot(aes(x = outcome, fill = Regime)) +
+  geom_density(alpha = 0.5, colour = NA) +
+  scale_fill_manual(values = c("Democracy" = "#2166ac",
+                               "Autocracy"  = "#d6604d")) +
+  labs(
+    x    = "Outcome",
+    y    = "Density",
+    fill = NULL
+  ) +
+  theme_minimal(base_size = 16) +
+  theme(legend.position = "top")
+```
+
+------------------------------------------------------------------------
+
+## Primary Regression Results
+
+```{r}
+#| label: tbl-main-results
+#| tbl-cap: "OLS Regression — Main Results"
+
+m1 <- lm(outcome ~ democracy,                             data = df)
+m2 <- lm(outcome ~ democracy + log(gdp_pc),               data = df)
+m3 <- lm(outcome ~ democracy + log(gdp_pc) + trade_open,  data = df)
+
+modelsummary(
+  list("Bivariate" = m1, "+ Controls" = m2, "Full Model" = m3),
+  stars       = c("*" = .1, "**" = .05, "***" = .01),
+  gof_map     = c("nobs", "r.squared", "adj.r.squared"),
+  coef_rename = c(
+    "democracy"    = "Democracy",
+    "log(gdp_pc)"  = "ln GDP per Capita",
+    "trade_open"   = "Trade Openness"
+  ),
+  output      = "kableExtra",
+  fmt         = 3
+) |>
+  kable_styling(font_size = 18, full_width = FALSE) |>
+  row_spec(0, bold = TRUE)
+```
+
+::: fragment
+**Key finding:** Democracy is positively and significantly associated with the outcome across all specifications.
+:::
+
+------------------------------------------------------------------------
+
+## Regression Robustness Checks
+
+```{r}
+#| label: fig-coefplot
+#| fig-cap: "Coefficient Plot — Robustness Across Specifications"
+#| fig-height: 4
+
+models <- list(
+  "Main Sample"  = m3,
+  "Subsample A"  = lm(outcome ~ democracy + log(gdp_pc) + trade_open,
+                       data = filter(df, gdp_pc < median(gdp_pc))),
+  "Subsample B"  = lm(outcome ~ democracy + log(gdp_pc) + trade_open,
+                       data = filter(df, gdp_pc >= median(gdp_pc)))
+)
+
+modelplot(
+  models,
+  coef_map   = c("democracy" = "Democracy"),
+  conf_level = 0.95
+) +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = "grey50") +
+  scale_colour_brewer(palette = "Set1") +
+  labs(x = "Coefficient Estimate (95% CI)", y = NULL, colour = NULL) +
+  theme_minimal(base_size = 15) +
+  theme(legend.position = "right")
+```
+
+The positive effect of democracy is stable across sample splits and alternative specifications.
+
+------------------------------------------------------------------------
+
+## Contributions & Qualitative Research Proposal
+
+**Theoretical Contributions**
+
+- Contribution 1 — how this paper advances existing theory
+- Contribution 2 — novel mechanism or scope condition identified
+
+**Empirical Contributions**
+
+- Contribution 3 — new data, identification strategy, or case coverage
+
+**Qualitative Follow-Up**
+
+To probe the mechanism, future work should conduct \[case studies / interviews / process tracing\] in:
+
+| Case      | Rationale                           |
+|-----------|-------------------------------------|
+| Country A | Most-likely case for H1             |
+| Country B | Least-likely case — hard test       |
+| Country C | Deviant case — unexplained by model |
+
+------------------------------------------------------------------------
+
+## Discussion
+
+**Implications**
+
+Briefly state what these findings mean for theory and / or policy.
+
+**Limitations and future research**
+
+- Limitation 1
+- Limitation 2
+
+## Conclusion
+
+**Summary of findings**
+
+- Finding 1 — one sentence
+- Finding 2 — one sentence
+- Finding 3 — one sentence
+
+------------------------------------------------------------------------
+
+##  {.center}
+
+### Thank You
+
+**\[Your Name\]** \[your.email\@niu.edu\]
+
+*Slides and replication materials available at \[link\]*
+
+::: {.callout-tip appearance="minimal"}
+Questions and comments welcome
+:::

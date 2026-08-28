@@ -5,4 +5,5 @@ subtitle: "Slides will be posted after each class meeting."
 
 Slides are in PDF format. Click a link to open or right-click to download.
 
-[Day 1- Introductions](slides/1Intro.pdf)
+[Day 1- Introductions](Slides/1Intro.pdf)
+

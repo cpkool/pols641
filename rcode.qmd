@@ -7,6 +7,8 @@ editor_options:
 
 Code used in class will be posted here. Download to your own computer for use in class.
 
+![](psets/R.png){width="20%"}
+
 ------------------------------------------------------------------------
 
 ## Setup: Installing R & RStudio

@@ -3,7 +3,7 @@ title: "Readings"
 subtitle: "Required and recommended readings, organized by week."
 ---
 
-*Readings will be posted here as the course progresses.*
+------------------------------------------------------------------------
 
 ### Week 1 — Aug 25: Introductions
 
@@ -16,6 +16,7 @@ subtitle: "Required and recommended readings, organized by week."
 
 - Wheelan, Charles. 2012. "Why I Hate Calculus, but Love Statistics." In *Naked Statistics*.
 
+------------------------------------------------------------------------
 
 ### Week 2 — Sep 1: Causality and Inference
 
@@ -26,3 +27,181 @@ subtitle: "Required and recommended readings, organized by week."
 **Recommended:**
 
 - Angrist, Joshua and Jörn-Steffen Pischke. 2009. ["Questions about Questions."](readings/QuestionsAboutQuestions.pdf) In *Mostly Harmless Econometrics*.
+
+
+------------------------------------------------------------------------
+
+### Week 3 — Sep 8: Probability Theory
+
+**Readings:**
+
+- Diez, David, Christopher Barr, and Mine Çetinkaya-Rundel. "Ch. 3: Probability." *OpenIntro Statistics*.
+
+::: due
+**Due:** Datacamp — Introduction to R
+:::
+
+------------------------------------------------------------------------
+
+### Week 4 — Sep 15: Random Variables
+
+**Readings:**
+
+- Bailey Ch. 3, pp. 49–64
+
+::: due
+**Due:** Problem Set #1
+:::
+
+------------------------------------------------------------------------
+
+### Week 5 — Sep 22: Measurement
+
+**Readings:**
+
+- Adcock, Robert and David Collier. 2002. "Measurement Validity: A Shared Standard for Qualitative and Quantitative Research." *American Political Science Review* 96(3). *(Read 1, skim 1)*
+- Pollock Ch. 1 and 2
+- Imai, Kosuke. 2017. "Measurement." In *Quantitative Social Science*.
+
+**Recommended:**
+
+- Gerring, John. "Concepts and Measures." In *Social Science Methodology*.
+
+::: due
+**Due:** Datacamp — Exploratory Data Analysis in R
+:::
+
+------------------------------------------------------------------------
+
+### Week 6 — Sep 29: Hypothesis Testing
+
+**Readings:**
+
+- Bailey Ch. 4
+- Resnick, Brian. 2019. "Statistical Significance." *Vox*.
+- Hullman, Jessica. 2019. "How to Get Better at Embracing Unknowns." *Scientific American*.
+
+**Recommended:**
+
+- Explore "Seeing Theory"
+
+::: due
+**Due:** Problem Set #2
+:::
+
+------------------------------------------------------------------------
+
+### Week 7 — Oct 6: Bivariate Regression
+
+**Readings:**
+
+- Bailey Ch. 3
+- Diez et al. "Ch. on Regression." *OpenIntro Statistics* (skim).
+
+::: due
+**Due:** Datacamp — Foundations of Inference
+:::
+
+------------------------------------------------------------------------
+
+### Week 8 — Oct 13: Multivariate Regression
+
+**Readings:**
+
+- Bailey Ch. 5
+
+**Recommended:**
+
+- Sykes, Alan O. 1993. "An Introduction to Regression Analysis." Coase-Sandor Institute for Law and Economics Working Paper.
+
+::: due
+**Due:** Problem Set #3
+:::
+
+------------------------------------------------------------------------
+
+### Week 9 — Oct 20: Binary and Categorical Variables
+
+**Readings:**
+
+- Bailey Ch. 6
+
+::: due
+**Due:** Datacamp — Intro to Importing Data and Cleaning Data in R
+:::
+
+------------------------------------------------------------------------
+
+### Week 10 — Oct 27: Model Specification
+
+**Readings:**
+
+- Bailey reskimming Ch. 3–5, Ch. 7
+- [Online Supplement: Interaction Effects](https://www.openintro.org/d?file=stat_extra_interaction_effects)
+
+**Recommended:**
+
+- Xu, Yiqing. 2021. "A Basic Checklist for Observational Studies in Political Science." \[Working paper\]
+
+::: due
+**Due:** Problem Set #4
+:::
+
+------------------------------------------------------------------------
+
+### Week 11 — Nov 3: Causal Inference and Experiments
+
+**Readings:**
+
+- Bailey Ch. 10
+- Imbens, Guido and Donald Rubin. 2015. "Causality: The Basic Framework." In *Causal Inference for Statistics, Social, and Biomedical Sciences*.
+- Healy, Kieran. 2019. Ch. 1. *Data Visualization: A Practical Introduction*.
+- Hernán, M., J. Hsu, and B. Healy. 2019. "A Second Chance to Get Causal Inference Right." *CHANCE* 32(1): 42–49.
+
+**Recommended:**
+
+- List, John A., Sally Sadoff, and Mathis Wagner. 2010. "So You Want to Run an Experiment, Now What?" *Experimental Economics*.
+- Tufte, Edward. 2001. *The Visual Display of Quantitative Information*.
+- Rubin, Donald. 1974. "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies." *Journal of Educational Psychology* 66(5).
+
+::: due
+**Due:** Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr
+:::
+
+------------------------------------------------------------------------
+
+### Week 12 — Nov 10: Review and Midterm
+
+------------------------------------------------------------------------
+
+### Week 13 — Nov 17: Mixed Methods
+
+**Readings:**
+
+- Bailey Ch. 12, Ch. 16
+- Lieberman, Evan S. 2005. "Nested Analysis as a Mixed-Method Strategy for Comparative Research." *American Political Science Review* 99(3).
+- Weller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. *Finding Pathways*.
+
+**Recommended:**
+
+- Seawright, Jason. 2016. *Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide*.
+- Bowers, Jake and Maarten Voors. 2016. "How to Improve Your Relationship with Your Future Self." *Revista de Ciencia Política* 34(3).
+
+::: due
+**Due:** Problem Set #5
+:::
+
+
+------------------------------------------------------------------------
+
+### Week 14 — Nov 24: Hackathon (Thanksgiving Week)
+
+::: due
+**Due:** Datacamp — At least one chapter of your choice
+:::
+
+------------------------------------------------------------------------
+
+### Week 15 — Dec 1: Research Presentations
+
+------------------------------------------------------------------------

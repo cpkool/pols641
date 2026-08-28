@@ -42,3 +42,4 @@ resources:
     - "/Rcode"
     - "/problemsets"
     - "/Slides"
+    - "/psets"

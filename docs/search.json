@@ -130,14 +130,14 @@
     "href": "project.html",
     "title": "Final Project",
     "section": "",
-    "text": "Final project details and resources will be posted here."
+    "text": "Final Paper Due: December 13th\nGrade Breakdown 50% of Course grade"
   },
   {
     "objectID": "readings.html",
     "href": "readings.html",
     "title": "Readings",
     "section": "",
-    "text": "Readings will be posted here as the course progresses.\n\nWeek 1 — Aug 25: Introductions\nReadings:\n\nMutz, Diana and Soha Rao. 2018. “The Real Reason Liberals Drink Lattes.” PS: Political Science & Politics 51(4).\nAchen, Christopher. “Advice for Students Taking a First Political Science Graduate Course in Statistical Methods.” The Political Methodologist.\n\nRecommended:\n\nWheelan, Charles. 2012. “Why I Hate Calculus, but Love Statistics.” In Naked Statistics.\n\n\n\nWeek 2 — Sep 1: Causality and Inference\nReadings:\n\nBailey Ch. 1\n\nRecommended:\n\nAngrist, Joshua and Jörn-Steffen Pischke. 2009. “Questions about Questions.” In Mostly Harmless Econometrics."
+    "text": "Week 1 — Aug 25: Introductions\nReadings:\n\nMutz, Diana and Soha Rao. 2018. “The Real Reason Liberals Drink Lattes.” PS: Political Science & Politics 51(4).\nAchen, Christopher. “Advice for Students Taking a First Political Science Graduate Course in Statistical Methods.” The Political Methodologist.\n\nRecommended:\n\nWheelan, Charles. 2012. “Why I Hate Calculus, but Love Statistics.” In Naked Statistics.\n\n\n\n\nWeek 2 — Sep 1: Causality and Inference\nReadings:\n\nBailey Ch. 1\n\nRecommended:\n\nAngrist, Joshua and Jörn-Steffen Pischke. 2009. “Questions about Questions.” In Mostly Harmless Econometrics.\n\n\n\n\nWeek 3 — Sep 8: Probability Theory\nReadings:\n\nDiez, David, Christopher Barr, and Mine Çetinkaya-Rundel. “Ch. 3: Probability.” OpenIntro Statistics.\n\n\nDue: Datacamp — Introduction to R\n\n\n\n\nWeek 4 — Sep 15: Random Variables\nReadings:\n\nBailey Ch. 3, pp. 49–64\n\n\nDue: Problem Set #1\n\n\n\n\nWeek 5 — Sep 22: Measurement\nReadings:\n\nAdcock, Robert and David Collier. 2002. “Measurement Validity: A Shared Standard for Qualitative and Quantitative Research.” American Political Science Review 96(3). (Read 1, skim 1)\nPollock Ch. 1 and 2\nImai, Kosuke. 2017. “Measurement.” In Quantitative Social Science.\n\nRecommended:\n\nGerring, John. “Concepts and Measures.” In Social Science Methodology.\n\n\nDue: Datacamp — Exploratory Data Analysis in R\n\n\n\n\nWeek 6 — Sep 29: Hypothesis Testing\nReadings:\n\nBailey Ch. 4\nResnick, Brian. 2019. “Statistical Significance.” Vox.\nHullman, Jessica. 2019. “How to Get Better at Embracing Unknowns.” Scientific American.\n\nRecommended:\n\nExplore “Seeing Theory”\n\n\nDue: Problem Set #2\n\n\n\n\nWeek 7 — Oct 6: Bivariate Regression\nReadings:\n\nBailey Ch. 3\nDiez et al. “Ch. on Regression.” OpenIntro Statistics (skim).\n\n\nDue: Datacamp — Foundations of Inference\n\n\n\n\nWeek 8 — Oct 13: Multivariate Regression\nReadings:\n\nBailey Ch. 5\n\nRecommended:\n\nSykes, Alan O. 1993. “An Introduction to Regression Analysis.” Coase-Sandor Institute for Law and Economics Working Paper.\n\n\nDue: Problem Set #3\n\n\n\n\nWeek 9 — Oct 20: Binary and Categorical Variables\nReadings:\n\nBailey Ch. 6\n\n\nDue: Datacamp — Intro to Importing Data and Cleaning Data in R\n\n\n\n\nWeek 10 — Oct 27: Model Specification\nReadings:\n\nBailey reskimming Ch. 3–5, Ch. 7\nOnline Supplement: Interaction Effects\n\nRecommended:\n\nXu, Yiqing. 2021. “A Basic Checklist for Observational Studies in Political Science.” [Working paper]\n\n\nDue: Problem Set #4\n\n\n\n\nWeek 11 — Nov 3: Causal Inference and Experiments\nReadings:\n\nBailey Ch. 10\nImbens, Guido and Donald Rubin. 2015. “Causality: The Basic Framework.” In Causal Inference for Statistics, Social, and Biomedical Sciences.\nHealy, Kieran. 2019. Ch. 1. Data Visualization: A Practical Introduction.\nHernán, M., J. Hsu, and B. Healy. 2019. “A Second Chance to Get Causal Inference Right.” CHANCE 32(1): 42–49.\n\nRecommended:\n\nList, John A., Sally Sadoff, and Mathis Wagner. 2010. “So You Want to Run an Experiment, Now What?” Experimental Economics.\nTufte, Edward. 2001. The Visual Display of Quantitative Information.\nRubin, Donald. 1974. “Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.” Journal of Educational Psychology 66(5).\n\n\nDue: Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr\n\n\n\n\nWeek 12 — Nov 10: Review and Midterm\n\n\n\nWeek 13 — Nov 17: Mixed Methods\nReadings:\n\nBailey Ch. 12, Ch. 16\nLieberman, Evan S. 2005. “Nested Analysis as a Mixed-Method Strategy for Comparative Research.” American Political Science Review 99(3).\nWeller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. Finding Pathways.\n\nRecommended:\n\nSeawright, Jason. 2016. Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide.\nBowers, Jake and Maarten Voors. 2016. “How to Improve Your Relationship with Your Future Self.” Revista de Ciencia Política 34(3).\n\n\nDue: Problem Set #5\n\n\n\n\nWeek 14 — Nov 24: Hackathon (Thanksgiving Week)\n\nDue: Datacamp — At least one chapter of your choice\n\n\n\n\nWeek 15 — Dec 1: Research Presentations"
   },
   {
     "objectID": "slides.html",
@@ -159,5 +159,145 @@
     "title": "R Code",
     "section": "Day 2: R Basics",
     "text": "Day 2: R Basics\nClass2code.Rmd\nDonut Data\nCongress Data"
+  },
+  {
+    "objectID": "project.html#overview",
+    "href": "project.html#overview",
+    "title": "Final Project",
+    "section": "Overview",
+    "text": "Overview\nThe aim of your final project is to complete a shortened version of a journal article with a heavy emphasis on the methodology and results section. You will complete minimal versions of introduction, literature review and theory sections, but will complete full versions of methodology, description of data, and analysis of results. The focus will be on your ability to complete your analysis using the R programming language and to communicate the results of your analysis to a professional audience. You are not expected to conduct novel research nor make a clear theoretical contribution, but you are expected to uphold political science standards of quantitative analysis. You will also present your results to the class during the final week. This project is worth 50% of your final grade."
+  },
+  {
+    "objectID": "project.html#component-tasks",
+    "href": "project.html#component-tasks",
+    "title": "Final Project",
+    "section": "Component Tasks",
+    "text": "Component Tasks\n\n1. Research Questions — due October 2nd\nFinding an interesting and realistic research question is often the hardest part of the research process. To that end, you will develop a basic research question and proposal for two potential projects. See below on expectations for your topic. Each proposal will ask you to answer the following questions:\n\nWhat is the research question?\nWhat is your dependent variable? How can you operationalize it?\nWhat is your independent variable? How can you operationalize it?\nWhat is your hypothesis?\nWhat are two articles/books that are related to this question? (provide APA citations)\nWhere will you get the data? (See below for data ideas)\n\nYour responses will be on Blackboard.\nIt will then be up to you to decide which of these projects, or an alternative, you will pursue for your final paper. I recommend discussing your research question in office hours with the professor and/or our R-guru.\n\n\n2. Abstract and Initial Data — due October 30th\nThe next step will be to submit a 200 word abstract for your intended project and a knitted Rmarkdown file with descriptive statistics for your key variables. At that point you should have a clear idea of your project and most, if not all, of the necessary data collected. The abstract should be professionally written as if you were going to submit it to a conference.\nThe idea here is to show me that you have truly “gotten to know” your data. At the minimum your Rmarkdown file should include:\n\nFor your primary independent variable and dependent variables:\n\nDescription — Written narrative of how the variables are operationalized. If you’re using a non-intuitive measure please describe in detail how it is calculated. It should be clear how your measure captures the concept (i.e. valid estimate of the estimand).\nDescriptive Statistics — Range, Mean, Median, Standard Deviation\nDistributions — Histogram and/or Box plots\n\nBivariate Relationship — Scatter plot of DV and primary IV\nControl Variables — Basic descriptives as necessary.\n\nThink of this as the document you would send to a co-author or supervisor giving a broad overview of the quantitative portion of your paper. It does not have to be super polished, but should be clean enough that the concepts are clear to a non-expert. It should be well organized, include subheadings, and brief bullets of what data is suggesting. Feel free to include notes-to-self about next steps.\n\n\n3. Presentation — December 1st\nAll students will give a 10 minute powerpoint style presentation of their results. This should reflect the basic components of the paper as discussed. Peers will then ask questions and provide feedback that will improve the final paper. Think of this as a practice mini-conference. You will be expected to integrate feedback into your final paper.\n\n\n4. Final Paper Submission — Due Sunday, December 13th by Midnight on Blackboard\nPlease turn in the 1) final document (in your chosen format), 2) the R code (LaTeX code as well if used) and 3) the final clean dataset. Late assignments will not be accepted without prior approval of the instructor. Early submission is greatly appreciated."
+  },
+  {
+    "objectID": "project.html#topic-and-data",
+    "href": "project.html#topic-and-data",
+    "title": "Final Project",
+    "section": "Topic and Data",
+    "text": "Topic and Data\nWith some limits the choice of topic (and dataset) is yours. The topic and data need to be suitable for bivariate regression analysis (i.e. both the dependent and independent variables need to be continuous) and the dataset must contain other variables (either binary or continuous) that can be used as control variables. You should plan on using an existing dataset. You will not have the time to build a dataset of adequate size in our limited time period this semester. However, you may want to combine pre-existing datasets (we will learn how to merge in R). Ideally, this work will contribute to a future research project and further familiarize you with meaningful quantitative work in your chosen field. I encourage you to be strategic in your topic selection. Below are some suggestions to get you started:\nData sources:\n\nReplication Data — Find a quantitative article you like and see if you can find the data. It is increasingly common for authors to post their data on their personal websites, journal websites, or in data repositories (like ICPSR below or Harvard’s Dataverse). If not publicly available, many scholars will likely be happy to help given a polite email.\nICPSR — www.icpsr.umich.edu — Central collection of political science data.\nOrganizational Datasets — World Bank, UN, WTO, etc. and their subsidiaries provide reams of quality data.\nPolitical Science Classics — Correlates of War, National Elections Survey, World Values Survey, General Social Survey, and many more.\n\nI’m happy to help in topic selection and highly encourage you to check in with me on your dataset choice and hypothesis. Do not underestimate the time required to gather and clean your data."
+  },
+  {
+    "objectID": "project.html#organization",
+    "href": "project.html#organization",
+    "title": "Final Project",
+    "section": "Organization",
+    "text": "Organization\nThe final paper will be organized much like a standard journal article. You are expected to complete the following sections. Order and section titles may be changed to fit your analysis, but all components must be present. Your final presentation will include roughly the same components.\n\nIntroduction — Engage the reader and convince them of the importance of your research. Think carefully about how you frame your research question. The intro should include a clear research question and should include an overview of the rest of the paper.\nLiterature Review — Provide a brief introduction to the state of knowledge on your given issue. It should include the citations of at least 5 academic sources (one page). It does not need to be comprehensive for this assignment, just a brief overview of where your research question fits within the literature. Make sure your literature review is well organized and that you use proper citation standards.\nTheory and Hypothesis — Use the literature and your own knowledge to provide a reasonable explanation why you expect to see the hypothesized relationship. Although you are not going to make a causal claim (unless you have experimental data) think about this as explaining the plausible causal mechanisms. You do not need to fully immerse yourself in the literature, but do use some of the literature to make your argument. At the end of this section lay out your hypothesis or hypotheses formally (i.e. H1:).\nMethodology — Provide an overview of the methodological approach and the choices made. Clearly articulate the reasons why you chose a particular procedure or technique given the limited background from the class.\nData — Describe the dataset you are using (source, how collected, timing, structure, anything that is relevant). If combining datasets discuss that here. In addition, this is where you describe the measures relied on and the coding scheme. Convince the reader that the measures used are reasonable operationalizations of the abstract concept you are interested in. This section is your opportunity to convince reviewers/scholars that the data was collected or generated in a way that is consistent with accepted practice in the field of study. Be sure to cite where appropriate.\nDescriptive Statistics — Use tables, graphs, and text to describe your key variables. Be creative, but comprehensive. All tables and figures should be professional in appearance, be labeled (Table 1, Figure 2, etc.), and have descriptive titles. Be creative and use your curiosity.\n\nDependent Variable\nPrimary Independent Variable\nControl Variables\n\nModel — Describe your model choice and use mathematical notation to lay out your bivariate and multivariate models (based on our core model), e.g. \\(Y_i = \\beta_0 + \\beta_1 X_i + \\epsilon_i\\).\nResults — Walk the reader through your findings. Regression output should be printed out in table form. Coefficient plots, regression plots, and predicted probabilities are also encouraged. Discuss substantive as well as statistical impacts.\nDiscussion — Discuss your results in a broader context. What do your results mean? Also acknowledge limitations in your approach (i.e. problematic assumptions, data and measurement issues, generalizability problems, etc.). Please be extensive in this section. What might an improved research design look like? Why might a cross-sectional linear model be limited? What might a better model (that you haven’t learned yet) look like? What would a multiple method project look like? This is also an opportunity to point out future research questions. This is a chance to really show your understanding of this class and your research project.\nConclusion — Provide a brief summary of your contribution and remind the reader why the research project is so important."
+  },
+  {
+    "objectID": "project.html#formatting",
+    "href": "project.html#formatting",
+    "title": "Final Project",
+    "section": "Formatting",
+    "text": "Formatting\nIn all aspects, including appearance, this project should resemble an article you would be sending for possible publication. Accordingly, it should look presentable with professional looking tables etc. An Rmarkdown created html will not suffice. Feel free to use Word or your preferred documentation software. A couple bonus points will be awarded to those who prepare their project using LaTeX, however we will spend minimal class time practicing LaTeX. For formatting and citation questions I recommend consulting the APSA Style Manual. Be sure all figures and tables are professionally formatted. Screenshots are unacceptable.\nYou will also be expected to turn in the relevant R code and your data. Your code should be replicable and should include notes on what your code does and be in a similar order to how it is reported in the paper. The code should be clean — practice code or lines of code that didn’t work should be eliminated. You should be able to return to this code years from now and be able to re-use it. That means including notes and annotations that explain what you are doing."
+  },
+  {
+    "objectID": "project.html#suggested-slides-for-presentation",
+    "href": "project.html#suggested-slides-for-presentation",
+    "title": "Final Project",
+    "section": "Suggested Slides for Presentation",
+    "text": "Suggested Slides for Presentation\n\nTitle Page\nResearch Puzzle\nExisting Literature\nHypotheses\nDescriptive Statistics\nPrimary Regression Results\nRobustness Checks\nContributions and Next Steps\nConclusion and Thank You\n\nPresentation Template"
+  },
+  {
+    "objectID": "project.html#authorship-and-plagiarism",
+    "href": "project.html#authorship-and-plagiarism",
+    "title": "Final Project",
+    "section": "Authorship and Plagiarism",
+    "text": "Authorship and Plagiarism\nYou may use your notes, book, and any other non-human (printed or web-based) resource to complete this final project. However, you may not work together. I will gladly help with general tasks such as topic and hypothesis selection, but will not provide help on specifics. I will not help with specific coding tasks, particularly those that were covered in class or on problem sets. If you are really stuck reach out, but the expectation is that Datacamp and problem sets have prepared you to complete the code.\nCombining this with another research project from another class is OK, but you need to clear it with me, and the other instructor if concurrent, before you start. Working on the same topic can be a smart long-term strategy, but don’t expect a meaningful reduction in the work you’ll need to do."
+  },
+  {
+    "objectID": "project.html#unsolicited-advice",
+    "href": "project.html#unsolicited-advice",
+    "title": "Final Project",
+    "section": "Unsolicited Advice",
+    "text": "Unsolicited Advice\n\nStart early!!!\nTake problem sets seriously, take good notes, and do your own work\nDon’t procrastinate. Go above and beyond on each component task\nGet comfortable using online resources\nBuild in extra time for Rguments\nBe cuRious — take the time to teach yourself something new in R\nGive yourself time to edit and revise\nChannel your inner social scientist and have fun"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#research-puzzle",
+    "href": "psets/Presentation Template.html#research-puzzle",
+    "title": "Research Title Here",
+    "section": "Research Puzzle",
+    "text": "Research Puzzle\n\n\nMotivating Question\nThis is a bulleted list - First bullet - Second bullet - Third Bullet in Bold"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#background-and-literature",
+    "href": "psets/Presentation Template.html#background-and-literature",
+    "title": "Research Title Here",
+    "section": "Background and Literature",
+    "text": "Background and Literature\nWhat we know\nWhat remains unresolved\n\nGap 1 — brief description\nGap 2 — brief description\n\nThis paper’s answers this question\n\nSpeaker notes: These don’t show up on the screen, but can be useful when building"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#hypotheses",
+    "href": "psets/Presentation Template.html#hypotheses",
+    "title": "Research Title Here",
+    "section": "Hypotheses",
+    "text": "Hypotheses\nBased on [theory / mechanism], I derive the following expectations:\n\n\nH1 (Main): As X increases, Y increases, because [mechanism].\nNull Hypothesis If [rival theory] holds, we would instead expect [alternative pattern]."
+  },
+  {
+    "objectID": "psets/Presentation Template.html#measurement",
+    "href": "psets/Presentation Template.html#measurement",
+    "title": "Research Title Here",
+    "section": "Measurement",
+    "text": "Measurement"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#descriptive-statistics",
+    "href": "psets/Presentation Template.html#descriptive-statistics",
+    "title": "Research Title Here",
+    "section": "Descriptive Statistics",
+    "text": "Descriptive Statistics\n\n\n\n\nTable 1: Summary Statistics\n\n\n\n\n\n\n\nUnique\nMissing Pct.\nMean\nSD\nMin\nMedian\nMax\n\n\n\n\nGDP per Capita\n200\n0\n12411.55\n14157.34\n406.23\n7971.36\n120799.93\n\n\nDemocracy\n2\n0\n0.44\n0.50\n0.00\n0.00\n1.00\n\n\nTrade Openness\n200\n0\n55.61\n24.90\n10.81\n54.01\n99.31\n\n\nOutcome\n200\n0\n5.55\n1.19\n2.59\n5.53\n9.11"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#descriptive-statistics-cont.",
+    "href": "psets/Presentation Template.html#descriptive-statistics-cont.",
+    "title": "Research Title Here",
+    "section": "Descriptive Statistics (cont.)",
+    "text": "Descriptive Statistics (cont.)\n\n\n\n\n\n\n\n\nFigure 1: Distribution of Outcome by Regime Type"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#primary-regression-results",
+    "href": "psets/Presentation Template.html#primary-regression-results",
+    "title": "Research Title Here",
+    "section": "Primary Regression Results",
+    "text": "Primary Regression Results\n\n\n\n\nTable 2: OLS Regression — Main Results\n\n\n\n\n\n\n\nBivariate\n+ Controls\nFull Model\n\n\n\n\n(Intercept)\n5.132***\n2.746***\n2.418***\n\n\n\n(0.104)\n(0.705)\n(0.695)\n\n\nDemocracy\n0.930***\n0.915***\n0.923***\n\n\n\n(0.157)\n(0.153)\n(0.149)\n\n\nln GDP per Capita\n\n0.267***\n0.241***\n\n\n\n\n(0.078)\n(0.076)\n\n\nTrade Openness\n\n\n0.010***\n\n\n\n\n\n(0.003)\n\n\nNum.Obs.\n200\n200\n200\n\n\nR2\n0.151\n0.199\n0.241\n\n\nR2 Adj.\n0.147\n0.191\n0.230\n\n\n\n * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01\n\n\n\n\n\n\n\n\n\n\n\n\n\nKey finding: Democracy is positively and significantly associated with the outcome across all specifications."
+  },
+  {
+    "objectID": "psets/Presentation Template.html#regression-robustness-checks",
+    "href": "psets/Presentation Template.html#regression-robustness-checks",
+    "title": "Research Title Here",
+    "section": "Regression Robustness Checks",
+    "text": "Regression Robustness Checks\n\n\n\n\n\n\n\n\nFigure 2: Coefficient Plot — Robustness Across Specifications\n\n\n\n\n\nThe positive effect of democracy is stable across sample splits and alternative specifications."
+  },
+  {
+    "objectID": "psets/Presentation Template.html#contributions-qualitative-research-proposal",
+    "href": "psets/Presentation Template.html#contributions-qualitative-research-proposal",
+    "title": "Research Title Here",
+    "section": "Contributions & Qualitative Research Proposal",
+    "text": "Contributions & Qualitative Research Proposal\nTheoretical Contributions\n\nContribution 1 — how this paper advances existing theory\nContribution 2 — novel mechanism or scope condition identified\n\nEmpirical Contributions\n\nContribution 3 — new data, identification strategy, or case coverage\n\nQualitative Follow-Up\nTo probe the mechanism, future work should conduct [case studies / interviews / process tracing] in:\n\n\n\nCase\nRationale\n\n\n\n\nCountry A\nMost-likely case for H1\n\n\nCountry B\nLeast-likely case — hard test\n\n\nCountry C\nDeviant case — unexplained by model"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#discussion",
+    "href": "psets/Presentation Template.html#discussion",
+    "title": "Research Title Here",
+    "section": "Discussion",
+    "text": "Discussion\nImplications\nBriefly state what these findings mean for theory and / or policy.\nLimitations and future research\n\nLimitation 1\nLimitation 2"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#conclusion",
+    "href": "psets/Presentation Template.html#conclusion",
+    "title": "Research Title Here",
+    "section": "Conclusion",
+    "text": "Conclusion\nSummary of findings\n\nFinding 1 — one sentence\nFinding 2 — one sentence\nFinding 3 — one sentence"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#section",
+    "href": "psets/Presentation Template.html#section",
+    "title": "Research Title Here",
+    "section": "",
+    "text": "Thank You\n[Your Name] [your.email@niu.edu]\nSlides and replication materials available at [link]\n\n\n\n\n\n\nQuestions and comments welcome"
   }
 ]
