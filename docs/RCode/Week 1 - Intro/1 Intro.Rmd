@@ -66,7 +66,7 @@ names(wbdata) #Gives the name for each column aka each variable
 ncol(wbdata)#gives the number of rows aka observations aka our N
 nrow(wbdata)#number of rows - in this case our unit of analysis is countries
 
-dim(wbdata)
+dim(wbdata) #dimensions
 ```
 
 
@@ -91,6 +91,7 @@ mean(wbdata$Mortalityrate)
 
 median(wbdata$Mortalityrate)
 ```
+
 To use a variable we always use dataset$variablename - repeat after me "dataset-dollarsign-variable name, dataset-dollarsign-variable name, 
 dataset-dollarsign-variable name"
 
@@ -100,7 +101,7 @@ Sometimes you just need a picture. A histogram shows the distribution of a singl
 hist(wbdata$Mortalityrate)
 hist(wbdata$GDPgrowth)
 
-hist(wbdata$Mortalityrate, main="Distribution of Country Mortality Rates", ylab="Count", xlab="Mortality Rate", col="purple", border="pink", breaks=24) # R gives us all sorts of options to customize our graph - again, much more on this later
+hist(wbdata$Mortalityrate, main="Distribution of Country Mortality Rates", ylab="Count", xlab="Mortality Rate", col="green", border="pink", breaks=12) # R gives us all sorts of options to customize our graph - again, much more on this later
 ```
 
 
@@ -119,7 +120,7 @@ wbdata$Ruralpopperc <- wbdata$Ruralpop/wbdata$Population
 
 New scatter plots with labels and a trendline
 ```{r}
-plot(wbdata$GDPcap, wbdata$Ruralpopperc, xlab = "GDP per Capita", ylab="Rural Population Percentage", main="Wealth and Rural Population", sub="Data: 2021 World Bank", pch=7, col="grey")
+plot(wbdata$GDPcap, wbdata$Ruralpopperc, xlab = "GDP per Capita", ylab="Rural Population Percentage", main="Wealth and Rural Population", sub="Data: 2021 World Bank", pch=6, col="grey")
 abline(lm(wbdata$Ruralpopperc ~ wbdata$GDPcap), col="hotpink")
 ```
 

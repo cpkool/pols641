@@ -1,6 +1,6 @@
 ---
 title: "R Code"
-subtitle: "Annotated scripts from lecture, organized by topic."
+subtitle: "Course R code"
 editor_options:
   chunk_output_type: console
 ---
@@ -24,9 +24,14 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 [Week 1 Project](RCode/Week 1 - Intro/Week 1.Rproj){download="Week 1.Rproj"}
 
-
-[Data](RCode/Week 1 - Intro/wbdata.RData){download="wbdata.RData"}
-
+<a href="RCode/Week 1 - Intro/wbdata.RData" download>Data (wbdata.RData)</a>
 
 <a href="RCode/Week 1 - Intro/1 Intro.Rmd" download>Updated 1_Intro.Rmd</a>
 
+## Day 2: R Basics
+
+<a href="RCode/Week 2/Class2code.Rmd" download>Class2code.Rmd</a>
+
+<a href="RCode/Week 2/donutd.RData" download>Donut Data</a>
+
+[Congress Data](RCode/Week 2/data_aging_congress.csv){download="data_aging_congress.csv"}

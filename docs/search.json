@@ -151,6 +151,13 @@
     "href": "rcode.html#day-1-getting-started-with-r",
     "title": "R Code",
     "section": "Day 1: Getting Started with R",
-    "text": "Day 1: Getting Started with R\nDownload these three files and put in their own folder. Assuming you have R and Rstudio installed, start by clicking on the “Project” file.\nWeek 1 Project\nData\nUpdated 1_Intro.Rmd"
+    "text": "Day 1: Getting Started with R\nDownload these three files and put in their own folder. Assuming you have R and Rstudio installed, start by clicking on the “Project” file.\nWeek 1 Project\nData (wbdata.RData)\nUpdated 1_Intro.Rmd"
+  },
+  {
+    "objectID": "rcode.html#day-2-r-basics",
+    "href": "rcode.html#day-2-r-basics",
+    "title": "R Code",
+    "section": "Day 2: R Basics",
+    "text": "Day 2: R Basics\nClass2code.Rmd\nDonut Data\nCongress Data"
   }
 ]
