@@ -1,9 +1,6 @@
 /.quarto/
 .Rhistory
-.RData
 .DS_Store
 *.Rproj.user
 **/*.quarto_ipynb
-*.dta
-*.csv
-*.Rdata
+
