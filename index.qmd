@@ -13,3 +13,5 @@ If you have questions please email Dr. Kuehl at ckuehl\@niu.edu
 
 ::: bigskip
 :::
+
+![](psets/correlationclass.png)
