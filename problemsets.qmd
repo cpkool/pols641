@@ -16,8 +16,18 @@ subtitle: "Problem sets are your opportunity to work on the skills discussed in 
 Problem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered `.html` Quarto file to Blackboard by **11:59pm** on the due date.
 
 *Problem set files will be posted here as the course progresses.*
+
+# Problem Set #1
+
+<a href="psets/pset1/pset1.Rmd" download>Problem Set 1 rmd</a> 
+
+[Data](psets/pset1/hate_crimes.RData)    
+
+<a href="psets/pset1/pset 1.Rproj" download>R Project</a> 
 :::
 
 ::: {.column width="40%"}
+
+
 :::
 :::::

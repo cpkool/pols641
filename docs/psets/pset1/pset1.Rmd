@@ -1,0 +1,102 @@
+---
+title: "Pset 1 - POLS 641 F22"
+author: "Your Name Here"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+options(width=80)
+knitr::opts_chunk$set(echo = TRUE,out.width = 40, tidy=T, tidy.opts=list(width.cutoff=60)) #This code should automatically wrap text when knitting to pdf. 
+``` 
+
+#Introduction
+ *Welcome to your first problem set. It consists of two sections. The first asks you to analyze data on hate crimes in the United States. The second asks conceptual questions about political science methods. Please be sure that you answer every question(and each subquestion)thoroughly.* 
+ 
+ *Give yourself plenty of time to complete the assignment (You will need to build in time for R frustration, freakouts, celebrations, etc.) Please fill in your answers to each question below where it is written. For questions that require coding with R complete your coding in the sections provided and write out answers, if necessary, in the text section. Remember to knit as you go and be sure the work you turn in is your own.*
+ 
+ 
+ *Please submit both your pdf file and the rmarkdown file to Blackboard before the dealine of 1159 PM on Wednesday *
+
+# Part 1
+
+ *The dataset we'll be working with comes from a www.fivethirtyeight.com article on hate crimes after the 2016 presidential election. Access the article here: https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/ The data consistes of a number of variables relating to hate crimes across the US States and the District of Columbia. I encourage you to read the article to get a fuller understanding of the data.*
+
+**Variable Descriptions:**
+
+| state                       | State name                                                                       |
+|-----------------------------|----------------------------------------------------------------------------------|
+| median_house_inc            | Median household income, 2016                                                    |
+| share_unemp_seas            | Share of the population that is unemployed (seasonally adjusted), Sept. 2016     |
+| share_pop_metro             | Share of the population that lives in metropolitan areas, 2015                   |
+| share_pop_hs                | Share of adults 25 and older with a high-school degree, 2009                     |
+| share_non_citizen           | Share of the population that are not U.S. citizens, 2015                         |
+| share_white_poverty         | Share of white residents who are living in poverty, 2015                         |
+| gini_index                  | Gini Index, 2015                                                                 |
+| share_non_white             | Share of the population that is not white, 2015                                  |
+| share_vote_trump            | Share of 2016 U.S. presidential voters who voted for Donald Trump                |
+| hate_crimes_per_100k_splc   | Hate crimes per 100,000 population, Southern Poverty Law Center, Nov. 9-18, 2016 |
+| avg_hatecrimes_per_100k_fbi | Average annual hate crimes per 100,000 population, FBI, 2010-2915                |
+note: if you knit this table will look much nicer
+
+1. *Set up: Load the hate crimes data.*
+```{r}
+
+```
+
+
+2. *A first look at the data:  a) Show the first few rows of the data b) How many observations are in this dataset? c) How many variables? d) show the names of each of the variables.*
+```{r}
+
+```
+
+3. *Descriptive statistics:  Lets look at the avg_hatecrimes_per_100k_fbi variable. a) Find the mean, median, variance, max, and min for this indicator. In cases where a variable has missing values R will return an NA. Just add , na.rm=T to your command to tell it to ignore these values.  b) Produce a histogram of avg_hatecrimes_per_100k_fbi (Be sure that it is properly labeled) The use of colors etc. is encouraged.*
+```{r}
+
+```
+
+
+
+4. *Looking at relationships:  The article hypothesizes that income inequality (gini index) is a predictor of hate crimes. a) What is the independent variable b) What is the dependent variable? c)Create a scatter plot of the relationship(Be sure each is on the correct axis and that everything is labelled) d) add a trend line for the hypothesized relationship e) How would you describe the relationship? f)Is the relationship causal? why or why not? g) Which state is the outlier?*
+*Bonus: Add labels for each point in the scatterplot*
+```{r}
+
+```
+
+
+
+5. *Alternative Explanations:  Using variables from the dataset think of your own alternative hypothesis for the rate of hate crimes across states.  a) What is the new independent variable  b)Create a scatter plot of the relationship c) add a trend line for the hypothesized relationship d) How would you describe the relationship? Does it support your theory. f)Is the relationship causal? why or why not?*
+
+```{r}
+
+```
+
+
+
+6. *New variable: Lets a) create a new variable that converts the splc post election hate crime variable to an annual rate. ie if we the rate of hate crimes for the 9 day period was extended to 365. b) find the mean of this new variable c) create a plot comparing your new measure to the fbi data d) What does the graph tell us about the measurement of hate crimes? How would you determine which is the better measure?*
+```{r}
+
+```
+
+7. *A commentator suggests that states that voted more heavily for Trump were more likely to see large jumps in hate crimes after the election. Are they right? a) Create a plot that examines this claim and b) analyze it in regards to the commentators claim. c) provide your own theoretical explanation(using your own expertise/intuition) for the results you see.*
+```{r}
+
+```
+
+
+
+#Part 2: Write out to answers below each question. Your response should be thoughtful and fully answer the question. 
+
+1. *Explain what this sentence means: "Experiments create exogeneity via randomization."*
+
+2. *Imagine you are running a research project on the effect of political affiliation on attitudes toward abortion. List some of the factors (at least 3) that could lead to endogeneity*
+
+3. *You want to know if increased coffee consumption leads to better academic performance. Briefly describe(a paragraph each) a research for both an observational study and an experimental design (that would allow you to make a causal claim) that would test your hypothesis.*
+
+4. *In your own words, why do we include the error term in the core model*
+
+5. *What cloud backup software do you use?*
+
+6. *How long(hours) did this problem set take you?And did you work with anybody else in the class?*
+
+

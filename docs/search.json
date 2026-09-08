@@ -109,7 +109,7 @@
     "href": "problemsets.html",
     "title": "Problem Sets",
     "section": "",
-    "text": "Problem Set Due Dates\n\nProblem Set #1: Sept. 16th\nProblem Set #2: Sept. 30th\nProblem Set #3: Oct. 14th\nProblem Set #4: Oct. 28th\nProblem Set #5: Nov. 18th\n\nProblem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered .html Quarto file to Blackboard by 11:59pm on the due date.\nProblem set files will be posted here as the course progresses."
+    "text": "Problem Set Due Dates\n\nProblem Set #1: Sept. 16th\nProblem Set #2: Sept. 30th\nProblem Set #3: Oct. 14th\nProblem Set #4: Oct. 28th\nProblem Set #5: Nov. 18th\n\nProblem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered .html Quarto file to Blackboard by 11:59pm on the due date.\nProblem set files will be posted here as the course progresses.\n\n\nProblem Set #1\nProblem Set 1 rmd\nData\nR Project"
   },
   {
     "objectID": "about.html",
