@@ -43,4 +43,4 @@ Download these three files and put in their own folder. Assuming you have R and 
 [Week 3 Project](Rcode/Week 3/Week 3.Rproj){download="Week 3.Rproj"}
 
 
-<a href="RCode/Week 3/Class 3 code.Rmd" download>Updated 1_Intro.Rmd</a>
+<a href="RCode/Week 3/Class 3 code.Rmd" download>Class 3 code.Rmd</a>
