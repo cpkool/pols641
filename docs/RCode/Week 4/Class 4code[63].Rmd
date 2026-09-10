@@ -1,0 +1,403 @@
+---
+title: "Class 4"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(formatR)#may need to install this first
+# Set so that long lines in R will be wrapped:
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
+```
+We have two datasets today. The first looks at a measure of the concept of idealogy in congress. The second is about gender and the movie industry. 
+
+As always Load the data(congress)
+```{r}
+
+```
+
+## We'll start by exploring the validity and reliability of the DW-Nominate Scale
+
+This is a measure of members of congress ideology
+
+- A Wikipedia entry is available [here.](https://en.wikipedia.org/wiki/NOMINATE_(scaling_method))
+- A longer explainer is available [here.](https://www.swarthmore.edu/SocSci/rvalell1/documents/Nominate_000.pdf)
+- What do you think? (in terms of validity? reliability?)
+
+
+Explore the data
+```{r}
+
+
+```
+
+
+
+```{r Party Subset, echo=TRUE}
+## subset the data by party
+rep <- subset(congress, party == "Republican") #this command uses dplyr/tidyverse
+dem <- congress[congress$party == "Democrat", ] #Uses base R, but does the same thing
+```
+
+Subset Further by Congress
+```{r Congress Subset, echo=TRUE}
+rep80 <- subset(rep, subset = (congress == 80))
+dem80 <- subset(dem, subset = (congress == 80))
+rep112 <- subset(rep, subset = (congress == 112))
+dem112 <- subset(dem, subset = (congress == 112))
+```
+
+## Make a Scatterplot
+```{r 80th Congress 1, echo=T}
+plot(dem80$dwnom1, dem80$dwnom2)
+```
+
+##Make it Prettier
+```{r 80th Congress 2, echo=T}
+Demplot<-plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
+     xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
+     xlab = "Economic liberalism/conservatism",
+     ylab = "Racial liberalism/conservatism",
+     main = "80th Congress")
+```
+What does this tell us about the two dimensions?
+
+
+##Let's add the GOP
+```{r add GOP code, eval = F, echo=T}
+plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
+     xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
+     xlab = "Economic liberalism/conservatism", 
+     ylab = "Racial liberalism/conservatism",
+     main = "80th Congress")
+points(rep80$dwnom1, rep80$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats") #adding a label to our plot
+text(1, -1, "Republicans")
+```
+
+*When plotting, you have to send ALL the commands at once*
+
+##Ain't it Perty?!?
+```{r 80th Congress 3, echo=F}
+plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liberalism/conservatism", ylab = "Racial liberalism/conservatism", main = "80th Congress")
+points(rep80$dwnom1, rep80$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats")
+text(1, -1, "Republicans")
+```
+
+##Class Exercise
+
+*Can you produce an identical plot for the 112th Congress?*
+```{r, echo=F}
+
+
+```
+
+*What do these plots show us?*
+
+
+
+```{r 112th Congress, eval=T, echo=F}
+
+plot(dem112$dwnom1, dem112$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liber alism/conservatism", ylab = "Racial liberalism/conservatism", main = "112th Congress")
+points(rep112$dwnom1, rep112$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats")
+text(1, -1, "Republicans")
+```
+
+##Let's Dig into this Further
+
+How have the median R and D Members of Congress changed over time?
+
+First calculate the median for each party by Congress:
+```{r Medians, echo=T}
+dem.median <- tapply(dem$dwnom1, dem$congress, median) #Find the median of dwnom1 for each congress. You won't need to use tapply on problem sets etc, but it is pretty handy
+rep.median <- tapply(rep$dwnom1, rep$congress, median)
+```
+#tapply is a useful command, but you won't need it for problem sets etc. Dplyr group_by does similar things
+
+
+Now let's plot those medians for each party over time:
+```{r Time Series Code, eval=F, echo=T}
+plot(names(dem.median), dem.median, col = "blue", type = "l",
+     xlim = c(80, 115), ylim = c(-1, 1), xlab = "Congress",
+     ylab = "DW-NOMINATE score (1st dimension)")
+lines(names(rep.median), rep.median, col = "red")
+text(110, -0.6, "Democratic\n Party")
+text(110, 0.85, "Republican\n Party")
+```
+
+#Now repeat for the 2nd Dimension
+```{r}
+
+
+```
+Bonus: Why might we want to use the median instead of the mean here? Does using the mean change the broader story?
+
+
+Really interesting viewing of DW Nominate data: https://www.youtube.com/watch?v=M193ZIOFk0k
+
+
+#################################################################################################
+
+
+
+
+Load the data: These data comes from this [fivethirtyeight article](https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/)
+
+```{r}
+
+```
+
+
+
+
+Load Packages: we'll use ggplot briefly again today
+```{r}
+library(ggplot2)
+```
+
+Find the number of variables and observations - *What is our unit of analysis?*
+```{R}
+
+```
+
+VARIABLE NAMES 
+```{r}
+names(bech) 
+variable.names(bech) 
+```
+
+What time range does the data cover?
+```{r}
+min(bech$year)
+max(bech$year)
+range(bech$year)
+```
+
+Exploring the data
+```{r}
+table(bech$clean_test)
+
+plot(bech$domgross, bech$intgross)
+
+prop.table(table(bech$binary))
+
+prop.table(table(bech$clean_test, bech$binary))
+
+barplot(table(bech$clean_test)) #show ugly bar plot
+
+```
+
+FIND THE RANGE OF GROSS REVENUE(we'll just look at domestic and standardize to 2013 dollar value)
+```{r}
+range(bech$domgross_2013)
+max(bech$domgross_2013) #Bonus: What movie is this? Hint: View(yourdata)
+min(bech$domgross_2013) #Cheers to you if you've actually watched this
+```
+
+FIND STANDARD DEVIATION AND VARIANCE - We'll take a closer look at this next week.
+Formula for Standard Deviation:
+$$\sigma = \sqrt{\frac{\sum\limits_{i=1}^{n} \left(x_{i} - \bar{x}\right)^{2}} {n-1}}$$
+More info on using math symbols in Rmarkdown is here: https://rpruim.github.io/s341/S19/from-class/MathinRmd.html
+
+```{r}
+sqrt(sum((bech$domgross_2013-mean(bech$domgross_2013))^2/(length(bech$domgross_2013)-1))) #How would we turn this into the variance?
+```
+
+Of course, it is much easier to just have R do it
+```{r}
+sd(bech$domgross_2013)
+var(bech$domgross_2013)
+sd(bech$domgross_2013)^2 #Variance = standard deviation squared.
+sqrt(var(bech$domgross_2013)) #Standard deviation = square root of variance.
+```
+
+
+
+TAKE A LOOK AT THE DISTRIBUTION OF DOMESTIC GROSS  
+```{r}
+hist(bech$domgross_2013, breaks = 15) #breaks=  number of bars
+hist(bech$domgross_2013, main="Distribution of Gross Revenue", xlab="Gross Revenue", col="blue",border="green",breaks=30, las=2) #bedazzled
+```
+
+LOOK AT THE DENSITY PLOT OF DOMESTIC GROSS
+```{r}
+plot(density(bech$domgross_2013),main="Density Distribution of Gross Revenue")
+
+ggplot(bech, aes(x=domgross_2013))+geom_density()+
+  labs(x="Domestic Gross 2013", y="Density", title="Density Distribution of Gross Revenue", caption="ggplot version")
+```
+How are histogram and density plot different? Which is closer to a pdf?
+```{r}
+hist(bech$domgross_2013, main="Histogram of of Gross Revenue",
+xlab="Domestic Gross 2013",breaks=20)
+
+ggplot(bech, aes(x=domgross_2013))+geom_histogram()+
+  labs(x="Domestic Gross 2013", y="Density", title="Histogram of Gross Revenue", caption="ggplot version")
+```
+
+MAKE A BOXPLOT
+```{r}
+boxplot(bech$domgross_2013, main="Boxplot of Gross Revenue", col="cornflowerblue")
+abline(h=mean(bech$domgross_2013), col="deeppink", lwd=2)
+```
+A boxplot shows the median, 25% and 75% quartile, and important outliers
+
+ADD LINES TO INDICATE THE MEAN AND MEDIAN, AND MAKE A LEGEND *(Make sure all the code stays together)*
+```{r}
+plot(density(bech$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
+abline(v=mean(bech$domgross_2013), lty=2, lwd=2, col="red") # put a vertical line at the mean 
+abline(v=median(bech$domgross_2013), lty=4, lwd=2, col="blue")
+legend("topright", legend=c("mean", "median"), lty=c(2,4), col=c("red","blue"))
+
+options(scipen=10)#This stops use of scientific notation
+```
+
+
+Take Random Samples and see how mean and median changes
+```{r}
+sample1 <- bech[sample(nrow(bech), 100), ] #Randomly samples 100 movies
+
+plot(density(sample1$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
+abline(v=mean(sample1$domgross_2013), lty=2, lwd=2, col="red") 
+abline(v=median(sample1$domgross_2013), lty=4, lwd=2, col="blue")
+legend("topright", legend=c(mean(sample1$domgross_2013), median(sample1$domgross_2013)), lty=c(2,4), col=c("red","blue"))
+
+
+sample2 <- bech[sample(nrow(bech), 100), ]
+plot(density(sample2$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
+abline(v=mean(sample2$domgross_2013), lty=2, lwd=2, col="red") 
+abline(v=median(sample2$domgross_2013), lty=4, lwd=2, col="blue")
+legend("topright", legend=c(mean(sample2$domgross_2013), median(sample2$domgross_2013)), lty=c(2,4), col=c("red","blue"))
+
+
+mean(sample1$domgross_2013)
+mean(sample2$domgross_2013)
+
+median(sample1$domgross_2013)
+median(sample2$domgross_2013)
+```
+
+
+
+LOOK AT THE SAMPLING DISTRIBUTION OF REVENUE AND BUDGET *(Let's put the four figures arranged in 2 rows and 2 columns)*
+```{r}
+par(mfrow=c(2,2)) ###This line of code tells R you want a 2 x 2 of smaller graphs
+hist(bech$domgross_2013, main="Histogram of Domestic Gross", breaks = 15)
+plot(density(bech$domgross_2013), main="Distribution of Domestic Gross")
+hist(bech$budget_2013, main="Histogram of Budget", breaks = 15)
+plot(density(bech$budget_2013), main="Distribution of Budget")
+```
+
+
+THIS IS NOT A NORMAL DISTRIBUTION SO MAY WANT TO CREATE LOGGED VERSION
+We will talk about transforming variables later
+```{r}
+par(mfrow=c(1,1)) #Return to just looking at one graph at a time
+bech$logdomgross13 <- log(bech$domgross_2013)#creates new logged variable
+hist(bech$logdomgross13, main="Logged Domestic Revenue")#Looks more normal, harder to interpret
+boxplot(bech$logdomgross13, main="Logged Domestic Revenue")
+
+hist(bech$domgross_2013, main="Domestic Revenue")#Looks more normal, harder to interpret
+boxplot(bech$logdomgross13, main="Logged Domestic Revenue")
+
+```
+
+
+
+LET'S USE STATS TO MAKE COMPARISONS
+
+First, find averages for films that pass and fail the Bechdel test (there are several ways to do this).
+```{r}
+pass <- bech[which(bech$binary=="PASS"), ] #Creates a new dataset of only those that pass the bechdel test
+fail <- bech[which(bech$binary=="FAIL"), ]
+mean(pass$domgross_2013)
+mean(fail$domgross_2013)
+#How many films passed and how many failed?
+
+mean(pass$budget_2013)
+mean(fail$budget_2013)
+
+ggplot(bech, aes(x=logdomgross13, fill=binary)) +
+    geom_density( alpha=.5, position="identity") #overlay both distributions
+```
+
+Second, simple algebra to find difference.
+```{r}
+grossdiff <- mean(pass$domgross_2013)-mean(fail$domgross_2013)
+grossdiff
+```
+
+*Another method for finding mean of subset (more here: http://www.statmethods.net/management/subset.html)*
+```{r}
+xbar_pass_t <- mean(bech$domgross_2013[bech$binary=="PASS"])
+xbar_fail_t <- mean(bech$domgross_2013[bech$binary=="FAIL"])
+DIFF <- (xbar_pass_t - xbar_fail_t)
+DIFF
+```
+
+Show Both Box Plots
+```{r}
+boxplot(pass$domgross_2013)
+boxplot(fail$domgross_2013)
+#or from original dataset
+boxplot(bech$domgross_2013~bech$binary) 
+#using ggplot
+ggplot(bech, aes(binary,domgross_2013))+geom_boxplot()+
+  labs(y="Domestic Gross 2013", x="Bechdel Test") #creates boxplots based on values of binary
+
+#to illustrate we can use this for variety of categories(and logged)
+ggplot(bech, aes(test,logdomgross13))+geom_boxplot()+
+  labs(y="Domestic Gross 2013", x="Bechdel Test")+ theme(axis.text.x=element_text(angle = -45, hjust = 0))
+
+
+
+ggplot(bech, aes(as.factor(year),logdomgross13))+geom_boxplot()+
+  labs(y="Domestic Gross 2013", x="Bechdel Test")+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
+
+```
+
+FINDING RELATIONSHIPS *(Let's see if bigger budgets are related to a higher gross)*
+```{r}
+par(mfrow=c(1,1)) #show one graph at a time
+plot(bech$budget, bech$domgross_2013, main="Gross Revenue and Budget", xlab = "Budget", ylab = "Gross Revenue")
+```
+
+
+How would we create the same plot using ggplot? (hint: look at last week's code)
+```{r}
+
+```
+
+
+IT'S HARD TO SEE A PATTERN FROM THE PLOT, SO LET'S MAKE A LINEAR REGRESSION MODEL: REMEMBER THE MODEL IS lm(Y ~ X, data=nameofdata)
+```{r}
+plot(bech$budget, bech$domgross_2013, main="Gross Revenue and Budget", xlab = "Budget", ylab = "Gross Revenue")
+model1 <- lm(domgross_2013~budget, data=bech) #Making an object for a linear regression model. Notice how I access the variables used... 
+summary(model1)
+abline(model1, col = "purple", lty=2) #This puts the trend line
+
+abline(lm(pass$domgross_2013~pass$budget_2013), lty=3, lwd=2, col="pink") #for fun add lines for films that pass bechdel test
+abline(lm(fail$domgross_2013~fail$budget_2013), lty=4, lwd=2, col="blue")
+legend("topright", legend=c("All", "Pass", "Fail"), lty=c(2,3,4), col=c("purple","pink", "blue"))
+```
+What do the different slopes mean?What does this tell us about the profitability of inclusing in the movie industry?
+
+
+Another Subset: We may also want to exclude outliers
+```{r}
+middle <- subset(bech, budget_2013 >= 1000000 & budget_2013 < 10000000) #only budgets between 1 and 10 millsion
+summary(middle$budget_2013)
+
+#do the relationships change when we control for outliers(hint: use copy and paste plus find and replace)
+
+
+
+#What about when we use the log of gross
+
+```
+################################################################
+

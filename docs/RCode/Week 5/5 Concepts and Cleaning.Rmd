@@ -1,0 +1,152 @@
+---
+title: "Class 5 - Concepts and Cleaning"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Install and load packages
+```{r}
+
+#install.packages("foreign")
+#install.packages("openxlsx") 
+#install.packages("dplyr") ## This package is used to tidydata. We'll use it later
+#install.packages("ggplot2") #Very popular graphing package
+
+
+library(foreign)
+library(dplyr)
+library(ggplot2)
+library(openxlsx)
+
+```
+
+
+###Cleaning and Organizing data
+
+#Loading Data
+Today's second dataset comes directly from the ICPSR and is an excel format. If we want to we can use a command from the xlsx package(loaded above) to input the data directly.
+
+```{r}
+full <- readWorkbook("energsurv.xlsx", sheet="Data", na.strings = "-9")
+```
+
+
+Packages for importing from excel directly can be finicky(due to microsoft updates etc). Thats ok. It is often easier to just click "save as" in the excel program and save your spreadsheet as a csv. When we do this we can use the read.csv command we've used in previous classes. 
+
+another note: similar packages exist for important data from STATA, SPSS, SAS, etc. 
+
+
+This is a large dataset and though it has been cleaned by the researcher, we might want to make some changes to make it easier to work with.
+
+First, lets look at the variables we are interested in:
+
+We will use the dyplyr package to tidy the data.  
+```{r}
+names(full) #The codebook tells us about each variable
+
+Sub1 <- select(full, SURVEY_ITERATION, GW_BELIEF, GW_KNOWLEDGE, FRACKING_EFFECT_ENVIRONMENT, SCIENCE_TRUST,DEMOG_EDU, DEMOG_POLPARTY) #Only pick out variables I'm interested in. 
+```
+
+
+
+We also can select specified observations. For example, this survey was conducted in two waves. Lets just grab the 2015 wave:
+
+```{r}
+sub15 <- filter(Sub1, SURVEY_ITERATION=="FALL2015") #Again using dplyr dialect
+```
+Create a second subset for the 08 wave
+```{r}
+
+```
+
+
+
+We can then export this to a different format: (http://www.statmethods.net/input/exportingdata.html)
+
+```{r, eval=FALSE}
+write.csv(sub15, "envirosurvey15.csv") #This will automatically save to your working directory
+```
+
+#Looking at the data
+
+Lets look at the data
+```{r}
+summary(sub15)
+dim(sub15)
+```
+
+A specific variable
+```{r}
+hist(sub15$GW_BELIEF) #Whats wrong with this picture?
+table(sub15$GW_BELIEF) #Need to look at codebook to understand what is going on
+```
+
+
+Change values within a single variable
+```{r}
+sub15$GW_BELIEF[sub15$GW_BELIEF==98] <- NA 
+sub15$GW_BELIEF[sub15$GW_BELIEF==99] <- NA
+
+data15 <- sub15 #Copy dataset(I always create a copy when initially tidying so I don't alter the original)
+
+data15 [data15 ==98] <- NA #Converts across the entire dataset
+data15 [data15 ==99] <- NA
+```
+Clearly knowing not recoding for NA will be a major problem. We'll talk about how to handle missing data later.
+
+
+Check new histogram and frequency
+```{r}
+hist(data15$GW_BELIEF) #Ugly, but its right. What does 1 equal?
+prop.table(table(data15$GW_BELIEF))
+```
+
+
+Look at different variable
+```{r, eval=FALSE}
+hist(data15$FRACKING_EFFECT_ENVIRONMENT) #gives an error -  'x' must be numeric
+
+str(data15$FRACKING_EFFECT_ENVIRONMENT) #R thinks it is a character variable
+
+data15$frackingeffect <- as.numeric(data15$FRACKING_EFFECT_ENVIRONMENT)
+hist(data15$frackingeffect) #Whoa! Watch out. This actually isn't a continuous varible. 
+```
+*R has 6 basic data types. 
+
++ character
++ numeric (real or decimal)
++ integer
++ logical
++ complex
+
+
+```{r}
+sub15$frackfactor <- recode(sub15$FRACKING_EFFECT_ENVIRONMENT, '1'="Positive Effect", '2'="Negative Effect", '3'="No Effect", '98'="Not Sure", '99'="Refused")
+
+table(sub15$frackfactor)
+barplot(table(sub15$frackfactor), main="Fracking's Effect on the Environment", las=2)
+```
+
+
+Look at science trust. What type of variable is this?
+```{r}
+
+
+```
+
+
+
+Use find and replace to do the same with your 08 dataset
+
+
+
+If its justified, we can also just create a new dataset of complete cases
+```{r}
+sub15na <- na.omit(sub15)
+```
+
+
+You will likely spend as much, if not more, time cleaning and organizing your data to make it useful as you do actually analyzing it. There are many more issues you will deal with than can be explained here, or in datacamp, but googling is often very helpful. 

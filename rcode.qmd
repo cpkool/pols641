@@ -37,3 +37,10 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="RCode/Week 2/donutd.RData" download>Donut Data</a>
 
 [Congress Data](RCode/Week 2/data_aging_congress.csv){download="data_aging_congress.csv"}
+
+## Week 3 
+
+[Week 3 Project](Rcode/Week 3/Week 3.Rproj){download="Week 3.Rproj"}
+
+
+<a href="RCode/Week 3/Class 3 code.Rmd" download>Updated 1_Intro.Rmd</a>

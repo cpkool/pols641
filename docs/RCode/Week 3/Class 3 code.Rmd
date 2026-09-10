@@ -6,15 +6,19 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-This week we'll start by illustrating some probability concepts in R and then continue building R skills by looking at data from the Bush and Clayton article we read earlier week. 
 
+This week we'll start by illustrating some probability concepts in R and then continue building R skills by looking at the gapminder dataset
 
 # Part 1: Probability
-#########################################################
-     ## R code to demonstrate probability distributions. You won't need to use this code later so don't worry if you are unclear what is going on. 
- 
- 
- Brief illustration of the law the large numbers   
+
+######################################################### 
+
+```         
+ ## R code to demonstrate probability distributions. You won't need to use this code later so don't worry if you are unclear what is going on. 
+```
+
+Brief illustration of the law the large numbers
+
 ```{r}
 #Don't worry about the code here. This is just an illustration. 
 n<-c(1:1000) #creates a vector of 1 to 100
@@ -25,11 +29,11 @@ wmean <- s/n #finds mean at each point
 plot(wmean,xlab="n",ylim=c(2,4),type="l",main="Law of Large Numbers")
 abline(h=3, col="red")#horizontal line at the mean
 #what happens if we change to a thousand
-```    
-     
-     
+```
+
 ## simulate die rolls
-```{r}                                           
+
+```{r}
 d1 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
   d2 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
 
@@ -59,7 +63,8 @@ cprval <- cumsum(prval)
 ```
 
 Creating different distributions
-```{r}                                           
+
+```{r}
 ## The uniform distribution
                                              
 x <- runif(10000) 
@@ -77,214 +82,278 @@ lines(x, pnorm(x))
 abline(v=0) 
 ```
 
+################################################################################################## 
+#Packages
 
-                                     
-
-##################################################################################################
-This week we'll use some packages. 
-Packages are mini pieces of software(sets of commands) that are loaded on top of base R. There are thousands to choose from and are very helpful for doing more specialized types of analysis.
+This week we'll use some packages. Packages are mini pieces of software(sets of commands) that are loaded on top of base R. There are thousands to choose from and are very helpful for doing more specialized types of analysis.
 
 I recommend loading all the packages you need at the beginning of your code (along with setting your working directory and loading your data).
 
-
 The install command downloads the package to your computer. Once installed you don't need to reinstall every time. (in fact, sometimes its better not to in case of differences between versions)
 
-Two of the most commonly used are dplyr and ggplot 
+Two of the most commonly used are dplyr and ggplot
 
-The library command unpacks(makes available) the package. Like taking it out off the shelf. 
+The library command unpacks(makes available) the package. Like taking it out off the shelf.
+
 ```{r}
 #install.packages("tidyverse") ## This package is used to tidydata. We'll use it later
 #install.packages("ggplot2") #Very popular graphing package
 
 library(tidyverse)
 library(ggplot2)
+
+#I use these two packages almost every R session
 ```
 
 
-################################
-Instead of using an Rproject this week we are getting to manually set our working directory (Translation: File where everything will be saved.)Always set your wd before working in R. This ensures that all your work(graphics, subsets, etc) will be saved in the same place and that R will know where to look for your data. 
+Today we'll explore the gapminder data. It contains life expectancy, population, and GDP per capita for countries every five years from 1952 to 2007. The gapminder data comes from the Gapminder Foundation: <https://www.gapminder.org/data/> made famous by Hans Rosling's TED talks. We'll continue our exploration using R to understand and visualize data.
 
-After the setwd() command insert the file path to your own folder that you will use for this class(If it doesn't exist create it using finder or in windows).Make sure both files I emailed you, this .rmd file and the .rdata file are in that folder. 
+## Part 1: Getting to Know Gapminder
 
-There are two ways to have R tell you the file path. First, you can use the file.choose() to find the file path.Just copy and paste from the console into this code. 
-The other is to load or set the wd directly in Rstudio, but if you do this you need paste into your code so it will knit. 
+Make sure you have opened the Rproject first. 
 
-This is perhaps the most counter-intuitive thing you'll do in R, but it is important. Remember, do not use point and click, you need the code to knit. 
-```{r}
-getwd() #Returns which directory you are currently working in
-setwd("/Users/colinkuehl/Dropbox/POLS 641/2025 641/Rcode F25/Week 3") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
-getwd() #make sure using right folder
-```
+Today's data comes packaged inside R itself. Instead of loading a file, we install a package once, then load it with library() each session.
 
-
-
-
-
-We're going to use data from the article "Facing Change: Gender and Climate Change Attitudes Worldwide" by Bush and Clayton we read last week. Data can be found here: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0Y8IKW
-
-
-This is just one of the many data sources they use. 
-```{r}
-pewdata <- read.csv("pewdata.csv") #If working directory is set correctly and this file is in it this command should work. 
-```
-
-
-
-
-Lets explore the data: Variable names, # of variables, # of respondents
-```{r}
-dim(pewdata)
-names(pewdata)
-
-```
-
-Thats a lot of respondents.
-```{r}
-table(pewdata$Country)
-length(unique(pewdata$Country))
-
-length(unique(pewdata$WorryType))
-
-prop.table(table(pewdata$Country))
-
-str(pewdata) #This tells us what type of data R thinks we have
-```
-
-
-
-
-Look at climate concern
-```{r}
-mean(pewdata$ClimConcen)#Doesn't know what to do with NAs
-mean(pewdata$ClimConcen, na.rm = T)
-median(pewdata$ClimConce, na.rm = T)
-summary(pewdata$ClimConcen)
-
-hist(pewdata$ClimConcen)
-
-#A good way to count NAs in a column
-sum(is.na(pewdata$ClimConcen))
-sum(is.na(pewdata$Ideo))
-
-table(pewdata$Country, pewdata$Ideo)
-```
-
-Sex differences
-```{r}
-males <- pewdata[which(pewdata$Female==0),]
-females <- pewdata[which(pewdata$Female==1),]
-
-summary(males$ClimConcen)
-summary(females$ClimConcen)
-```
-
-Lets say we we were interested in Income and climate concern . . . .
-
-Use base R to create scatterplot
-```{r}
-plot(pewdata$StandIncome, pewdata$ClimConcen) #Not very helpful
-```
-
-Reduce N to make more useful 
-```{r}
-pewsamp1 <- pewdata[sample(nrow(pewdata), 500), ]# a random sample of 500 ie a new subset
-
-mean(pewsamp1$ClimConcen, na.rm=T)
-mean(pewdata$ClimConcen, na.rm=T)
-
-plot(pewsamp1$StandIncome, pewsamp1$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
-abline(lm(pewsamp1$ClimConcen~pewsamp1$StandIncome))
-```
-
-
-Using tidyverse
-```{r}
-pewsamp2 <- sample_n(pewdata, 500)#Notice how tidyverse uses a slighty different vocabulary and grammar
-
-mean(pewsamp2$ClimConcen, na.rm=T)#Ack! This is different from above
-
-#We can create the same figure with the ggplot package. ggplot uses a different grammar.
-ggplot(data=pewsamp2, aes(x=StandIncome, y=ClimConcen))+
-  geom_point(shape=1)+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x)
-```
-
-
-There are many ways to code in R. Base R can do everything you need, but I find "the tidyverse" more intuitive so I am introducing it early with the assumption you'll find it easier as well. 
-
-
-This is interesting, but might want to look at one country at a time. 
-
-Subset the data
-```{r}
-usa <- pewdata[which(pewdata$Country=="United States"),]
-indo <- pewdata[which(pewdata$Country=="Indonesia"),]
-
-plot(usa$StandIncome, usa$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
-abline(lm(usa$ClimConcen~usa$StandIncome), col="red")
-abline(lm(pewdata$ClimConcen~pewdata$StandIncome), col="blue")#add line for whole sample to make comparison
-abline(lm(indo$ClimConcen~indo$StandIncome), col="pink")
-```
-
-Create same graph using dplyr and ggplot
-```{r}
-USA <- filter(pewdata, Country=="United States") #This is dplyr version of what we did last time. Check out dplyr cheat sheet posted to dropbox
-
-ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
-  geom_point(shape=1)+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")
-
-ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
-  geom_point()+ ggtitle("United States")+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red", se=F)+geom_jitter() + theme_test()
-``` 
-
-An especially nice feature of tidy verse is that you can use piping(%>%) to do multiple things in a single line of code
+Packages are like bonus material for R. We will use them all the time. Installing puts it on your computer. Library opens it(like a book) so everytime you use it you need library in your code first. 
 
 ```{r}
-pewdata %>% filter(Country=="Russia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
-  geom_point()+ ggtitle("Russia")+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+#install.packages("gapminder") #only run this once ever - then put the # back in front
+library(gapminder)
+data("gapminder") #Puts into our environment
 
-#This can make it much easier to run similar versions of the same graph
-pewdata %>% filter(Country=="Australia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
-  geom_point()+ ggtitle("Australia")+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
-
-pewdata %>% filter(Country=="France") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
-  geom_point()+ ggtitle("France")+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
-
-pewdata %>% filter(Female==1, Country=="France") %>% ggplot(aes(x=StandIncome, y=ClimConcen))+
-  geom_point()+ ggtitle("Females")+
-  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
-```
-
-
-Your turn to play - create for another county, or look at another DV
-```{r}
 
 
 ```
 
 
-Recreating Figure 1
+Looking over the data using commmands from previous weeks
+
+(hint: use code from yesterday)
 ```{r}
-ggplot(pewdata, aes(x=GDPPC)) + 
-  geom_density() #ggplot code for a histogram
+head(gapminder)
+tail(gapminder)
+summary(gapminder)
+dim(gapminder) #Count of how many observations and variables
 
-pewdata$female <- ifelse(pewdata$Female==1, "female", "male")
+str(gapminder) #This tells us what kind of data R thinks each variable is - we'll talk about this later
+length(unique(gapminder$country)) #gives a count of unique countrys
+```
 
-bycountryg <- pewdata %>% group_by(Country, female) %>% summarise(Avgserios=mean(ClimSerious, na.rm=T), GDP=mean(GDPPC))%>% pivot_wider(names_from = female, values_from = Avgserios)%>% mutate(diff=female-male)
-bycountryg
+Checking in (with a partner)
+
+1) How many countries are in the dataset?
+2) What is the average life expectancy?
+3) What is the median GDP per capita? Average?
+Bonus:
+a) Create a scatterplot with the relationship between population and Life Expectancy. Add a trend line
+b)What country has the highest life expectancy?
+
+```{r}
 
 
-ggplot(bycountryg, aes(x=log(GDP), y=diff, label=Country))+geom_point()+geom_text()+ ggtitle("Gender Gap by GDP")+
-  xlab("GDP per Capita(logged)")+ ylab("Gender Gap")+geom_hline(yintercept=0, col="lightblue")+ geom_smooth(method='lm', formula= y~x, col="coral", se=F)
+
+
+
+```
+
+*It is best practice to "knit as you go." Try knitting now to make sure you don't have errors in your code.*
+
+
+Country and continent are not continuous(numeric in R speak) variables. They are categorical. We can get counts in each category.
+
+frequency tables:
+
+```{r}
+table(gapminder$continent) #gives count of different categories
+table(gapminder$year)
+
+prop.table(table(gapminder$continent)) #gives percentages
+```
+
+I use this command all the time to get a sense of the data.
+
+Check in: What percentage of the observations in the dataset are from Asia?
+
+```{r}
+
+```
+
+``
+
+Plot the relationship between GDP per capita and life expectancy
+
+```{r}
+plot(gapminder$gdpPercap, gapminder$lifeExp) #scatterplot (X then Y)
+abline(lm(gapminder$lifeExp~gapminder$gdpPercap)) #add trend line (Y then X) 
+```
+Notice how we always put the explanatory variable on the X axis(horizantal) and the outcome variable on the Y axis (vertical)
+
+GDP per capita hard to read - change unit to thousands
+```{r}
+gapminder$gdpPercap <- gapminder$gdpPercap/1000
 ```
 
 
 
+Make plot look a bit more professional
+
+```{r}
+plot(gapminder$gdpPercap, gapminder$lifeExp, main="Relationship between Wealth and Life Expectancy", xlab="GDP per Capita", ylab="Life Expectancy")
+abline(lm(gapminder$lifeExp~gapminder$gdpPercap)) #and boom, you've already ran your 2nd regression
+```
+
+Does there appear to be a relationship in the sample?
+
+What about with just Asia? There are multiple ways to do this:
 
 
-Make sure to knit and, if you'd like, save the data. 
+We can create a new dataset ie a subset(I almost always choose this option)
+
+```{r}
+table(gapminder$continent)
+asia <- gapminder[which(gapminder$continent=="Asia"),]
+asia <- filter(gapminder, continent=="Asia") # This does the same thing using the dplyr package from tidyverse. I find it much more intuitive than "base R" so tend to use it more often. 
+
+
+
+plot(asia$gdpPercap, asia$lifeExp, main="Relationship between Wealth and Life Expectancy (Asia)", xlab="GDP per Capita", ylab="Life Expectancy")
+abline(lm(asia$lifeExp~asia$gdpPercap)) #and boom, another regression
+
+```
+
+
+Exclude Europe
+
+```{r}
+noteuro <- gapminder[which(gapminder$continent!="Europe"),] # the != does not equal
+noteuro <- filter(gapminder, continent!="Europe")
+```
+
+Exclude the super rich - use greater than or less than
+
+```{r}
+notrich <- gapminder[which(gapminder$gdpPercap< 50),] # less than 50,000 - this drops oil-rich outliers like Kuwait
+notrich <- filter(gapminder, gdpPercap< 50)
+```
+
+Check in: Try creating a scatterplot with just the 1) Africa OR 2) country-years where life expectancy is less than 70.
+
+```{r}
+
+
+
+```
+
+
+
+#Looking at the data over time: Time to look at something a bit more fun. How has life expectancy changed across the world since the 1950s? 
+
+
+Mean life expectancy?
+
+```{r}
+mean(gapminder$lifeExp)
+
+min(gapminder$lifeExp)
+
+max(gapminder$lifeExp) 
+
+range(gapminder$lifeExp) 
+```
+
+
+
+Create a histogram for life expectancy
+
+```{r}
+hist(gapminder$lifeExp)
+abline(v=mean(gapminder$lifeExp), col="blue", lwd=2)#adds a vertical(v) line for the mean
+abline(v=median(gapminder$lifeExp), col="red", lwd=2)#a a line for mediant
+```
+
+abline gives us a line. v is for vertical
+
+Density plots and boxplots show us similar information
+
+```{r}
+boxplot(gapminder$lifeExp)
+
+plot(density(gapminder$lifeExp))
+
+#How can we find out which country-years are at the very bottom?
+```
+
+Check: How many observations are from Africa and how many are from Europe
+
+```{r}
+
+
+```
+
+```{r}
+mean(gapminder$lifeExp[gapminder$continent=="Africa"]) #average for Africa
+mean(gapminder$lifeExp[gapminder$continent=="Europe"]) #average for Europe
+mean(asia$lifeExp)
+
+#find the mean for the Americas
+
+```
+
+Let's make a simple scatterplot with year on the horizontal axis, and life expectancy on the vertical axis. A regression allows us to look at the relationship between variables linear regression model, and you're looking at the effect of the IV on the DV
+
+```{r}
+plot(gapminder$year, gapminder$lifeExp, ylab = "Life Expectancy", xlab = "Year", main = "Life Expectancy Over Time")
+abline(lm(gapminder$lifeExp ~ gapminder$year), col="red", lwd=2) # What type of relationship is this?
+abline(h=mean(gapminder$lifeExp), col="blue", lwd=2)
+```
+
+That is a bit overwhelming lets just look at 2007 - ie lets create a subset
+
+```{r}
+g2007 <- gapminder[which(gapminder$year==2007),] #just using base R
+
+#New Graph
+plot(g2007$gdpPercap, g2007$lifeExp, ylab = "Life Expectancy", xlab = "GDP per Capita", main = "Wealth and Life Expectancy in 2007", col=factor(g2007$continent)) #color for continent
+abline(lm(g2007$lifeExp ~ g2007$gdpPercap), col="red", lwd=2)
+legend("bottomright", legend = levels(factor(g2007$continent)), pch=19, col = factor(levels(factor(g2007$continent))))
+
+#I want to add labels for specific countries
+g2007$stars <- ifelse(g2007$country=="United States"|g2007$country=="China" |g2007$country=="Myanmar" |g2007$country=="Thailand", as.character(g2007$country), "") #create a new variable for notable countries, all else will be empty. 
+text(g2007$gdpPercap, g2007$lifeExp-1, g2007$stars, cex=.4) #add text to location
+```
+
+Check: Can you create the same for 1952
+
+```{r}
+
+```
+
+A boxplot for each year can show us how the distribution has changed over time
+
+```{r}
+boxplot(gapminder$lifeExp~gapminder$year, xlab = "Year", ylab="Life Expectancy", border = "steelblue")
+
+boxplot(gapminder$lifeExp~gapminder$continent, xlab = "Year", ylab="Life Expectancy", border = "steelblue")
+```
+
+
+Lets look at changes in thailand over time
+```{r}
+thai <- filter(gapminder, country=="Thailand")
+plot(thai$year, thai$lifeExp, xlab="Year", ylab="Life Expectancy", col="red", main="Thailand Life Expectancy")
+lines(thai$year, thai$lifeExp, col="blue")
+```
+
+```{r}
+plot(asia$year, asia$lifeExp, xlab="Year", ylab="Life Expectancy", col=gapminder$country, main="Thailand Life Expectancy")
+lines(thai$year, thai$lifeExp, col="blue")
+```
+Check: Do the same above for a different country
+
+I've clearly had too much fun. Your turn to make something interesting.
+
+```{r}
+
+
+
+```

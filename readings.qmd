@@ -49,6 +49,8 @@ subtitle: "Required and recommended readings, organized by week."
 
 - Bailey Ch. 3, pp. 49–64
 
+- [Bush and Clayton "Facing Change"](readings/facingchange.pdf)
+
 ::: due
 **Due:** Problem Set #1
 :::
@@ -59,8 +61,12 @@ subtitle: "Required and recommended readings, organized by week."
 
 **Readings:**
 
-- Adcock, Robert and David Collier. 2002. "Measurement Validity: A Shared Standard for Qualitative and Quantitative Research." *American Political Science Review* 96(3). *(Read 1, skim 1)*
+- Adcock, Robert and David Collier. 2002. "Measurement Validity: A Shared Standard for Qualitative and Quantitative Research." *American Political Science Review* 96(3).
+
+*(Read 1, skim 1)*
+
 - Pollock Ch. 1 and 2
+
 - Imai, Kosuke. 2017. "Measurement." In *Quantitative Social Science*.
 
 **Recommended:**

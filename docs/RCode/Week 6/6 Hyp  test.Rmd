@@ -1,0 +1,294 @@
+---
+title: "6 T-tests"
+author: "Your Name Here"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: sentence
+---
+
+Load Packages
+
+```{r}
+#install.packages("openxlsx")
+
+library(foreign)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(openxlsx)#make sure to install
+```
+
+#Set the Working Directory to access data -
+
+```{r}
+
+
+```
+
+Load data: These data are from this 538 story: <https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/>
+
+The file is in excel format.
+If we want to we can use a command from the xlsx package(loaded above) to input the data directly.
+
+```{r}
+fly <- readWorkbook("fly.xlsx", sheet="fly", na.strings = "NA")
+```
+
+Packages for importing from excel directly can be finicky(due to microsoft updates etc).
+Thats ok.
+It is often easier to just click "save as" in the excel program and save your spreadsheet as a csv.
+When we do this we can use the read.csv command we've used in previous classes.
+
+Another note: similar packages exist for important data from STATA, SPSS, SAS, etc.
+
+#Code Book
+
+respondent_id RespondentID gender Gender age Age 
+
+height Height children_under_18 Do you have any children under 18?
+
+household_income Household income bracket 
+education Education Level
+
+location Location (census region) frequency How often do you travel by plane?
+
+recline_frequency Do you ever recline your seat when you fly?
+
+recline_obligation Under normal circumstances, does a person who reclines their seat during a flight have any obligation to the person sitting behind them?
+
+recline_rude Is it rude to recline your seat on a plane?
+
+recline_eliminate Given the opportunity, would you eliminate the possibility of reclining seats on planes entirely?
+
+switch_seats_friends Is it rude to ask someone to switch seats with you in order to be closer to friends?
+
+switch_seats_family Is it rude to ask someone to switch seats with you in order to be closer to family 
+
+wake_up_bathroom Is it rude to wake a passenger up if you are trying to go to the bathroom?
+
+wake_up_walk Is it rude to wake a passenger up if you are trying to walk around?
+
+baby In general, is it rude to bring a baby on a plane?
+
+unruly_child In general, is it rude to knowingly bring unruly children on a plane?
+
+two_arm_rests In a row of three seats, who should get to use the two arm rests?
+
+middle_arm_rest In a row of two seats, who should get to use the middle arm rest?
+
+shade Who should have control over the window shade?
+unsold_seat Is it rude to move to an unsold seat on a plane?
+talk_stranger Generally speaking, is it rude to say more than a few words to the stranger sitting next to you on a plane?
+get_up On a 6 hour flight from NYC to LA, how many times is it acceptable to get up if you're not in an aisle seat?
+electronics Have you ever used personal electronics during take off or landing in violation of a flight attendant's direction?
+smoked Have you ever smoked a cigarette in an airplane bathroom when it was against the rules?
+
+Getting a feel for the data
+
+```{r}
+names(fly)
+summary(fly)
+```
+
+One of the things you may noticed is the number NA responses
+
+```{r}
+#Often I want know about/ or get rid of respondents with a number of NAs
+fly$NAcount <- rowSums(is.na(fly)) #count the number of NAs in each row
+summary(fly$NAcount)
+hist(fly$NAcount)
+
+#To look at the number of NA responses for a specific variable
+sum(is.na(fly$age))
+is.na(fly$age)
+
+#Dplyr code to get NAs for each variable
+fly %>%
+  select(everything()) %>%  # replace to your needs
+  summarise_all(funs(sum(is.na(.))))
+```
+
+Most of the variables are in factor format.
+How do we know?
+
+```{r}
+table(fly$recline_rude)
+str(fly)
+is.numeric(fly$recline_rude)
+is.factor(fly$recline_rude)
+is.character(fly$recline_rude)
+```
+
+Technically, these would be considered ordinal variables, but for our purposes we can treat them as numeric.
+Thus, we need R to convert them to numeric
+
+```{r}
+fly$nrecline_rude <- as.numeric(as.factor(fly$recline_rude)) #as.numeric(as.factor) converts, but can be tricky. Be sure you check the order makes sense
+
+#much safer to do it this way
+fly$nrecline_rude <- recode(fly$recline_rude, "No"=1,"Somewhat"=2, "Very"=3)
+
+table(fly$nrecline_rude)
+table(fly$recline_rude)
+
+prop.table(table(fly$recline_rude))
+prop.table(table(fly$nrecline_rude))
+```
+
+
+```{r}
+#always a good idea to confirm values match up. For example this wouldn't work if we tried to recode height the same way
+table(fly$age)
+
+
+fly$agen <- recode(fly$age, "18-29"=1,"30-44"=2, "45-60"=3, "> 60"=4 )
+#In this case you can use nested ifelse commands or dplyr's recode. 
+table(fly$age)
+table(fly$agen)
+
+
+hist(fly$nrecline_rude, main="Majority Think Reclining is not Rude", xlab="Perceived Rudeness")
+
+
+
+
+fly$ngender <- recode(fly$gender, "Female"=0, "Male"=1)
+
+table(fly$ngender)
+table(fly$gender)
+```
+
+Convert a second variable to numeric
+
+```{r}
+fly$nrecline_frequency<- recode(fly$recline_frequency, "Never"=0, "Once in a while"=1, "About half the time"=2, "Usually"=3, "Always"=4)
+
+table(fly$nrecline_frequency)
+table(fly$recline_frequency)
+```
+
+Using ifelse to recode variables
+
+```{r}
+#sometimes we want to change labels or collapse categories - ie make frequency binary
+fly$frequentfliers <- ifelse(fly$frequency=="A few times per month"| fly$frequency=="A few times per week"|fly$frequency=="Every day", 1, 0)
+table(fly$frequentfliers) #recall | means or 
+table(fly$frequency)
+```
+
+We've done some work to make this dataset workable.
+
+We can then export this to a variety of format: (<http://www.statmethods.net/input/exportingdata.html>)
+
+```{r, eval=FALSE}
+write.csv(fly, "flyedited.csv") #This will automatically save to your working directory
+```
+
+We might think there are differences in attidues between males and females.
+First we can look at quick crosstabs
+
+```{r}
+crosstab <- table(fly$nrecline_rude, fly$gender)
+crosstab
+
+
+crosstab2 <- prop.table(crosstab, 2) #look at percentage differences between genders. The "2" indicates that the column percentage sums to 1. More info here: https://www.statmethods.net/stats/frequencies.html
+crosstab2
+
+crosstab1 <- prop.table(crosstab, 1)
+crosstab1
+
+#Triple Cross-Tab 
+crosstab3 <- table(fly$recline_rude, fly$gender, fly$edu)
+crosstab3
+
+prop.table(crosstab3)#All cells add up to 1
+
+barplot(crosstab2, main="Attitudes toward Reclining by Gender",ylab="Proportion",
+  xlab="Gender", col=c("darkblue","red", "green"),beside = TRUE, names.arg = c("No", "Somewhat", "Very","No", "Somewhat", "Very"))
+
+#Show using boxplot
+boxplot(fly$nrecline_rude~fly$gender, ylim=c(0,4))
+```
+
+Do a t-test to see if this relationship is statistical\y significant.
+ie is there a meaningful(statistically significant) difference between men and women's attitudes toward the rudeness of reclining your airplane seat?
+ie are they from the same population or different?
+
+```{r}
+t.test(fly$nrecline_rude~ fly$gender) # t= t-statistic, df= degrees of freedom, p-value= only significant (usually) if less than .05, and confidence interval
+```
+
+There are a number of options with the t-test: t.test(x, y = NULL, alternative = c("two.sided", "less", "greater"), mu = 0, paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+
+As a bit of foreshadowing, we can run the same two variables in a bivariate regression and get the same p-value.
+
+```{r}
+summary(lm(nrecline_rude~gender, data=fly))
+```
+
+Try to show this visually
+
+```{r}
+#use dplyr
+rude <- fly %>% drop_na(gender)%>% group_by(gender) %>% summarise (me = mean(nrecline_rude, na.rm=T), se=sd(nrecline_rude, na.rm=T)/sqrt(length(nrecline_rude)))
+rude #Recall, %>% is called piping. It is a way to add together code. So here I'm saying in the dataset fly, group by gender, and then calculate(summarise) by finding the mean and standard error and put all that in a new dataframe called rude
+
+p <-ggplot(aes(x=gender, y=me), data=rude, colour="blue") + geom_bar(stat="identity", colour="grey")
+ p  
+ p+geom_errorbar(aes(ymin=me-(1.96*se), ymax=me+se), 
+                  colour="red", width=.3) +
+ labs(x = "Gender", y = "Attitude toward Reclining Seats") +
+  ggtitle("Reclining Seats by Gender")
+```
+
+What about differences by education?
+
+Create a new binary variable
+
+```{r}
+table(fly$education) #Look at variable
+fly$edu <- ifelse(fly$education=="High school degree"|fly$education=="Less than high school degree", 0, 1) #creates a dummy (0, 1)
+##more advanced use of ifelse creates categorical variable
+
+table(fly$edu) #alway check to make sure. 
+```
+
+```{r}
+t.test(fly$nrecline_rude~ fly$edu)
+```
+
+Significant at .10, but not .05
+
+#Challenge:
+
+Find a statistically significant difference
+
+```{r}
+
+```
+
+Create a new binary variable and look at a different dependent variable(you may need to convert it to numeric)
+
+```{r}
+
+```
+
+```{r}
+#playing with other variables
+fly$getupn <- recode(fly$get_up, "It is not okay to get up during flight"=0, "Once"=1,"Twice"=2, "Three times"=3, "Four times"=4, "More than five times times"=5)
+table(fly$get_up)
+table(fly$getupn)
+hist(fly$getupn)
+
+
+fregm <- fly %>% group_by(frequentfliers)%>% summarise(mean=mean(getupn, na.rm=T))
+
+
+
+
+
+```
