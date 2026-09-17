@@ -9,3 +9,6 @@ Slides are in PDF format. Click a link to open or right-click to download.
 
 [Day 2- Causality](Slides/2cause.pdf)
 
+[Day 3- Probability](Slides/3probability.pdf)
+
+[Day 4- Random Variables](Slides/4RandomVariables.pdf)

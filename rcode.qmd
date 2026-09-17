@@ -38,7 +38,7 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 [Congress Data](RCode/Week 2/data_aging_congress.csv){download="data_aging_congress.csv"}
 
-## Week 3 
+## Week 3: Gap Minder
 
 [Week 3 Project](Rcode/Week 3/Week 3.Rproj){download="Week 3.Rproj"}
 
@@ -46,7 +46,7 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="RCode/Week 3/Class 3 code.Rmd" download>Class 3 code.Rmd</a>
 
 
-## Week 4
+## Week 4: Facing Change and Congress
 
 <a href="RCode/Week 4/Class 4code.Rmd" download>Class 4 code.Rmd</a>
 

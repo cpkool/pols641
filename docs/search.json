@@ -144,7 +144,7 @@
     "href": "slides.html",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality"
+    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables"
   },
   {
     "objectID": "rcode.html#day-1-getting-started-with-r",
@@ -305,7 +305,7 @@
     "href": "rcode.html#week-3",
     "title": "R Code",
     "section": "Week 3",
-    "text": "Week 3\nWeek 3 Project\nClass 3 code.Rmd"
+    "text": "Week 3\nWeek 3 Project\nUpdated 1_Intro.Rmd"
   },
   {
     "objectID": "rcode.html#week-4",
