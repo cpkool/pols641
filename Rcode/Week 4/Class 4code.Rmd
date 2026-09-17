@@ -6,16 +6,22 @@ output: pdf_document
 editor_options: 
   chunk_output_type: console
 ---
+
 ```{r,echo=FALSE,message=FALSE,warning=FALSE}
 library(formatR)#may need to install this first
 # Set so that long lines in R will be wrapped:
 knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
+
+library(tidyverse)
 ```
 
-# We'll start out illustrating concepts from discussion using R
 
 
-## Distribution of the Mean     
+## Distribution of the Mean
+
+We'll start out illustrating concepts from discussion using R
+
+
 ```{r}
 getmean=function(N, mean, sd){
   opinion=rnorm(n = N, mean=mean,sd=sd)
@@ -81,21 +87,201 @@ sd(manymeansd)
 sd(manymeanse)
 sd(manymeansf)
 ```
-     
-           
-        
+
+# Setting the working directory(again)
+################################ 
+
+Instead of using an Rproject this week we are getting to manually set our working directory (Translation: File where everything will be saved.)Always set your wd before working in R. This ensures that all your work(graphics, subsets, etc) will be saved in the same place and that R will know where to look for your data.
+
+After the setwd() command insert the file path to your own folder that you will use for this class(If it doesn't exist create it using finder or in windows).Make sure both files I emailed you, this .rmd file and the .rdata file are in that folder.
+
+There are two ways to have R tell you the file path. First, you can use the file.choose() to find the file path.Just copy and paste from the console into this code. The other is to load or set the wd directly in Rstudio, but if you do this you need paste into your code so it will knit.
+
+This is perhaps the most counter-intuitive thing you'll do in R, but it is important. Remember, do not use point and click, you need the code to knit.
+
+```{r}
+getwd() #Returns which directory you are currently working in
+setwd("/Users/colinkuehl/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 4") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
+getwd() #make sure using right folder
+```
+
+# Facing Change Data
+
+We're going to use data from the article "Facing Change: Gender and Climate Change Attitudes Worldwide" by Bush and Clayton we . Data can be found here: <https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0Y8IKW>
+
+This is just one of the many data sources they use.
+
+Notice this is a csv format dataset. 
+
+```{r}
+pewdata <- read.csv("pewdata.csv") #If working directory is set correctly and this file is in it this command should work. 
+```
+
+Lets explore the data: Variable names, \# of variables, \# of respondents
+
+```{r}
+dim(pewdata)
+names(pewdata)
+
+```
+
+Thats a lot of respondents.
+
+```{r}
+table(pewdata$Country)
+length(unique(pewdata$Country))
+
+length(unique(pewdata$WorryType))
+
+prop.table(table(pewdata$Country))
+
+str(pewdata) #This tells us what type of data R thinks we have
+```
+
+Look at climate concern
+
+```{r}
+mean(pewdata$ClimConcen)#Doesn't know what to do with NAs
+mean(pewdata$ClimConcen, na.rm = T)
+median(pewdata$ClimConce, na.rm = T)
+summary(pewdata$ClimConcen)
+
+hist(pewdata$ClimConcen)
+
+#A good way to count NAs in a column
+sum(is.na(pewdata$ClimConcen))
+sum(is.na(pewdata$Ideo))
+
+table(pewdata$Country, pewdata$Ideo)
+```
+
+Sex differences
+
+```{r}
+males <- pewdata[which(pewdata$Female==0),]
+females <- pewdata[which(pewdata$Female==1),]
+
+summary(males$ClimConcen)
+summary(females$ClimConcen)
+```
+
+Lets say we we were interested in Income and climate concern . . . .
+
+Use base R to create scatterplot
+
+```{r}
+plot(pewdata$StandIncome, pewdata$ClimConcen) #Not very helpful
+```
+
+Reduce N to make more useful
+
+```{r}
+pewsamp1 <- pewdata[sample(nrow(pewdata), 500), ]# a random sample of 500 ie a new subset
+
+mean(pewsamp1$ClimConcen, na.rm=T)
+mean(pewdata$ClimConcen, na.rm=T)
+
+plot(pewsamp1$StandIncome, pewsamp1$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(pewsamp1$ClimConcen~pewsamp1$StandIncome))
+```
+
+Using tidyverse
+
+```{r}
+pewsamp2 <- sample_n(pewdata, 500)#Notice how tidyverse uses a slighty different vocabulary and grammar
+
+mean(pewsamp2$ClimConcen, na.rm=T)#Ack! This is different from above
+
+#We can create the same figure with the ggplot package. ggplot uses a different grammar.
+ggplot(data=pewsamp2, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x)
+```
+
+There are many ways to code in R. Base R can do everything you need, but I find "the tidyverse" more intuitive so I am introducing it early with the assumption you'll find it easier as well.
+
+This is interesting, but might want to look at one country at a time.
+
+Subset the data
+
+```{r}
+usa <- pewdata[which(pewdata$Country=="United States"),]
+indo <- pewdata[which(pewdata$Country=="Indonesia"),]
+
+plot(usa$StandIncome, usa$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(usa$ClimConcen~usa$StandIncome), col="red")
+abline(lm(pewdata$ClimConcen~pewdata$StandIncome), col="blue")#add line for whole sample to make comparison
+abline(lm(indo$ClimConcen~indo$StandIncome), col="pink")
+```
+
+Create same graph using dplyr and ggplot
+
+```{r}
+USA <- filter(pewdata, Country=="United States") #This is dplyr version of what we did last time. Check out dplyr cheat sheet posted to dropbox
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("United States")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red", se=F)+geom_jitter() + theme_test()
+```
+
+An especially nice feature of tidy verse is that you can use piping(%\>%) to do multiple things in a single line of code
+
+```{r}
+pewdata %>% filter(Country=="Russia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Russia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+#This can make it much easier to run similar versions of the same graph
+pewdata %>% filter(Country=="Australia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Australia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Country=="France") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("France")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Female==1, Country=="France") %>% ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Females")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+```
+
+Your turn to play - create for another county, or look at another DV
+
+```{r}
 
 
+```
 
-We have two datasets today. The first looks at a measure of the concept of idealogy in congress. The second is about gender and the movie industry. 
+Recreating Figure 1
+
+```{r}
+ggplot(pewdata, aes(x=GDPPC)) + 
+  geom_density() #ggplot code for a histogram
+
+pewdata$female <- ifelse(pewdata$Female==1, "female", "male")
+
+bycountryg <- pewdata %>% group_by(Country, female) %>% summarise(Avgserios=mean(ClimSerious, na.rm=T), GDP=mean(GDPPC))%>% pivot_wider(names_from = female, values_from = Avgserios)%>% mutate(diff=female-male)
+bycountryg
+
+
+ggplot(bycountryg, aes(x=log(GDP), y=diff, label=Country))+geom_point()+geom_text()+ ggtitle("Gender Gap by GDP")+
+  xlab("GDP per Capita(logged)")+ ylab("Gender Gap")+geom_hline(yintercept=0, col="lightblue")+ geom_smooth(method='lm', formula= y~x, col="coral", se=F)
+```
+
+
+# Ideology in Congress
 
 As always Set your working and then Load the data(congress)
+
 ```{r}
-setwd("~/Dropbox/POLS 641/2025 641/Rcode F25/Week 4")#you will need to change for your folders
 load("congress.RData")
 ```
 
-## We'll start by exploring the validity and reliability of the DW-Nominate Scale
+### We'll start by exploring the validity and reliability of the DW-Nominate Scale
 
 This is a measure of members of congress ideology
 
@@ -103,15 +289,13 @@ This is a measure of members of congress ideology
 - A longer explainer is available [here.](https://www.swarthmore.edu/SocSci/rvalell1/documents/Nominate_000.pdf)
 - What do you think? (in terms of validity? reliability?)
 
-
 Explore the data
+
 ```{r}
 head(congress)
 length(unique(congress$name))
 
 ```
-
-
 
 ```{r Party Subset, echo=TRUE}
 ## subset the data by party
@@ -120,6 +304,7 @@ dem <- congress[congress$party == "Democrat", ] #Uses base R, but does the same 
 ```
 
 Subset Further by Congress
+
 ```{r Congress Subset, echo=TRUE}
 rep80 <- subset(rep, subset = (congress == 80))
 dem80 <- subset(dem, subset = (congress == 80))
@@ -127,12 +312,14 @@ rep112 <- subset(rep, subset = (congress == 112))
 dem112 <- subset(dem, subset = (congress == 112))
 ```
 
-## Make a Scatterplot
+###  Make a Scatterplot
+
 ```{r 80th Congress 1, echo=T}
 plot(dem80$dwnom1, dem80$dwnom2)
 ```
 
-##Make it Prettier
+Make it Prettier
+
 ```{r 80th Congress 2, echo=T}
 Demplot<-plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
      xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
@@ -140,10 +327,11 @@ Demplot<-plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue",
      ylab = "Racial liberalism/conservatism",
      main = "80th Congress")
 ```
+
 What does this tell us about the two dimensions?
 
+Let's add the GOP
 
-##Let's add the GOP
 ```{r add GOP code, eval = F, echo=T}
 plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
      xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
@@ -157,7 +345,8 @@ text(1, -1, "Republicans")
 
 *When plotting, you have to send ALL the commands at once*
 
-##Ain't it Perty?!?
+### Ain't it Perty?!?
+
 ```{r 80th Congress 3, echo=F}
 plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liberalism/conservatism", ylab = "Racial liberalism/conservatism", main = "80th Congress")
 points(rep80$dwnom1, rep80$dwnom2, pch = 17, col = "red")
@@ -165,9 +354,10 @@ text(-0.75, 1, "Democrats")
 text(1, -1, "Republicans")
 ```
 
-##Class Exercise
+### Class Exercise
 
 *Can you produce an identical plot for the 112th Congress?*
+
 ```{r, echo=F}
 
 
@@ -175,9 +365,10 @@ text(1, -1, "Republicans")
 
 *What do these plots show us? Does the measure have face validity?*
 
-
-
 ```{r 112th Congress, eval=T, echo=F}
+
+
+
 
 plot(dem112$dwnom1, dem112$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liber alism/conservatism", ylab = "Racial liberalism/conservatism", main = "112th Congress")
 points(rep112$dwnom1, rep112$dwnom2, pch = 17, col = "red")
@@ -185,19 +376,21 @@ text(-0.75, 1, "Democrats")
 text(1, -1, "Republicans")
 ```
 
-##Let's Dig into this Further
+### Let's Dig into this Further
 
 How have the median R and D Members of Congress changed over time?
 
 First calculate the median for each party by Congress:
+
 ```{r Medians, echo=T}
 dem.median <- tapply(dem$dwnom1, dem$congress, median) #Find the median of dwnom1 for each congress. You won't need to use tapply on problem sets etc, but it is pretty handy
 rep.median <- tapply(rep$dwnom1, rep$congress, median)
 ```
-#tapply is a useful command, but you won't need it for problem sets etc. Dplyr group_by does similar things
 
+tapply is a useful command, but you won't need it for problem sets etc. Dplyr group_by does similar things
 
 Now let's plot those medians for each party over time:
+
 ```{r Time Series Code, eval=F, echo=T}
 plot(names(dem.median), dem.median, col = "blue", type = "l",
      xlim = c(80, 115), ylim = c(-1, 1), xlab = "Congress",
@@ -207,7 +400,8 @@ text(110, -0.6, "Democratic\n Party")
 text(110, 0.85, "Republican\n Party")
 ```
 
-#Now repeat for the 2nd Dimension
+### Now repeat for the 2nd Dimension
+
 ```{r}
 dem.median2 <- tapply(dem$dwnom2, dem$congress, median) #Find the median of dwnom1 for each congress. You won't need to use tapply on problem sets etc, but it is pretty handy
 rep.median2 <- tapply(rep$dwnom2, rep$congress, median)
@@ -220,271 +414,12 @@ text(92, 0.6, "Democratic\n Party")
 text(92, -0.85, "Republican\n Party")
 
 ```
-Bonus: Why might we want to use the median instead of the mean here? Does using the mean change the broader story?
 
+### Bonus: 
+Why might we want to use the median instead of the mean here? Does using the mean change the broader story?
 
-Really interesting viewing of DW Nominate data: https://www.youtube.com/watch?v=M193ZIOFk0k
+Really interesting visualization of DW Nominate data: <https://www.youtube.com/watch?v=M193ZIOFk0k>
 
 
-#################################################################################################
 
-
-
-
-Load the data: These data comes from this [fivethirtyeight article](https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/)
-
-```{r}
-load("bech.RData")
-```
-
-
-
-
-Load Packages: we'll use ggplot briefly again today
-```{r}
-library(ggplot2)
-```
-
-Find the number of variables and observations - *What is our unit of analysis?*
-```{R}
-head(bech)
-```
-
-VARIABLE NAMES 
-```{r}
-names(bech) 
-variable.names(bech) 
-```
-
-What time range does the data cover?
-```{r}
-min(bech$year)
-max(bech$year)
-range(bech$year)
-```
-
-Exploring the data
-```{r}
-table(bech$clean_test)
-
-plot(bech$domgross, bech$intgross)
-
-prop.table(table(bech$binary))
-
-prop.table(table(bech$clean_test, bech$binary))
-
-barplot(table(bech$clean_test)) #show ugly bar plot
-
-```
-
-FIND THE RANGE OF GROSS REVENUE(we'll just look at domestic and standardize to 2013 dollar value)
-```{r}
-range(bech$domgross_2013)
-max(bech$domgross_2013) #Bonus: What movie is this? Hint: View(yourdata)
-min(bech$domgross_2013) #Cheers to you if you've actually watched this
-```
-
-FIND STANDARD DEVIATION AND VARIANCE - We'll take a closer look at this next week.
-Formula for Standard Deviation:
-$$\sigma = \sqrt{\frac{\sum\limits_{i=1}^{n} \left(x_{i} - \bar{x}\right)^{2}} {n-1}}$$
-More info on using math symbols in Rmarkdown is here: https://rpruim.github.io/s341/S19/from-class/MathinRmd.html
-
-```{r}
-sqrt(sum((bech$domgross_2013-mean(bech$domgross_2013))^2/(length(bech$domgross_2013)-1))) #How would we turn this into the variance?
-```
-
-Of course, it is much easier to just have R do it
-```{r}
-sd(bech$domgross_2013)
-var(bech$domgross_2013)
-sd(bech$domgross_2013)^2 #Variance = standard deviation squared.
-sqrt(var(bech$domgross_2013)) #Standard deviation = square root of variance.
-```
-
-
-
-TAKE A LOOK AT THE DISTRIBUTION OF DOMESTIC GROSS  
-```{r}
-hist(bech$domgross_2013, breaks = 15) #breaks=  number of bars
-hist(bech$domgross_2013, main="Distribution of Gross Revenue", xlab="Gross Revenue", col="blue",border="green",breaks=30, las=2) #bedazzled
-```
-
-LOOK AT THE DENSITY PLOT OF DOMESTIC GROSS
-```{r}
-plot(density(bech$domgross_2013),main="Density Distribution of Gross Revenue")
-
-ggplot(bech, aes(x=domgross_2013))+geom_density()+
-  labs(x="Domestic Gross 2013", y="Density", title="Density Distribution of Gross Revenue", caption="ggplot version")
-```
-
-How are histogram and density plot different? Which is closer to a pdf?
-```{r}
-hist(bech$domgross_2013, main="Histogram of of Gross Revenue",
-xlab="Domestic Gross 2013",breaks=20)
-
-ggplot(bech, aes(x=domgross_2013))+geom_histogram()+
-  labs(x="Domestic Gross 2013", y="Density", title="Histogram of Gross Revenue", caption="ggplot version")
-```
-
-MAKE A BOXPLOT
-```{r}
-boxplot(bech$domgross_2013, main="Boxplot of Gross Revenue", col="cornflowerblue")
-abline(h=mean(bech$domgross_2013), col="deeppink", lwd=2)
-```
-A boxplot shows the median, 25% and 75% quartile, and important outliers
-
-ADD LINES TO INDICATE THE MEAN AND MEDIAN, AND MAKE A LEGEND *(Make sure all the code stays together)*
-```{r}
-plot(density(bech$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
-abline(v=mean(bech$domgross_2013), lty=2, lwd=2, col="red") # put a vertical line at the mean 
-abline(v=median(bech$domgross_2013), lty=4, lwd=2, col="blue")
-legend("topright", legend=c("mean", "median"), lty=c(2,4), col=c("red","blue"))
-
-options(scipen=10)#This stops use of scientific notation
-```
-
-
-Take Random Samples and see how mean and median changes
-```{r}
-sample1 <- bech[sample(nrow(bech), 100), ] #Randomly samples 100 movies
-
-plot(density(sample1$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
-abline(v=mean(sample1$domgross_2013), lty=2, lwd=2, col="red") 
-abline(v=median(sample1$domgross_2013), lty=4, lwd=2, col="blue")
-legend("topright", legend=c(mean(sample1$domgross_2013), median(sample1$domgross_2013)), lty=c(2,4), col=c("red","blue"))
-
-
-sample2 <- bech[sample(nrow(bech), 100), ]
-plot(density(sample2$domgross_2013), main="Density Plot of Gross Revenue", xlab="Gross")
-abline(v=mean(sample2$domgross_2013), lty=2, lwd=2, col="red") 
-abline(v=median(sample2$domgross_2013), lty=4, lwd=2, col="blue")
-legend("topright", legend=c(mean(sample2$domgross_2013), median(sample2$domgross_2013)), lty=c(2,4), col=c("red","blue"))
-
-
-mean(sample1$domgross_2013)
-mean(sample2$domgross_2013)
-
-median(sample1$domgross_2013)
-median(sample2$domgross_2013)
-```
-
-
-
-LOOK AT THE SAMPLING DISTRIBUTION OF REVENUE AND BUDGET *(Let's put the four figures arranged in 2 rows and 2 columns)*
-```{r}
-par(mfrow=c(2,2)) ###This line of code tells R you want a 2 x 2 of smaller graphs
-hist(bech$domgross_2013, main="Histogram of Domestic Gross", breaks = 15)
-plot(density(bech$domgross_2013), main="Distribution of Domestic Gross")
-hist(bech$budget_2013, main="Histogram of Budget", breaks = 15)
-plot(density(bech$budget_2013), main="Distribution of Budget")
-```
-
-
-THIS IS NOT A NORMAL DISTRIBUTION SO MAY WANT TO CREATE LOGGED VERSION
-We will talk about transforming variables later
-```{r}
-par(mfrow=c(1,1)) #Return to just looking at one graph at a time
-bech$logdomgross13 <- log(bech$domgross_2013)#creates new logged variable
-hist(bech$logdomgross13, main="Logged Domestic Revenue")#Looks more normal, harder to interpret
-boxplot(bech$logdomgross13, main="Logged Domestic Revenue")
-
-hist(bech$domgross_2013, main="Domestic Revenue")#Looks more normal, harder to interpret
-boxplot(bech$logdomgross13, main="Logged Domestic Revenue")
-
-```
-
-
-
-LET'S USE STATS TO MAKE COMPARISONS
-
-First, find averages for films that pass and fail the Bechdel test (there are several ways to do this).
-```{r}
-pass <- bech[which(bech$binary=="PASS"), ] #Creates a new dataset of only those that pass the bechdel test
-fail <- bech[which(bech$binary=="FAIL"), ]
-mean(pass$domgross_2013)
-mean(fail$domgross_2013)
-#How many films passed and how many failed?
-
-mean(pass$budget_2013)
-mean(fail$budget_2013)
-
-ggplot(bech, aes(x=logdomgross13, fill=binary)) +
-    geom_density( alpha=.5, position="identity") #overlay both distributions
-```
-
-Second, simple algebra to find difference.
-```{r}
-grossdiff <- mean(pass$domgross_2013)-mean(fail$domgross_2013)
-grossdiff
-```
-
-*Another method for finding mean of subset (more here: http://www.statmethods.net/management/subset.html)*
-```{r}
-xbar_pass_t <- mean(bech$domgross_2013[bech$binary=="PASS"])
-xbar_fail_t <- mean(bech$domgross_2013[bech$binary=="FAIL"])
-DIFF <- (xbar_pass_t - xbar_fail_t)
-DIFF
-```
-
-Show Both Box Plots
-```{r}
-boxplot(pass$domgross_2013)
-boxplot(fail$domgross_2013)
-#or from original dataset
-boxplot(bech$domgross_2013~bech$binary) 
-#using ggplot
-ggplot(bech, aes(binary,domgross_2013))+geom_boxplot()+
-  labs(y="Domestic Gross 2013", x="Bechdel Test") #creates boxplots based on values of binary
-
-#to illustrate we can use this for variety of categories(and logged)
-ggplot(bech, aes(test,logdomgross13))+geom_boxplot()+
-  labs(y="Domestic Gross 2013", x="Bechdel Test")+ theme(axis.text.x=element_text(angle = -45, hjust = 0))
-
-
-
-ggplot(bech, aes(as.factor(year),logdomgross13))+geom_boxplot()+
-  labs(y="Domestic Gross 2013", x="Bechdel Test")+ theme(axis.text.x=element_text(angle = -90, hjust = 0))
-
-```
-
-FINDING RELATIONSHIPS *(Let's see if bigger budgets are related to a higher gross)*
-```{r}
-par(mfrow=c(1,1)) #show one graph at a time
-plot(bech$budget, bech$domgross_2013, main="Gross Revenue and Budget", xlab = "Budget", ylab = "Gross Revenue")
-```
-
-
-How would we create the same plot using ggplot? (hint: look at last week's code)
-```{r}
-
-```
-
-
-IT'S HARD TO SEE A PATTERN FROM THE PLOT, SO LET'S MAKE A LINEAR REGRESSION MODEL: REMEMBER THE MODEL IS lm(Y ~ X, data=nameofdata)
-```{r}
-plot(bech$budget, bech$domgross_2013, main="Gross Revenue and Budget", xlab = "Budget", ylab = "Gross Revenue")
-model1 <- lm(domgross_2013~budget, data=bech) #Making an object for a linear regression model. Notice how I access the variables used... 
-summary(model1)
-abline(model1, col = "purple", lty=2) #This puts the trend line
-
-abline(lm(pass$domgross_2013~pass$budget_2013), lty=3, lwd=2, col="pink") #for fun add lines for films that pass bechdel test
-abline(lm(fail$domgross_2013~fail$budget_2013), lty=4, lwd=2, col="blue")
-legend("topright", legend=c("All", "Pass", "Fail"), lty=c(2,3,4), col=c("purple","pink", "blue"))
-```
-What do the different slopes mean?What does this tell us about the profitability of inclusing in the movie industry?
-
-
-Another Subset: We may also want to exclude outliers
-```{r}
-middle <- subset(bech, budget_2013 >= 1000000 & budget_2013 < 10000000) #only budgets between 1 and 10 millsion
-summary(middle$budget_2013)
-
-#do the relationships change when we control for outliers(hint: use copy and paste plus find and replace)
-
-
-
-#What about when we use the log of gross
-
-```
-################################################################
-
+Make sure to knit and, if you'd like, save the data.

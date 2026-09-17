@@ -21,8 +21,8 @@ Brief illustration of the law the large numbers
 
 ```{r}
 #Don't worry about the code here. This is just an illustration. 
-n<-c(1:1000) #creates a vector of 1 to 100
-weight<-rnorm(1000,3,.5) #Create a vector of length 100, with a mean of 3, and sd of .5
+n<-c(1:100) #creates a vector of 1 to 100
+weight<-rnorm(100,3,.5) #Create a vector of length 100, with a mean of 3, and sd of .5
 hist(weight)#quick histogram of what we just created
 s<-cumsum(weight) #cumulative sum
 wmean <- s/n #finds mean at each point
@@ -37,7 +37,7 @@ abline(h=3, col="red")#horizontal line at the mean
 d1 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
   d2 <- sample(1:6, 100000, prob=rep(1/6, 6), replace=TRUE) 
 
-  hist(d1)#Expected uniform distribution for a singe die
+hist(d1)#Expected uniform distribution for a singe die
                                      
 die.roll <- d1 + d2 #sum of 2 dice
                                              
@@ -45,6 +45,7 @@ hist(die.roll, breaks= seq(0, 12, by=.5), prob=FALSE, col="red", main="Frequency
 summary(die.roll)
 
 table(die.roll)
+prop.table(table(die.roll))
                                              
   ## plot PMF 
                                              
@@ -59,7 +60,7 @@ plot(roll, prval, col="red", main="Probability Mass Function", xlab = "Value of 
   #CDF = cumulative distribution function - probability that X will take a value less than or equal to X
 cprval <- cumsum(prval) 
                                              
- plot(roll, cprval, col="red", main="Probability Mass Function", xlab = "Value of Roll",  ylab="Probability", pch=19)
+ plot(roll, cprval, col="red", main="Cumulative Mass Function", xlab = "Value of Roll",  ylab="Probability", pch=19)
 ```
 
 Creating different distributions
@@ -103,6 +104,8 @@ library(tidyverse)
 library(ggplot2)
 
 #I use these two packages almost every R session
+
+#setwd("/Users/colinkuehl/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 3")
 ```
 
 
@@ -150,8 +153,9 @@ b)What country has the highest life expectancy?
 
 ```{r}
 
-
-
+plot(gapminder$lifeExp, gapminder$pop)
+table(gapminder$year)
+table(gapminder$country)
 
 
 ```

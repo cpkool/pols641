@@ -44,3 +44,12 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 
 <a href="RCode/Week 3/Class 3 code.Rmd" download>Class 3 code.Rmd</a>
+
+
+## Week 4
+
+<a href="RCode/Week 4/Class 4code.Rmd" download>Class 4 code.Rmd</a>
+
+<a href="RCode/Week 4/PewData.csv" download>Facing Change</a>
+
+<a href="RCode/Week 4/congress.RData" download>Congress Data</a>
