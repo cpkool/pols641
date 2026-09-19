@@ -24,6 +24,20 @@ Problem sets are completed individually, but you can work with each other as you
 [Data](psets/pset1/hate_crimes.RData)    
 
 <a href="psets/pset1/pset 1.Rproj" download>R Project</a> 
+
+# Problem Set #2
+
+<a href="psets/pset2/Pset 2 2026.Rmd" download>Problem Set 1 rmd</a> 
+
+[Understanding America Data](psets/pset2/uas2024.csv)    
+
+[GSS Data](psets/pset2/gss.csv)    
+
+[GSS Codebook](psets/pset2/GSS Codesheet.xlsx)    
+
+
+
+
 :::
 
 ::: {.column width="40%"}

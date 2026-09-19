@@ -1,0 +1,170 @@
+---
+title: "Pset 2 - POLS 641 F25"
+author: "Your Name"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+fig_width: 6
+editor_options: 
+  
+  chunk_output_type: console
+---
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(formatR)#
+# Set so that long lines in R will be wrapped:
+options(width=80)
+knitr::opts_chunk$set(echo = TRUE,out.width = 400, tidy=T, tidy.opts=list(width.cutoff=60))
+```
+
+Welcome to Problem Set #2!
+
+As specified above the knitted output for this problem set should be a pdf. When completed please upload your knitted pdf and .rmd file to blackboard. All students must submit a knitted pdf for this assignment. Remember to write your code in the shaded R section and text outside of it. Please answer all questions in full and don't forget to knit as you go.
+
+*Submit both your pdf file and the rmarkdown file to Blackboard.*
+
+### Part 1
+
+Our first dataset comes from the **General Social Survey.** The subset of the survey is a small sample of the demographic and public opinion questions asked in the gss. For more information check it out [here](gssdataexplorer.norc.org).
+
+Variable description are in the included excel sheet.
+
+#1a Set your working directory and load the gss.csv data:
+
+```{r}
+
+```
+
+#1b Getting to know our data: How many observations? of many variables? What is the percentage of males vs females? What is the average age? What percent from each race? With the aid of the internet, do these percentages indicate a representative sample of the United States population? ie are the proportions the same across the different demographics
+
+```{r}
+
+```
+
+#2a Create a histogram of education. Add a vertical line at the mean and median. What is the standard deviation? How would you describe this distribution?
+
+```{r}
+
+```
+
+#2b Create a new dataframe consisting a random sample of 100 respondents. Repeat step 2a above. How does the smaller sample change the shape of distribution? What about the variance? What about when you your random sample is only 1000 respondents? How do we expect changing the number of respondents to affect the accuracy of our estimates?
+
+```{r}
+
+```
+
+#2d Create a new dataframe for two different regions of your choosing. Then repeat step 2a . How does this change the distribution? Do you think there are important differences in either income or education between the two states you chose? Why do you think so?
+
+```{r}
+
+```
+
+#3 Is there a difference in support for affirmative action(helpblk) between males and females? Create a figure with boxplots for each. Support your answer by finding the mean and median level of support by gender.
+
+```{r}
+
+```
+
+#4a Create a density plot of the aaffirmative action(helpblk) variable. Describe the distribution.
+
+```{r}
+
+```
+
+#4b Is there differences in support for affirmative action by party? To be more sure, use boxplots to show difference in support by party.
+
+```{r}
+
+
+```
+
+#4c Create a scatterplot with education as your independent variable and support for affirmative action variable as the dependent variable. Add the trend line. What does this graph suggest about the relationship between education and support for affirmative action? Be sure to make your graph look professional.
+
+```{r}
+
+```
+
+**Just4Fun** If you need a break, this is your professor's favorite song about statistics: <https://www.youtube.com/watch?v=IUK6zjtUj00> \* . . . but he does not support the songs conclusions, nor its language\*
+
+#4d Create subsets for each party(Dem, Rep, Independent) and then add trend lines for each to a single graph. (Hint: Use colors to differentiate partys.) How do the trend lines differ? What does this add to understanding of the relationship between education and racial politics? Does education matter more for one party vs the other.
+
+```{r}
+
+```
+
+#5 Using your knowledge of the data and R find and explain something in the data you find interesting.Use both descriptive statistics and figure(s) to make your point. Hint: use subsets to make comparisons or illustrate relationships and show it using the appropriate figure. There are lots of interesting public opionion questions in the dataset Be Creative! Be Nerdy!(and don't forget to bedazzle)
+
+```{r}
+
+```
+
+**R challenge:** On the scatterplots above, use different colored dots for the different parties.
+
+### Part 2
+
+Opinions about specific issues are interesting, but sometimes we want to look at votes. In this section we will use data **Understanding America Survey.** This poll was taken before the 2024 presidential between Oct 18th and Oct 29 2024. The election was November 3rd. For more information check out *uasdata.usc.edu.*Variable descriptions are below:
+
+gender: the gender of the respondent.
+
+age: the age of the respondent at the start of the survey.
+
+education: the highest level of education attained by the respondent. Ranges from 1(less than first grade) to 16 (Doctorate).
+
+hhincome: is the total combined income of all members of the respondent’s household (living in their household) during the past 12 months in character form.
+
+income: same as above but put on a numeric scale from 1-16.
+
+party: party they are affiliated with(Democrat, Republican, Other)
+
+probvote: likelihood the respondent will vote
+
+presvote: Who the respondent is most likely to vote for in the upcoming election
+
+Vote24Trump/Vote24Harris/Vote24Other: likelihood of voting for each candidate
+
+ContactsHarris/ContactsTrump: Expected percentage number of social contacts voting for each candidate
+
+#1 load uas 2024 data set. How do the demographic indicators compare to the survey above and to the country as a whole?
+
+```{r}
+
+```
+
+#2 According to this poll, who should've won the popular vote for president? What should the percentages be? Can we assume the actual election results should be similar?
+
+```{r}
+
+```
+
+#3 Take a random sample of 10, 20, 50, and then 100 respondents.Do any of the samples predict a different outcome in the presidential race than the sample as whole? Statistically, which sample would we expect to be closest to the true value? why?(note the samples will have different values when you knit)
+
+```{r}
+
+```
+
+#4 Are there difference in the likelihood of voting between those that support Trump, Harris, or that are undecided? Create a boxplot to show the differences
+
+```{r}
+
+```
+
+#5 Find something interesting in the data. Tell me something useful(or debunk a common assumption) about the presidential race. Be sure to include illustrate your finding with a properly labelled figure. *This is your chance to be curious and show off what you are learning*
+
+```{r}
+
+```
+
+### Part 3
+
+##1. *If you repeatedly draw a sample and take a mean, how will the distribution of the mean change if your sample size is small versus big? If the variance of the underlying population is small versus big? Explain.*
+
+##2 *An art history grad student friend of yours asks "What is a random variable and why do you care?" In your own words, how would you answer?*
+
+##3 *Slightly bemused, your art friend claims he's always hearing forms of the term "random" thrown around by positivists. Explain, in a way an art student would understand, the difference between a random variable, randomization, and a random sample.*
+
+##4 *You're on a roll now. In your own words, explain the difference between these terms and put them in a logical sequence: Estimate, Estimand, Estimator. Then give one example of each.*
+
+##5 *A political analyst is interested in the outcome of the 2026 federal elections for the House, the Senate, and the Presidency in the United States. Specifically, she hypothesizes that the election will result in a divided government (i.e., in one party failing to gain control of all three \`branches' of government). Assuming that only the Democratic and Republican parties compete in the election, what is the sample space(*$\Omega$) of election outcomes for the three branches?
+
+##6 *What concept(s), learned thus far in class, are you struggling the most with?*
+
+##7 *Did you find this problem set easier or harder than problem set #1. Please feel free to explain/vent.*
