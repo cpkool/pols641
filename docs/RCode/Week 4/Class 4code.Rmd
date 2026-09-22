@@ -7,20 +7,18 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r,echo=FALSE,message=FALSE,warning=FALSE}
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
 library(formatR)#may need to install this first
 # Set so that long lines in R will be wrapped:
-knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE, out.width = "100%")
+
 
 library(tidyverse)
 ```
 
-
-
 ## Distribution of the Mean
 
 We'll start out illustrating concepts from discussion using R
-
 
 ```{r}
 getmean=function(N, mean, sd){
@@ -89,7 +87,8 @@ sd(manymeansf)
 ```
 
 # Setting the working directory(again)
-################################ 
+
+
 
 Instead of using an Rproject this week we are getting to manually set our working directory (Translation: File where everything will be saved.)Always set your wd before working in R. This ensures that all your work(graphics, subsets, etc) will be saved in the same place and that R will know where to look for your data.
 
@@ -101,7 +100,7 @@ This is perhaps the most counter-intuitive thing you'll do in R, but it is impor
 
 ```{r}
 getwd() #Returns which directory you are currently working in
-setwd("/Users/colinkuehl/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 4") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
+setwd("~/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 4") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
 getwd() #make sure using right folder
 ```
 
@@ -111,7 +110,7 @@ We're going to use data from the article "Facing Change: Gender and Climate Chan
 
 This is just one of the many data sources they use.
 
-Notice this is a csv format dataset. 
+Notice this is a csv format dataset.
 
 ```{r}
 pewdata <- read.csv("pewdata.csv") #If working directory is set correctly and this file is in it this command should work. 
@@ -272,7 +271,6 @@ ggplot(bycountryg, aes(x=log(GDP), y=diff, label=Country))+geom_point()+geom_tex
   xlab("GDP per Capita(logged)")+ ylab("Gender Gap")+geom_hline(yintercept=0, col="lightblue")+ geom_smooth(method='lm', formula= y~x, col="coral", se=F)
 ```
 
-
 # Ideology in Congress
 
 As always Set your working and then Load the data(congress)
@@ -312,7 +310,7 @@ rep112 <- subset(rep, subset = (congress == 112))
 dem112 <- subset(dem, subset = (congress == 112))
 ```
 
-###  Make a Scatterplot
+### Make a Scatterplot
 
 ```{r 80th Congress 1, echo=T}
 plot(dem80$dwnom1, dem80$dwnom2)
@@ -415,11 +413,10 @@ text(92, -0.85, "Republican\n Party")
 
 ```
 
-### Bonus: 
+### Bonus:
+
 Why might we want to use the median instead of the mean here? Does using the mean change the broader story?
 
 Really interesting visualization of DW Nominate data: <https://www.youtube.com/watch?v=M193ZIOFk0k>
-
-
 
 Make sure to knit and, if you'd like, save the data.

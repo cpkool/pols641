@@ -84,8 +84,10 @@ subtitle: "Required and recommended readings, organized by week."
 **Readings:**
 
 - Bailey Ch. 4
-- Resnick, Brian. 2019. "Statistical Significance." *Vox*.
-- Hullman, Jessica. 2019. "How to Get Better at Embracing Unknowns." *Scientific American*.
+- Resnick, Brian. 2019. ["Statistical Significance."](https://www.vox.com/latest-news/2019/3/22/18275913/statistical-significance-p-values-explained) *Vox*.
+- [Hullman, Jessica. 2019. "How to Get Better at Embracing Unknowns."](https://users.eecs.northwestern.edu/~jhullman/sciam_hullman.pdf) *Scientific American*.
+
+- Research in Action Egan, Bisbee, and Tucker. 2026 ["Predictors and Prevalance of support for white nationalism in the United States"](https://www.nature.com/articles/s41586-026-11018-0)
 
 **Recommended:**
 
@@ -102,7 +104,7 @@ subtitle: "Required and recommended readings, organized by week."
 **Readings:**
 
 - Bailey Ch. 3
-- Diez et al. "Ch. on Regression." *OpenIntro Statistics* (skim).
+- [Diez et al. "Ch. on Regression."](https://www.openintro.org/go/?id=os4_for_screen_reader&referrer=/book/os/index.php) *OpenIntro Statistics* (skim).
 
 ::: due
 **Due:** Datacamp — Foundations of Inference
