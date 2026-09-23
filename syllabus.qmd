@@ -212,7 +212,7 @@ The tentative schedule is below. Some topics will take just a week, others more.
 - Gerring, John. "Concepts and Measures." In *Social Science Methodology*.
 
 ::: due
-**Due:** Datacamp — Exploratory Data Analysis in R
+**Due:** Datacamp — Exploratory Data Analysis in R & Foundations of Inference in R
 :::
 
 ------------------------------------------------------------------------
@@ -243,7 +243,7 @@ The tentative schedule is below. Some topics will take just a week, others more.
 - Diez et al. "Ch. on Regression." *OpenIntro Statistics* (skim).
 
 ::: due
-**Due:** Datacamp — Foundations of Inference
+**Due:** Datacamp — Importing Data & Cleaning Data
 :::
 
 ------------------------------------------------------------------------
@@ -271,7 +271,7 @@ The tentative schedule is below. Some topics will take just a week, others more.
 - Bailey Ch. 6
 
 ::: due
-**Due:** Datacamp — Intro to Importing Data and Cleaning Data in R
+**Due:** Datacamp — Reshaping Data with tidyr & Intermediate Regression
 :::
 
 ------------------------------------------------------------------------
@@ -309,7 +309,7 @@ The tentative schedule is below. Some topics will take just a week, others more.
 - Rubin, Donald. 1974. "Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies." *Journal of Educational Psychology* 66(5).
 
 ::: due
-**Due:** Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr
+**Due:** Datacamp — Intermediate Data visualization with ggplot2 & Reporting with R Markdown
 :::
 
 ------------------------------------------------------------------------
@@ -340,7 +340,7 @@ The tentative schedule is below. Some topics will take just a week, others more.
 ### Week 14 — Nov 24: Hackathon (Thanksgiving Week)
 
 ::: due
-**Due:** Datacamp — At least one chapter of your choice
+**Due:** Datacamp — At least two classes of your choice
 :::
 
 ------------------------------------------------------------------------
