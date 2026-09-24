@@ -53,3 +53,10 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="RCode/Week 4/PewData.csv" download>Facing Change</a>
 
 <a href="RCode/Week 4/congress.RData" download>Congress Data</a>
+
+## Week 5: Energy Opinions
+
+<a href="RCode/Week 5/5 Concepts and Cleaning.Rmd" download>5 Concepts and Cleaning.Rmd</a>
+
+<a href="Rcode/Week 5/energsurv.xlsx" download>energysurv.xlsx</a>
+
