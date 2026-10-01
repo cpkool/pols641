@@ -58,8 +58,6 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 <a href="RCode/Week 5/5 Concepts and Cleaning.Rmd" download>5 Concepts and Cleaning.Rmd</a>
 
-<a href="Rcode/Week 5/energsurv.csv" download>energy survey csv</a>
-
 <a href="Rcode/Week 5/energsurv.xlsx" download>energy survey xls</a>
 
 <a href="Rcode/Week 5/Codebook.pdf" download>energy survey codebook</a>
@@ -67,13 +65,13 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 ## Week 6: Catch Up and WB Data
 
-<a href="RCode/Week 6/wk6 26 wbdata.Rmd" download>6 World Bank Explore</a>
+<a href="RCode/Week 6/wk6 26 wbdata.Rmd" download> World Bank Explore</a>
 
 <a href="RCode/Week 6/wb_indicators_2020.csv" download>Back Up Data</a>
 
 
 ## Week 7: Flying Opinions
 
-<a href="RCode/Week 6/7 Hyp  test 26.Rmd" download> 7 Hypothesis Testing</a>
+<a href="RCode/Week 6/7 Hyp  test 26.Rmd" download>  Hypothesis Testing</a>
 
-<a href="RCode/Week 6/fly.xlsx" download>7 Flying data</a>
+<a href="RCode/Week 6/fly.xlsx" download> Flying data</a>
