@@ -62,6 +62,8 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 <a href="Rcode/Week 5/energsurv.xlsx" download>energy survey xls</a>
 
+<a href="Rcode/Week 5/Codebook.pdf" download>energy survey codebook</a>
+
 
 ## Week 6: Catch Up and WB Data
 
