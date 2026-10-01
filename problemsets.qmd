@@ -38,7 +38,7 @@ Problem sets are completed individually, but you can work with each other as you
 
 # Problem Set #3
 
-<a href="psets/pset2/Pset 3.Rmd" download>Problem Set 3 rmd</a> 
+<a href="psets/pset3/Pset 3.Rmd" download>Problem Set 3 rmd</a> 
 
 [Fearon Laitin Data](psets/pset3/fl2.xlsx)
 
