@@ -105,48 +105,6 @@
     "text": "Setup: Installing R & RStudio\n\nInstall R from cran.r-project.org\nInstall RStudio from posit.co\n\n\nClass code will be posted here as the course progresses."
   },
   {
-    "objectID": "problemsets.html",
-    "href": "problemsets.html",
-    "title": "Problem Sets",
-    "section": "",
-    "text": "Problem Set Due Dates\n\nProblem Set #1: Sept. 16th\nProblem Set #2: Sept. 30th\nProblem Set #3: Oct. 14th\nProblem Set #4: Oct. 28th\nProblem Set #5: Nov. 18th\n\nProblem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered .html Quarto file to Blackboard by 11:59pm on the due date.\nProblem set files will be posted here as the course progresses.\n\n\nProblem Set #1\nProblem Set 1 rmd\nData\nR Project\n\n\nProblem Set #2\nProblem Set 1 rmd\nUnderstanding America Data\nGSS Data\nGSS Codebook"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "This is the course website for POLS 641: Research Methods, taught by Dr. Colin Kuehl at Northern Illinois University."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "POLS 641: Research Methods - Dr. Colin Kuehl",
-    "section": "",
-    "text": "Welcome to the course website for POLS 641: Research Methods.\nThis course introduces the fundamental concepts of research design and data analysis using R. No prior programming experience required.\nPlease check out the Syllabus for detailed course information. This website will be updated as the semester approaches and then throughout the course.\nIf you have questions please email Dr. Kuehl at ckuehl@niu.edu"
-  },
-  {
-    "objectID": "project.html",
-    "href": "project.html",
-    "title": "Final Project",
-    "section": "",
-    "text": "Final Paper Due: December 13th\nGrade Breakdown 50% of Course grade"
-  },
-  {
-    "objectID": "readings.html",
-    "href": "readings.html",
-    "title": "Readings",
-    "section": "",
-    "text": "Week 1 — Aug 25: Introductions\nReadings:\n\nMutz, Diana and Soha Rao. 2018. “The Real Reason Liberals Drink Lattes.” PS: Political Science & Politics 51(4).\nAchen, Christopher. “Advice for Students Taking a First Political Science Graduate Course in Statistical Methods.” The Political Methodologist.\n\nRecommended:\n\nWheelan, Charles. 2012. “Why I Hate Calculus, but Love Statistics.” In Naked Statistics.\n\n\n\n\nWeek 2 — Sep 1: Causality and Inference\nReadings:\n\nBailey Ch. 1\n\nRecommended:\n\nAngrist, Joshua and Jörn-Steffen Pischke. 2009. “Questions about Questions.” In Mostly Harmless Econometrics.\n\n\n\n\nWeek 3 — Sep 8: Probability Theory\nReadings:\n\nDiez, David, Christopher Barr, and Mine Çetinkaya-Rundel. “Ch. 3: Probability.” OpenIntro Statistics.\n\n\nDue: Datacamp — Introduction to R\n\n\n\n\nWeek 4 — Sep 15: Random Variables\nReadings:\n\nBailey Ch. 3, pp. 49–64\nBush and Clayton “Facing Change”\n\n\nDue: Problem Set #1\n\n\n\n\nWeek 5 — Sep 22: Measurement\nReadings:\n\nAdcock, Robert and David Collier. 2002. “Measurement Validity: A Shared Standard for Qualitative and Quantitative Research.” American Political Science Review 96(3).\n\n(Read 1, skim 1)\n\nPollock Ch. 1 and 2\nImai, Kosuke. 2017. “Measurement.” In Quantitative Social Science.\n\nRecommended:\n\nGerring, John. “Concepts and Measures.” In Social Science Methodology.\n\n\nDue: Datacamp — Exploratory Data Analysis in R\n\n\n\n\nWeek 6 — Sep 29: Hypothesis Testing\nReadings:\n\nBailey Ch. 4\nResnick, Brian. 2019. “Statistical Significance.” Vox.\nHullman, Jessica. 2019. “How to Get Better at Embracing Unknowns.” Scientific American.\nResearch in Action Egan, Bisbee, and Tucker. 2026 “Predictors and Prevalance of support for white nationalism in the United States”\n\nRecommended:\n\nExplore “Seeing Theory”\n\n\nDue: Problem Set #2\n\n\n\n\nWeek 7 — Oct 6: Bivariate Regression\nReadings:\n\nBailey Ch. 3\nDiez et al. “Ch. on Regression.” OpenIntro Statistics (skim).\n\n\nDue: Datacamp — Foundations of Inference\n\n\n\n\nWeek 8 — Oct 13: Multivariate Regression\nReadings:\n\nBailey Ch. 5\n\nRecommended:\n\nSykes, Alan O. 1993. “An Introduction to Regression Analysis.” Coase-Sandor Institute for Law and Economics Working Paper.\n\n\nDue: Problem Set #3\n\n\n\n\nWeek 9 — Oct 20: Binary and Categorical Variables\nReadings:\n\nBailey Ch. 6\n\n\nDue: Datacamp — Intro to Importing Data and Cleaning Data in R\n\n\n\n\nWeek 10 — Oct 27: Model Specification\nReadings:\n\nBailey reskimming Ch. 3–5, Ch. 7\nOnline Supplement: Interaction Effects\n\nRecommended:\n\nXu, Yiqing. 2021. “A Basic Checklist for Observational Studies in Political Science.” [Working paper]\n\n\nDue: Problem Set #4\n\n\n\n\nWeek 11 — Nov 3: Causal Inference and Experiments\nReadings:\n\nBailey Ch. 10\nImbens, Guido and Donald Rubin. 2015. “Causality: The Basic Framework.” In Causal Inference for Statistics, Social, and Biomedical Sciences.\nHealy, Kieran. 2019. Ch. 1. Data Visualization: A Practical Introduction.\nHernán, M., J. Hsu, and B. Healy. 2019. “A Second Chance to Get Causal Inference Right.” CHANCE 32(1): 42–49.\n\nRecommended:\n\nList, John A., Sally Sadoff, and Mathis Wagner. 2010. “So You Want to Run an Experiment, Now What?” Experimental Economics.\nTufte, Edward. 2001. The Visual Display of Quantitative Information.\nRubin, Donald. 1974. “Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.” Journal of Educational Psychology 66(5).\n\n\nDue: Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr\n\n\n\n\nWeek 12 — Nov 10: Review and Midterm\n\n\n\nWeek 13 — Nov 17: Mixed Methods\nReadings:\n\nBailey Ch. 12, Ch. 16\nLieberman, Evan S. 2005. “Nested Analysis as a Mixed-Method Strategy for Comparative Research.” American Political Science Review 99(3).\nWeller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. Finding Pathways.\n\nRecommended:\n\nSeawright, Jason. 2016. Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide.\nBowers, Jake and Maarten Voors. 2016. “How to Improve Your Relationship with Your Future Self.” Revista de Ciencia Política 34(3).\n\n\nDue: Problem Set #5\n\n\n\n\nWeek 14 — Nov 24: Hackathon (Thanksgiving Week)\n\nDue: Datacamp — At least one chapter of your choice\n\n\n\n\nWeek 15 — Dec 1: Research Presentations"
-  },
-  {
-    "objectID": "slides.html",
-    "href": "slides.html",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement\nDay 6- Hypothesis Testing"
-  },
-  {
     "objectID": "rcode.html#day-1-getting-started-with-r",
     "href": "rcode.html#day-1-getting-started-with-r",
     "title": "R Code",
@@ -159,6 +117,48 @@
     "title": "R Code",
     "section": "Day 2: R Basics",
     "text": "Day 2: R Basics\nClass2code.Rmd\nDonut Data\nCongress Data"
+  },
+  {
+    "objectID": "rcode.html#week-3-gap-minder",
+    "href": "rcode.html#week-3-gap-minder",
+    "title": "R Code",
+    "section": "Week 3: Gap Minder",
+    "text": "Week 3: Gap Minder\nWeek 3 Project\nClass 3 code.Rmd"
+  },
+  {
+    "objectID": "rcode.html#week-4-facing-change-and-congress",
+    "href": "rcode.html#week-4-facing-change-and-congress",
+    "title": "R Code",
+    "section": "Week 4: Facing Change and Congress",
+    "text": "Week 4: Facing Change and Congress\nClass 4 code.Rmd\nFacing Change\nCongress Data"
+  },
+  {
+    "objectID": "rcode.html#week-5-energy-opinions",
+    "href": "rcode.html#week-5-energy-opinions",
+    "title": "R Code",
+    "section": "Week 5: Energy Opinions",
+    "text": "Week 5: Energy Opinions\n5 Concepts and Cleaning.Rmd\nenergy survey xls\nenergy survey codebook\nEnergy Survey"
+  },
+  {
+    "objectID": "rcode.html#week-6-catch-up-and-wb-data",
+    "href": "rcode.html#week-6-catch-up-and-wb-data",
+    "title": "R Code",
+    "section": "Week 6: Catch Up and WB Data",
+    "text": "Week 6: Catch Up and WB Data\n World Bank Explore\nBack Up Data"
+  },
+  {
+    "objectID": "rcode.html#week-7-flying-opinions",
+    "href": "rcode.html#week-7-flying-opinions",
+    "title": "R Code",
+    "section": "Week 7: Flying Opinions",
+    "text": "Week 7: Flying Opinions\n Hypothesis Testing\n Flying data"
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Final Paper Due: December 13th\nGrade Breakdown 50% of Course grade"
   },
   {
     "objectID": "project.html#overview",
@@ -217,6 +217,34 @@
     "text": "Unsolicited Advice\n\nStart early!!!\nTake problem sets seriously, take good notes, and do your own work\nDon’t procrastinate. Go above and beyond on each component task\nGet comfortable using online resources\nBuild in extra time for Rguments\nBe cuRious — take the time to teach yourself something new in R\nGive yourself time to edit and revise\nChannel your inner social scientist and have fun"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "POLS 641: Research Methods - Dr. Colin Kuehl",
+    "section": "",
+    "text": "Welcome to the course website for POLS 641: Research Methods.\nThis course introduces the fundamental concepts of research design and data analysis using R. No prior programming experience required.\nPlease check out the Syllabus for detailed course information. This website will be updated as the semester approaches and then throughout the course.\nIf you have questions please email Dr. Kuehl at ckuehl@niu.edu"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This is the course website for POLS 641: Research Methods, taught by Dr. Colin Kuehl at Northern Illinois University."
+  },
+  {
+    "objectID": "problemsets.html",
+    "href": "problemsets.html",
+    "title": "Problem Sets",
+    "section": "",
+    "text": "Problem Set Due Dates\n\nProblem Set #1: Sept. 16th\nProblem Set #2: Sept. 30th\nProblem Set #3: Oct. 14th\nProblem Set #4: Oct. 28th\nProblem Set #5: Nov. 18th\n\nProblem sets are completed individually, but you can work with each other as you complete them. Each includes a data file and a starter R script. Download both, complete your work in RStudio, and submit your rendered .html Quarto file to Blackboard by 11:59pm on the due date.\nProblem set files will be posted here as the course progresses.\n\n\nProblem Set #1\nProblem Set 1 rmd\nData\nR Project\n\n\nProblem Set #2\nProblem Set 1 rmd\nUnderstanding America Data\nGSS Data\nGSS Codebook\n\n\nProblem Set #3\nProblem Set 3 rmd\nFearon Laitin Data\nDeKalb Temps\nProfessor Chaos"
+  },
+  {
+    "objectID": "psets/Presentation Template.html#title-slide",
+    "href": "psets/Presentation Template.html#title-slide",
+    "title": "Research Title Here",
+    "section": "Title Slide",
+    "text": "Title Slide"
+  },
+  {
     "objectID": "psets/Presentation Template.html#research-puzzle",
     "href": "psets/Presentation Template.html#research-puzzle",
     "title": "Research Title Here",
@@ -235,7 +263,7 @@
     "href": "psets/Presentation Template.html#hypotheses",
     "title": "Research Title Here",
     "section": "Hypotheses",
-    "text": "Hypotheses\nBased on [theory / mechanism], I derive the following expectations:\n\n\nH1 (Main): As X increases, Y increases, because [mechanism].\nNull Hypothesis If [rival theory] holds, we would instead expect [alternative pattern]."
+    "text": "Hypotheses\nBased on [theory / mechanism], I derive the following expectations:\n\nH1 (Main): As X increases, Y increases, because [mechanism].\nNull Hypothesis If [rival theory] holds, we would instead expect [alternative pattern]."
   },
   {
     "objectID": "psets/Presentation Template.html#measurement",
@@ -256,7 +284,7 @@
     "href": "psets/Presentation Template.html#descriptive-statistics-cont.",
     "title": "Research Title Here",
     "section": "Descriptive Statistics (cont.)",
-    "text": "Descriptive Statistics (cont.)\n\n\n\n\n\n\n\n\nFigure 1: Distribution of Outcome by Regime Type"
+    "text": "Descriptive Statistics (cont.)\n\n\nFigure 1: Distribution of Outcome by Regime Type"
   },
   {
     "objectID": "psets/Presentation Template.html#primary-regression-results",
@@ -270,7 +298,7 @@
     "href": "psets/Presentation Template.html#regression-robustness-checks",
     "title": "Research Title Here",
     "section": "Regression Robustness Checks",
-    "text": "Regression Robustness Checks\n\n\n\n\n\n\n\n\nFigure 2: Coefficient Plot — Robustness Across Specifications\n\n\n\n\n\nThe positive effect of democracy is stable across sample splits and alternative specifications."
+    "text": "Regression Robustness Checks\n\n\nFigure 2: Coefficient Plot — Robustness Across Specifications\nThe positive effect of democracy is stable across sample splits and alternative specifications."
   },
   {
     "objectID": "psets/Presentation Template.html#contributions-qualitative-research-proposal",
@@ -298,62 +326,20 @@
     "href": "psets/Presentation Template.html#section",
     "title": "Research Title Here",
     "section": "",
-    "text": "Thank You\n[Your Name] [your.email@niu.edu]\nSlides and replication materials available at [link]\n\n\n\n\n\n\nQuestions and comments welcome"
+    "text": "Thank You\n[Your Name] [your.email@niu.edu]\nSlides and replication materials available at [link]\n\n\n\nQuestions and comments welcome"
   },
   {
-    "objectID": "rcode.html#week-3",
-    "href": "rcode.html#week-3",
-    "title": "R Code",
-    "section": "Week 3",
-    "text": "Week 3\nWeek 3 Project\nUpdated 1_Intro.Rmd"
+    "objectID": "readings.html",
+    "href": "readings.html",
+    "title": "Readings",
+    "section": "",
+    "text": "Week 1 — Aug 25: Introductions\nReadings:\n\nMutz, Diana and Soha Rao. 2018. “The Real Reason Liberals Drink Lattes.” PS: Political Science & Politics 51(4).\nAchen, Christopher. “Advice for Students Taking a First Political Science Graduate Course in Statistical Methods.” The Political Methodologist.\n\nRecommended:\n\nWheelan, Charles. 2012. “Why I Hate Calculus, but Love Statistics.” In Naked Statistics.\n\n\n\n\nWeek 2 — Sep 1: Causality and Inference\nReadings:\n\nBailey Ch. 1\n\nRecommended:\n\nAngrist, Joshua and Jörn-Steffen Pischke. 2009. “Questions about Questions.” In Mostly Harmless Econometrics.\n\n\n\n\nWeek 3 — Sep 8: Probability Theory\nReadings:\n\nDiez, David, Christopher Barr, and Mine Çetinkaya-Rundel. “Ch. 3: Probability.” OpenIntro Statistics.\n\n\nDue: Datacamp — Introduction to R\n\n\n\n\nWeek 4 — Sep 15: Random Variables\nReadings:\n\nBailey Ch. 3, pp. 49–64\nBush and Clayton “Facing Change”\n\n\nDue: Problem Set #1\n\n\n\n\nWeek 5 — Sep 22: Measurement\nReadings:\n\nAdcock, Robert and David Collier. 2002. “Measurement Validity: A Shared Standard for Qualitative and Quantitative Research.” American Political Science Review 96(3).\n\n(Read 1, skim 1)\n\nPollock Ch. 1 and 2\nImai, Kosuke. 2017. “Measurement.” In Quantitative Social Science.\n\nRecommended:\n\nGerring, John. “Concepts and Measures.” In Social Science Methodology.\n\n\nDue: Datacamp — Exploratory Data Analysis in R\n\n\n\n\nWeek 6 — Sep 29: Hypothesis Testing\nReadings:\n\nBailey Ch. 4\nResnick, Brian. 2019. “Statistical Significance.” Vox.\nHullman, Jessica. 2019. “How to Get Better at Embracing Unknowns.” Scientific American.\nResearch in Action Egan, Bisbee, and Tucker. 2026 “Predictors and Prevalance of support for white nationalism in the United States”\n\nRecommended:\n\nExplore “Seeing Theory”\n\n\nDue: Problem Set #2\n\n\n\n\nWeek 7 — Oct 6: Bivariate Regression\nReadings:\n\nBailey Ch. 3\nDiez et al. “Ch. on Regression.” OpenIntro Statistics (skim).\n\n\nDue: Datacamp — Foundations of Inference\n\n\n\n\nWeek 8 — Oct 13: Multivariate Regression\nReadings:\n\nBailey Ch. 5\n\nRecommended:\n\nSykes, Alan O. 1993. “An Introduction to Regression Analysis.” Coase-Sandor Institute for Law and Economics Working Paper.\n\n\nDue: Problem Set #3\n\n\n\n\nWeek 9 — Oct 20: Binary and Categorical Variables\nReadings:\n\nBailey Ch. 6\n\n\nDue: Datacamp — Intro to Importing Data and Cleaning Data in R\n\n\n\n\nWeek 10 — Oct 27: Model Specification\nReadings:\n\nBailey reskimming Ch. 3–5, Ch. 7\nOnline Supplement: Interaction Effects\n\nRecommended:\n\nXu, Yiqing. 2021. “A Basic Checklist for Observational Studies in Political Science.” [Working paper]\n\n\nDue: Problem Set #4\n\n\n\n\nWeek 11 — Nov 3: Causal Inference and Experiments\nReadings:\n\nBailey Ch. 10\nImbens, Guido and Donald Rubin. 2015. “Causality: The Basic Framework.” In Causal Inference for Statistics, Social, and Biomedical Sciences.\nHealy, Kieran. 2019. Ch. 1. Data Visualization: A Practical Introduction.\nHernán, M., J. Hsu, and B. Healy. 2019. “A Second Chance to Get Causal Inference Right.” CHANCE 32(1): 42–49.\n\nRecommended:\n\nList, John A., Sally Sadoff, and Mathis Wagner. 2010. “So You Want to Run an Experiment, Now What?” Experimental Economics.\nTufte, Edward. 2001. The Visual Display of Quantitative Information.\nRubin, Donald. 1974. “Estimating Causal Effects of Treatments in Randomized and Nonrandomized Studies.” Journal of Educational Psychology 66(5).\n\n\nDue: Datacamp — Introduction to Data Visualization with ggplot2 and Reshaping Data in tidyr\n\n\n\n\nWeek 12 — Nov 10: Review and Midterm\n\n\n\nWeek 13 — Nov 17: Mixed Methods\nReadings:\n\nBailey Ch. 12, Ch. 16\nLieberman, Evan S. 2005. “Nested Analysis as a Mixed-Method Strategy for Comparative Research.” American Political Science Review 99(3).\nWeller, Nicholas and Jeb Barnes. 2014. Chs. 1–3. Finding Pathways.\n\nRecommended:\n\nSeawright, Jason. 2016. Multi-Method Social Science: Transcending the Qualitative-Quantitative Divide.\nBowers, Jake and Maarten Voors. 2016. “How to Improve Your Relationship with Your Future Self.” Revista de Ciencia Política 34(3).\n\n\nDue: Problem Set #5\n\n\n\n\nWeek 14 — Nov 24: Hackathon (Thanksgiving Week)\n\nDue: Datacamp — At least one chapter of your choice\n\n\n\n\nWeek 15 — Dec 1: Research Presentations"
   },
   {
-    "objectID": "rcode.html#week-4",
-    "href": "rcode.html#week-4",
-    "title": "R Code",
-    "section": "Week 4",
-    "text": "Week 4\nClass 4 code.Rmd\nFacing Change\nCongress Data"
-  },
-  {
-    "objectID": "rcode.html#week-3-gap-minder",
-    "href": "rcode.html#week-3-gap-minder",
-    "title": "R Code",
-    "section": "Week 3: Gap Minder",
-    "text": "Week 3: Gap Minder\nWeek 3 Project\nClass 3 code.Rmd"
-  },
-  {
-    "objectID": "rcode.html#week-4-facing-change-and-congress",
-    "href": "rcode.html#week-4-facing-change-and-congress",
-    "title": "R Code",
-    "section": "Week 4: Facing Change and Congress",
-    "text": "Week 4: Facing Change and Congress\nClass 4 code.Rmd\nFacing Change\nCongress Data"
-  },
-  {
-    "objectID": "rcode.html#week-5-energy-opinions",
-    "href": "rcode.html#week-5-energy-opinions",
-    "title": "R Code",
-    "section": "Week 5: Energy Opinions",
-    "text": "Week 5: Energy Opinions\n5 Concepts and Cleaning.Rmd\nenergy survey xls\nenergy survey codebook"
-  },
-  {
-    "objectID": "rcode.html#week-6-catch-up-and-wb-data",
-    "href": "rcode.html#week-6-catch-up-and-wb-data",
-    "title": "R Code",
-    "section": "Week 6: Catch Up and WB Data",
-    "text": "Week 6: Catch Up and WB Data\n World Bank Explore\nBack Up Data"
-  },
-  {
-    "objectID": "rcode.html#week-7",
-    "href": "rcode.html#week-7",
-    "title": "R Code",
-    "section": "Week 7",
-    "text": "Week 7\n 7 Hypothesis Testing\n7 Flying data"
-  },
-  {
-    "objectID": "rcode.html#week-7-flying-opinions",
-    "href": "rcode.html#week-7-flying-opinions",
-    "title": "R Code",
-    "section": "Week 7: Flying Opinions",
-    "text": "Week 7: Flying Opinions\n Hypothesis Testing\n Flying data"
+    "objectID": "slides.html",
+    "href": "slides.html",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement\nDay 6- Hypothesis Testing"
   }
 ]

@@ -1,0 +1,141 @@
+---
+title: "Pset 3"
+author: "Your Name"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE}
+options(width=80)
+knitr::opts_chunk$set(echo = TRUE,out.width = 40, tidy=T, tidy.opts=list(width.cutoff=60)) #This code should automatically wrap text when knitting to pdf. 
+``` 
+
+# Question 1. Civil War
+*Load packages and set your working directory*
+This week we'll be using data from the famous article: [Fearon and Laitin 2003](https://www.cambridge.org/core/journals/american-political-science-review/article/ethnicity-insurgency-and-civil-war/B1D5D0E7C782483C5D7E102A61AD6605).You can access the original data from [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/15494). 
+
+(a) *Download the data and load it into R. Spend some time exploring the data(include your code here) and tell me something interesting that you found.*
+```{r}
+
+```
+
+
+
+*The variable `Oil` describes whether each country in the dataset is an oil exporter (Oil=1) or not (Oil=0). The variable `war` describes how many years from 1945 to 1999 that country had a civil war. The variable `ethfrac' is a measure of how fractionalized ethnic groups are in a given country -- specifically, it's the probability that two people randomly drawn from a given country are from the same (0) or different (1) groups. *
+
+(b) *What is the mean value of war for oil exporters? What is the mean value of war for non oil exporters? What is the standard deviation for both groups? What does this difference in standard deviations suggest about differences in war for oil exporters versus non oil exporters?*
+```{r}
+
+```
+
+
+(c) *Describe the ethfrac variable: what is the minimum and maximum? What is the mean value? What is the standard deviation? Why does the variable range from 0 to 1? *
+```{r}
+
+```
+
+
+(d) *Say you believe that increased ethnic fractionalization causes war. In this case, what is your independent and dependent variable? Make a scatterplot that shows the relationship between these two variables, including a linear regression line. Describe the relationship you find. What happens to the predicted number of years at war as you move from no ethnic fractionalization to the highest possible value of ethnic fractionalization?*
+```{r}
+
+```
+
+
+
+(e) *The nwstate variable indicates whether the country is newly independent (1) or not (0). In our sample how many countries are in each category? What percentage are in each category?*
+```{r}
+
+```
+
+(f) *Create a cross-tab of New state and Oil. What is it telling you?*
+```{r}
+
+```
+(g) *You want to know if there is  difference between new and old states gdp per capita(gdpenl). You think there will be a difference. What is your null hypothesis? What is your alternative hypothesis? Create boxplots to compare. Then,run a t-test to compare the mean and interpret the results*
+```{r}
+
+```
+
+(h) *Polity is an index measure of democracy. You think democracies are more peaceful and will have fewer years at war. What is your alternative hypothesis? What is your null hypothesis? Plot this relationship and be sure to add a regression line. What does your plot suggest?*
+```{r}
+
+```
+
+(i) *Create a new binary measure of democracy using the polity variable. (ie positive values are democracy, negative are not) Using this variable, test if there is a statistically significant difference between democracies and non-democracies in the number of years at war. Explain how you know.* 
+
+```{r}
+
+```
+
+# Question 2. Professor Chaos
+*Professor chaos is afraid of working in R and needs your help creating a dataset.*
+
+![Prof Chaos fears nothing but R](profchaos.png){#id .class width=75% height=75%} #This line of code adds a picture of prof chaos to your knitted file(if profchaos.png is in your wd). Feel free to delete if you are having knitting issues.
+
+(a) *Prof. Chaos only wants to look at a portion of fl2 dataset. He is only interested in countries that do NOT export oil. Create a dataset that only includes countries that do not export oil.*
+```{r}
+
+```
+
+(b) *Additionally, he is only interested in the following variables: ethfrac, instab, war, and relfrac. Make sure your new dataset only includes his chosen variables*
+```{r}
+
+```
+(c)*For the war variable instead of 1s and 0s Prof. Chaos would prefer the dataset reads "war" or "peace". Recode the variables.*
+```{r}
+
+```
+
+
+(d) *Now export this new dataset to a format(csv) that professor chaos can open using excel. Turn this in to Blackboard when done.*
+
+```{r}
+
+```
+
+
+
+# Question 3. Climate change
+
+(a) *Begin by loading a new dataset (SeptemberTemps.csv) into R. This dataset shows the average montly temperature at NIU from 1980 to 2026. We'll focus on the month of September for the remaining questions. What is the range of the average temperature in September? What year has the highest average temperature? What year has the lowest?*
+
+
+(b) *Make a scatterplot of temperature over time. Add a linear trend line. What does this suggest about how the climate is changing over time?* 
+
+(c) *Next, subset the data into groups by decade. Start with the seventies, and then create subsets for the eighties, nineties, noughts, etc. What is the mean temperature for each decade? How is this changing over time?*
+
+(d) *What is the standard deviation for each decade? How is the standard deviation change over time? What do the changes in standard deviation mean?*
+
+(e) *Why is understanding changes in temperature variation, not just average temperature, important for understanding the consequences of climate change?*
+
+*Bonus: Plot the mean and confidence interval for each decade.OR See if other months exhibit the same patterns* 
+
+# Question 4. Class Scores
+On a science test Mrs. Kuehl’s students scores are as follows: 77, 86, 75, 40, 83, 80, 91, 83, 78
+
+(a) *Using mental math, a calculator, or R calculate the mean, median, and mode of the scores(you don't need to show your work).*
+
+(b) *Which measure of central tendency would be the most appropriate for this distribution and why?*
+
+(c) *Calculate the standard deviation.(Feel free to use R, your brain, a calculator, etc)*
+
+(d) *If Jim-Bob scored scored a 92, use the central limit theorem to estimate what percentage of students scored worse than he did on the test?*
+
+
+# Question 5. A statistically curious friend
+
+(a) *While at a sporting event, your statistically curious friend ask you "How does a t-test work?" Using simple language(so you can get back to the game) explain how t-tests distinguishes between two groups.*
+
+(b) *If the result of t-test has a p-value < .05 we usually say it is statistically significant. Again, explain to your statistically curious friend what statistically significant means. Be sure to explain why .05 can be problematic?*
+
+(c) *In statistics, we reject the null hypothesis, rather than accepting the alternative hypothesis. Explain why to your friend. Then, explain in terms of type I and type II error. *
+
+(d) *When measuring our variables of interest we often differentiate between a conceptual definition and an operational definition. What is the difference and why is it important? Then give an example from a journal article you've read this semester.*
+
+
+# Extra Credit
+
+*What ideas or key terms from the last few weeks of this course are you having the most trouble with? Is coding in R getting easier?*
+
+
