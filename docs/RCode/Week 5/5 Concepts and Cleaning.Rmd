@@ -24,7 +24,7 @@ library(openxlsx)
 
 ```
 
-###Cleaning and Organizing data
+# Cleaning and Organizing data
 
 #Loading Data Today's second dataset comes directly from the ICPSR and is an excel format. If we want to we can use a command from the xlsx package(loaded above) to input the data directly.
 

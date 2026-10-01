@@ -144,7 +144,7 @@
     "href": "slides.html",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement"
+    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement\nDay 6- Hypothesis Testing"
   },
   {
     "objectID": "rcode.html#day-1-getting-started-with-r",
@@ -334,5 +334,26 @@
     "title": "R Code",
     "section": "Week 5: Energy Opinions",
     "text": "Week 5: Energy Opinions\n5 Concepts and Cleaning.Rmd\nenergysurv.xlsx"
+  },
+  {
+    "objectID": "rcode.html#week-6-catch-up-and-wb-data",
+    "href": "rcode.html#week-6-catch-up-and-wb-data",
+    "title": "R Code",
+    "section": "Week 6: Catch Up and WB Data",
+    "text": "Week 6: Catch Up and WB Data\n6 World Bank Explore\nBack Up Data"
+  },
+  {
+    "objectID": "rcode.html#week-7",
+    "href": "rcode.html#week-7",
+    "title": "R Code",
+    "section": "Week 7",
+    "text": "Week 7\n 7 Hypothesis Testing\n7 Flying data"
+  },
+  {
+    "objectID": "rcode.html#week-7-flying-opinions",
+    "href": "rcode.html#week-7-flying-opinions",
+    "title": "R Code",
+    "section": "Week 7: Flying Opinions",
+    "text": "Week 7: Flying Opinions\n 7 Hypothesis Testing\n7 Flying data"
   }
 ]

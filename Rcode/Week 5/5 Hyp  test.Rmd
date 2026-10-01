@@ -53,8 +53,7 @@ recline_obligation Under normal circumstances, does a person who reclines their 
 recline_rude Is it rude to recline your seat on a plane?
 recline_eliminate Given the opportunity, would you eliminate the possibility of reclining seats on planes entirely?
 switch_seats_friends Is it rude to ask someone to switch seats with you in order to be closer to friends?
-switch_seats_family Is it rude to ask someone to switch seats with you in order to be closer to family 
-wake_up_bathroom Is it rude to wake a passenger up if you are trying to go to the bathroom?
+switch_seats_family Is it rude to ask someone to switch seats with you in order to be closer to family wake_up_bathroom Is it rude to wake a passenger up if you are trying to go to the bathroom?
 wake_up_walk Is it rude to wake a passenger up if you are trying to walk around?
 baby In general, is it rude to bring a baby on a plane?
 unruly_child In general, is it rude to knowingly bring unruly children on a plane?
@@ -118,7 +117,6 @@ table(fly$recline_rude)
 prop.table(table(fly$recline_rude))
 prop.table(table(fly$nrecline_rude))
 ```
-
 
 ```{r}
 #always a good idea to confirm values match up. For example this wouldn't work if we tried to recode height the same way

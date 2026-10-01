@@ -28,7 +28,7 @@ library(openxlsx)#make sure to install
 
 ```
 
-Load data: These data are from this 538 story: <https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/>
+Load data: These data are from this [538 story](<https://web.archive.org/web/20260217132528/https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/>)
 
 The file is in excel format.
 If we want to we can use a command from the xlsx package(loaded above) to input the data directly.

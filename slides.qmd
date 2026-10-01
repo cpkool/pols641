@@ -14,3 +14,5 @@ Slides are in PDF format. Click a link to open or right-click to download.
 [Day 4- Random Variables](Slides/4RandomVariables.pdf)
 
 [Day 5- Measurement](Slides/5Measurement.pdf)
+
+[Day 6- Hypothesis Testing](Slides/6hypoth.pdf)

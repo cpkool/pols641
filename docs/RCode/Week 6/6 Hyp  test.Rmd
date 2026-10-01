@@ -46,12 +46,11 @@ Another note: similar packages exist for important data from STATA, SPSS, SAS, e
 
 #Code Book
 
-respondent_id RespondentID gender Gender age Age 
+respondent_id RespondentID gender Gender age Age
 
 height Height children_under_18 Do you have any children under 18?
 
-household_income Household income bracket 
-education Education Level
+household_income Household income bracket education Education Level
 
 location Location (census region) frequency How often do you travel by plane?
 
@@ -65,7 +64,7 @@ recline_eliminate Given the opportunity, would you eliminate the possibility of 
 
 switch_seats_friends Is it rude to ask someone to switch seats with you in order to be closer to friends?
 
-switch_seats_family Is it rude to ask someone to switch seats with you in order to be closer to family 
+switch_seats_family Is it rude to ask someone to switch seats with you in order to be closer to family
 
 wake_up_bathroom Is it rude to wake a passenger up if you are trying to go to the bathroom?
 
@@ -137,7 +136,6 @@ table(fly$recline_rude)
 prop.table(table(fly$recline_rude))
 prop.table(table(fly$nrecline_rude))
 ```
-
 
 ```{r}
 #always a good idea to confirm values match up. For example this wouldn't work if we tried to recode height the same way
