@@ -45,6 +45,10 @@ Problem sets are completed individually, but you can work with each other as you
 [DeKalb Temps](psets/pset3/SeptemberTemps.csv)
 
 [Professor Chaos](psets/pset3/profchaos.png)
+
+
+# Problem Set #4
+
 :::
 
 ::: {.column width="40%"}
