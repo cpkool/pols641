@@ -118,6 +118,8 @@ subtitle: "Required and recommended readings, organized by week."
 
 - Bailey Ch. 5
 
+- Research in Action: Kerner and Sumner. 2026 ["Gender-Role Traditionalism and Opposition to Trade in the United States"](https://www.cambridge.org/core/journals/ps-political-science-and-politics/article/genderrole-traditionalism-and-opposition-to-trade-in-the-united-states/5839BBC0868B6AAA346707A8A0527DA8?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark)
+
 **Recommended:**
 
 - Sykes, Alan O. 1993. "An Introduction to Regression Analysis." Coase-Sandor Institute for Law and Economics Working Paper.
