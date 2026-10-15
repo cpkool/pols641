@@ -71,8 +71,18 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="RCode/Week 6/wb_indicators_2020.csv" download>Back Up Data</a>
 
 
-## Week 7: Flying Opinions
+## Week 7: T-tesing Flying Opinions
 
 <a href="RCode/Week 6/7 Hyp  test 26.Rmd" download>  Hypothesis Testing</a>
 
 <a href="RCode/Week 6/fly.xlsx" download> Flying data</a>
+
+## Week 8: Regressing IL Traffic Deaths
+
+[Week 8 Project](RCode/Week 7/Week 7.Rproj){download="Week 7.Rproj"}
+
+<a href="RCode/Week 7/traffic.rdata" download>Data (traffic.rdata)</a>
+
+<a href="Rcode/Week 7/7 Bivariate (Traffic).Rmd" download>7 Bivariate (Traffic).Rmd</a>
+
+# Week 9: Multivariate
