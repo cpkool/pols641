@@ -355,5 +355,12 @@
     "title": "R Code",
     "section": "Week 8: Regressing IL Traffic Deaths",
     "text": "Week 8: Regressing IL Traffic Deaths\nWeek 8 Project\nData (traffic.rdata)\n7 Bivariate (Traffic).Rmd"
+  },
+  {
+    "objectID": "rcode.html#week-9-multivariate",
+    "href": "rcode.html#week-9-multivariate",
+    "title": "R Code",
+    "section": "Week 9: Multivariate",
+    "text": "Week 9: Multivariate"
   }
 ]

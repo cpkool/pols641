@@ -83,6 +83,7 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 <a href="RCode/Week 7/traffic.rdata" download>Data (traffic.rdata)</a>
 
-<a href="Rcode/Week 7/7 Bivariate (Traffic).Rmd" download>7 Bivariate (Traffic).Rmd</a>
+<a href="Rcode/week7/7_bivariate_traffic.Rmd" download>7 Bivariate (Traffic).Rmd</a>
 
-# Week 9: Multivariate
+
+## Week 9: Multivariate
