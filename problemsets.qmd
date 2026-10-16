@@ -48,7 +48,11 @@ Problem sets are completed individually, but you can work with each other as you
 
 
 # Problem Set #4
+<a href="psets/pset4/Pset_4_2026.Rmd" download>Pset_4_2026.Rmd</a> 
 
+[BARKS Data](psets/pset4/barks23.csv)
+
+[Battig Bernauer](psets/pset4/Battig Bernauer 09.pdf)
 :::
 
 ::: {.column width="40%"}

@@ -1,0 +1,116 @@
+---
+title: 'Pset #4'
+author: "Your Name Here"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+Don't forget to [#hashtag](https://www.youtube.com/watch?v=57dzaMaouXA) to remind your future self what you are doing.
+
+[*Please note there are a few questions below that require material from multivariate regression week(week #9 in 2026*)]{style="font-size: 0.8em;"}.
+
+# Question 1: Review a Research Paper
+
+*Read the article "National Institutions and Global Public Goods: Are Democracies More Cooperative in Climate Change Policy?" by Michèle Bättig and Thomas Bernauer*
+
+*1a The researchers have two main findings. For these main findings, what is their independent variable? What are their dependent variables? Are you convinced by their choice of estimator? Why is including multiple dependent variables an important contribution?*
+
+*1b The authors examine climate changes mitigation as an example of what broader issue? Why might the authors have chosen to frame it in this way?*
+
+*1c Examine table 2. What is this table showing? Pick one of the control variables. What is the broad concept and how is it operationalized? Why is it included in regression model?(clue: look in the text)*
+
+*1d Look at model 1 in table 3. How is the dependent variable measured? Fully interpret the democracy and climate change index(CCI) regression coefficients.*
+
+*1e Could the same model(model 1 in table 3) be suffering from omitted variable bias? Why or why not?*
+
+*1f Give one example of a robustness check presented in the paper*
+
+# Question 2: Sustainability at NIU
+
+The data for this question from the NIU Behaviors, Attitudes, Resources, and Knowledge of Sustainability survey(BARKS, get it?). The survey was sent out to all NIU faculty, staff, and students in September 2023. Below is a subset of the questions that were asked.
+
+| **ResponseId** | **Unique Identifier** |
+|------------------|------------------------------------------------------|
+| GPAn | Student GPA |
+| envir_index | Index of environmental attitudes |
+| knowledge_index | Index of sustainability knowledge |
+| ideology | Political Ideology: 1=Very Liberal, 5=Very Conservative |
+| genderc | Gender |
+| envirconcern | How concerned about the environment: 1=Very concerned, 4=Not Concerned |
+| studfacstaff | Political Ideology: 1=Very Liberal, 5=Very Conservative |
+| behaveall | Additive index of Environmental Behaviors below(asked which behaviors describe current lifestyle) |
+| b1publictransit | Take public transit |
+| b2carpool | carpool |
+| b3bikewalk | Bike/Walk to campus |
+| b4buylocal | Buy locally grown/seasonal products |
+| b5lessmeat | Eat lower on the food chain(less meat) |
+| b6buyrecycled | purchase recycled or bulk products |
+| b7studentorg | Participate in student org |
+| b8vote | Vote |
+| b9volunteer | Volunteer with nonprofit organizations |
+| b10lightsoff | Turn lights off when not in use |
+| b11heatdown | Turn heat down when not at home |
+| b12washcold | Wash clothes in cold water |
+| b13shortshower | Take short showers(less than 5 min) |
+| b14drinktap | Drink tap water instead of bottled |
+| b15reusebottle | Use a reusable water bottle |
+| b16RRR | Reduce/Reuse/Recycle |
+| b17doublesided | Print Double-Sided |
+| b18greenclean | Use green cleaning products |
+| b19secondhand | Buy secondhand clothes |
+
+*1a. Load and explore the BARKS data. Create a figure you think other members of the NIU community would find interesting.(Tip: Save this until the end and make sure your figure looks good)*
+
+*1b. Create a histogram and density plot of the behaveall variable. How would you describe this distribution?*
+
+*1c. Find the mean and median number of environmental behaviors performed by students, faculty, and staff. Which group does best? Provide a reasonable explanation for why this might be the case?*
+
+*2a. You believe greater environmental knowledge will be associated with more environmental behaviors. What is the correlation between these two variables? Then run a bivariate regression testing this hypothesis and fully interpret the results.*
+
+*2b. Create a plot(including regression line) for the model above.*
+
+*2c. Write out the equation for the model you've just run. Look at regression week code for creating notation in markdown*
+
+*2d. How many behaviors would we expect for an individual with the average score on the knowledge scale? Type out the math using the equation above*
+
+*2e. What are at least two possible confounders.*
+
+*3a. You decide to add environmental concern and ideology to your model. Write out the equation for your new model*
+
+*3b. Run the regression and fully interpret the output*
+
+*3c. Holding all independent variables at their mean what is the expected number of behaviors?*
+
+*4a. Add ideology and GPA(you will need to convert to numeric) to the model from 3a. Write out the new equation.*
+
+*4b. Create a table with the regression outputs from 2a, 3a, and 4a. Using the table interpret the new coefficients and any changes from the model in 3a. (hint: use the stargazer package and don't forget to compare* $R^2$
+
+*4c. Holding all other independent variables at their median, what is difference in expected number of behaviors between those who report not being concerned about the environment to those that are very concerned?(You can use fancy R code or just do the math)*
+
+*4d. Is this causal? Why or why not?*
+
+*4e. Is this representative of NIU? Why or why not?*
+
+*5a. The behaveall measure assumes we can put all 18 behaviors into a single additive index. Create your own meaningful index of environmental behaviors by summing the values. Your index should have some important commonality. Explain what your index is measuring and create a histogram.*
+
+*5b. Run the models from 2a, 3a, and 4a with your new DV and put into a single table. Spend a few sentences interpreting the results.*
+
+# Question 3. Your (still) statistically curious friend asks the following questions:
+
+*(A) How does regression work? ie how does R find the line of best fit?*
+
+*(B )What is a p-value? And if it is so important, why don't you just report it in a regression table?*
+
+*(C) What is the difference between statistical and substantive significance? Can you give an example*
+
+*(D1) Explain the statement "A regression coefficient is a random variable".*
+
+*(D2) What is a confidence interval?*
+
+*(E) You are curious about the effect of undergraduate gpa on academic performance in graduate school. What control variables would you want to include in your model? If you included all in your model, would it be causal?*
+
+*(F1)What is the difference between an conceptual definition and an operational definition. Give an example using a variable from your final project.*
+
+*(F2) While thinking about your final project, use notation to write out your current thinking on what you think your "best" multivariate model will be.*
+
+*(G) Any feedback for me on this problem set? The class? First year of grad school?*
