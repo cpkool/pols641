@@ -355,5 +355,12 @@
     "title": "R Code",
     "section": "Week 9: Multivariate",
     "text": "Week 9: Multivariate"
+  },
+  {
+    "objectID": "rcode.html#week-9-multivariate-regression",
+    "href": "rcode.html#week-9-multivariate-regression",
+    "title": "R Code",
+    "section": "Week 9: Multivariate Regression",
+    "text": "Week 9: Multivariate Regression\n8 multivariate.Rmd\nprem.Rdata\nwages.csv"
   }
 ]
