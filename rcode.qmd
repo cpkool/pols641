@@ -90,8 +90,8 @@ Download these three files and put in their own folder. Assuming you have R and 
 ## Week 9: Multivariate Regression
 
 
-<a href="Rcode/Week 8/8 multivariate.Rmd" download>8 multivariate.Rmd</a>
+<a href="Rcode/Week8/8multivariate.Rmd" download>8 multivariate.Rmd</a>
 
-<a href="Rcode/Week 8/prem.RData" download>prem.Rdata</a>
+<a href="Rcode/Week8/prem.RData" download>prem.RData</a>
 
-<a href="Rcode/Week 8/wages.csv" download>wages.csv</a>
+<a href="Rcode/Week8/wages.csv" download>wages.csv</a>
