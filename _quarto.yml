@@ -43,3 +43,4 @@ resources:
     - "/problemsets"
     - "/Slides"
     - "/psets"
+    - "Rcode/Week8/**"
