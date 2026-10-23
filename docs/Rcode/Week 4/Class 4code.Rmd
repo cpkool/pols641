@@ -1,0 +1,422 @@
+---
+title: "Class 4"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
+library(formatR)#may need to install this first
+# Set so that long lines in R will be wrapped:
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE, out.width = "100%")
+
+
+library(tidyverse)
+```
+
+## Distribution of the Mean
+
+We'll start out illustrating concepts from discussion using R
+
+```{r}
+getmean=function(N, mean, sd){
+  opinion=rnorm(n = N, mean=mean,sd=sd)
+  meanopinion=mean(opinion)
+  return(meanopinion)} 
+#Building a function in R. This is beyond the scope of the class
+
+manymeansa=replicate(n = 10, getmean(20, mean=65, sd=6))
+hist(manymeansa, main="Many Means 10 Draws", sub=mean(manymeansa))
+mean(manymeansa)
+abline(v=mean(manymeansa), col="orange")
+
+#look with different n
+manymeansb=replicate(n = 20, getmean(20, mean=65, sd=6))
+hist(manymeansb, main="Many Means 20 Draws", sub=mean(manymeansb))
+mean(manymeansb)
+abline(v=mean(manymeansb), col="orange")
+
+
+manymeansc=replicate(n = 100, getmean(20, mean=65, sd=6))
+hist(manymeansc, main="Many Means 100 Draws", sub=mean(manymeansc))
+mean(manymeansc)
+abline(v=mean(manymeansc), col="orange")
+
+
+manymeansd=replicate(n = 1000, getmean(20, mean=65, sd=6))
+hist(manymeansd, main="Many Means 1k Draws", sub=mean(manymeansd))
+mean(manymeansd)
+abline(v=mean(manymeansd), col="orange")
+
+manymeanse=replicate(n = 1000, getmean(20, mean=65, sd=6))
+hist(manymeanse, main="Many Means 1000 Draws", sub=mean(manymeanse))
+mean(manymeanse)
+abline(v=mean(manymeanse), col="orange")
+
+manymeansf=replicate(n = 10000, getmean(20, mean=65, sd=6))
+hist(manymeansf, main="Many Means 10k Draws", sub=mean(manymeansf))
+mean(manymeansf)
+abline(v=mean(manymeansf), col="orange")
+
+#Larger sample sizes should be closer to "true mean" but still variation
+abline(v=65, col="blue")
+abline(v=mean(manymeansa), col="darkorange4")
+abline(v=mean(manymeansb), col="darkorange3")
+abline(v=mean(manymeansc), col="darkorange2")
+abline(v=mean(manymeansd), col="darkorange1")
+abline(v=mean(manymeanse), col="darkorange")
+abline(v=65, col="blue")
+
+
+
+mean(manymeansa)
+mean(manymeansb)
+mean(manymeansc)
+mean(manymeansd)
+mean(manymeanse)
+mean(manymeansf) #as n increases will get closer to true mean
+
+sd(manymeansa) # . . . and sd
+sd(manymeansb)
+sd(manymeansc)
+sd(manymeansd)
+sd(manymeanse)
+sd(manymeansf)
+```
+
+# Setting the working directory(again)
+
+
+
+Instead of using an Rproject this week we are getting to manually set our working directory (Translation: File where everything will be saved.)Always set your wd before working in R. This ensures that all your work(graphics, subsets, etc) will be saved in the same place and that R will know where to look for your data.
+
+After the setwd() command insert the file path to your own folder that you will use for this class(If it doesn't exist create it using finder or in windows).Make sure both files I emailed you, this .rmd file and the .rdata file are in that folder.
+
+There are two ways to have R tell you the file path. First, you can use the file.choose() to find the file path.Just copy and paste from the console into this code. The other is to load or set the wd directly in Rstudio, but if you do this you need paste into your code so it will knit.
+
+This is perhaps the most counter-intuitive thing you'll do in R, but it is important. Remember, do not use point and click, you need the code to knit.
+
+```{r}
+getwd() #Returns which directory you are currently working in
+setwd("~/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 4") #Sets working directory - You will need to copy and paste your file path after using file.choose() in the console below. 
+getwd() #make sure using right folder
+```
+
+# Facing Change Data
+
+We're going to use data from the article "Facing Change: Gender and Climate Change Attitudes Worldwide" by Bush and Clayton we . Data can be found here: <https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0Y8IKW>
+
+This is just one of the many data sources they use.
+
+Notice this is a csv format dataset.
+
+```{r}
+pewdata <- read.csv("pewdata.csv") #If working directory is set correctly and this file is in it this command should work. 
+```
+
+Lets explore the data: Variable names, \# of variables, \# of respondents
+
+```{r}
+dim(pewdata)
+names(pewdata)
+
+```
+
+Thats a lot of respondents.
+
+```{r}
+table(pewdata$Country)
+length(unique(pewdata$Country))
+
+length(unique(pewdata$WorryType))
+
+prop.table(table(pewdata$Country))
+
+str(pewdata) #This tells us what type of data R thinks we have
+```
+
+Look at climate concern
+
+```{r}
+mean(pewdata$ClimConcen)#Doesn't know what to do with NAs
+mean(pewdata$ClimConcen, na.rm = T)
+median(pewdata$ClimConce, na.rm = T)
+summary(pewdata$ClimConcen)
+
+hist(pewdata$ClimConcen)
+
+#A good way to count NAs in a column
+sum(is.na(pewdata$ClimConcen))
+sum(is.na(pewdata$Ideo))
+
+table(pewdata$Country, pewdata$Ideo)
+```
+
+Sex differences
+
+```{r}
+males <- pewdata[which(pewdata$Female==0),]
+females <- pewdata[which(pewdata$Female==1),]
+
+summary(males$ClimConcen)
+summary(females$ClimConcen)
+```
+
+Lets say we we were interested in Income and climate concern . . . .
+
+Use base R to create scatterplot
+
+```{r}
+plot(pewdata$StandIncome, pewdata$ClimConcen) #Not very helpful
+```
+
+Reduce N to make more useful
+
+```{r}
+pewsamp1 <- pewdata[sample(nrow(pewdata), 500), ]# a random sample of 500 ie a new subset
+
+mean(pewsamp1$ClimConcen, na.rm=T)
+mean(pewdata$ClimConcen, na.rm=T)
+
+plot(pewsamp1$StandIncome, pewsamp1$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(pewsamp1$ClimConcen~pewsamp1$StandIncome))
+```
+
+Using tidyverse
+
+```{r}
+pewsamp2 <- sample_n(pewdata, 500)#Notice how tidyverse uses a slighty different vocabulary and grammar
+
+mean(pewsamp2$ClimConcen, na.rm=T)#Ack! This is different from above
+
+#We can create the same figure with the ggplot package. ggplot uses a different grammar.
+ggplot(data=pewsamp2, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x)
+```
+
+There are many ways to code in R. Base R can do everything you need, but I find "the tidyverse" more intuitive so I am introducing it early with the assumption you'll find it easier as well.
+
+This is interesting, but might want to look at one country at a time.
+
+Subset the data
+
+```{r}
+usa <- pewdata[which(pewdata$Country=="United States"),]
+indo <- pewdata[which(pewdata$Country=="Indonesia"),]
+
+plot(usa$StandIncome, usa$ClimConcen, main="Income and Climate Concern", xlab="Income", ylab="Climate Concern") #our standard scatter plot
+abline(lm(usa$ClimConcen~usa$StandIncome), col="red")
+abline(lm(pewdata$ClimConcen~pewdata$StandIncome), col="blue")#add line for whole sample to make comparison
+abline(lm(indo$ClimConcen~indo$StandIncome), col="pink")
+```
+
+Create same graph using dplyr and ggplot
+
+```{r}
+USA <- filter(pewdata, Country=="United States") #This is dplyr version of what we did last time. Check out dplyr cheat sheet posted to dropbox
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point(shape=1)+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")
+
+ggplot(USA, aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("United States")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red", se=F)+geom_jitter() + theme_test()
+```
+
+An especially nice feature of tidy verse is that you can use piping(%\>%) to do multiple things in a single line of code
+
+```{r}
+pewdata %>% filter(Country=="Russia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Russia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+#This can make it much easier to run similar versions of the same graph
+pewdata %>% filter(Country=="Australia") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Australia")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Country=="France") %>%  ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("France")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+
+pewdata %>% filter(Female==1, Country=="France") %>% ggplot(aes(x=StandIncome, y=ClimConcen))+
+  geom_point()+ ggtitle("Females")+
+  xlab("Income")+ ylab("Climate Concern")+geom_smooth(method='lm', formula= y~x, col="red")+geom_jitter() +theme_bw()
+```
+
+Your turn to play - create for another county, or look at another DV
+
+```{r}
+
+
+```
+
+Recreating Figure 1
+
+```{r}
+ggplot(pewdata, aes(x=GDPPC)) + 
+  geom_density() #ggplot code for a histogram
+
+pewdata$female <- ifelse(pewdata$Female==1, "female", "male")
+
+bycountryg <- pewdata %>% group_by(Country, female) %>% summarise(Avgserios=mean(ClimSerious, na.rm=T), GDP=mean(GDPPC))%>% pivot_wider(names_from = female, values_from = Avgserios)%>% mutate(diff=female-male)
+bycountryg
+
+
+ggplot(bycountryg, aes(x=log(GDP), y=diff, label=Country))+geom_point()+geom_text()+ ggtitle("Gender Gap by GDP")+
+  xlab("GDP per Capita(logged)")+ ylab("Gender Gap")+geom_hline(yintercept=0, col="lightblue")+ geom_smooth(method='lm', formula= y~x, col="coral", se=F)
+```
+
+# Ideology in Congress
+
+As always Set your working and then Load the data(congress)
+
+```{r}
+load("congress.RData")
+```
+
+### We'll start by exploring the validity and reliability of the DW-Nominate Scale
+
+This is a measure of members of congress ideology
+
+- A Wikipedia entry is available [here.](https://en.wikipedia.org/wiki/NOMINATE_(scaling_method)))
+- A longer explainer is available [here.](https://www.swarthmore.edu/SocSci/rvalell1/documents/Nominate_000.pdf)
+- What do you think? (in terms of validity? reliability?)
+
+Explore the data
+
+```{r}
+head(congress)
+length(unique(congress$name))
+
+```
+
+```{r Party Subset, echo=TRUE}
+## subset the data by party
+rep <- subset(congress, party == "Republican") #this command uses dplyr/tidyverse
+dem <- congress[congress$party == "Democrat", ] #Uses base R, but does the same thing
+```
+
+Subset Further by Congress
+
+```{r Congress Subset, echo=TRUE}
+rep80 <- subset(rep, subset = (congress == 80))
+dem80 <- subset(dem, subset = (congress == 80))
+rep112 <- subset(rep, subset = (congress == 112))
+dem112 <- subset(dem, subset = (congress == 112))
+```
+
+### Make a Scatterplot
+
+```{r 80th Congress 1, echo=T}
+plot(dem80$dwnom1, dem80$dwnom2)
+```
+
+Make it Prettier
+
+```{r 80th Congress 2, echo=T}
+Demplot<-plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
+     xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
+     xlab = "Economic liberalism/conservatism",
+     ylab = "Racial liberalism/conservatism",
+     main = "80th Congress")
+```
+
+What does this tell us about the two dimensions?
+
+Let's add the GOP
+
+```{r add GOP code, eval = F, echo=T}
+plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", 
+     xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),
+     xlab = "Economic liberalism/conservatism", 
+     ylab = "Racial liberalism/conservatism",
+     main = "80th Congress")
+points(rep80$dwnom1, rep80$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats") #adding a label to our plot
+text(1, -1, "Republicans")
+```
+
+*When plotting, you have to send ALL the commands at once*
+
+### Ain't it Perty?!?
+
+```{r 80th Congress 3, echo=F}
+plot(dem80$dwnom1, dem80$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liberalism/conservatism", ylab = "Racial liberalism/conservatism", main = "80th Congress")
+points(rep80$dwnom1, rep80$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats")
+text(1, -1, "Republicans")
+```
+
+### Class Exercise
+
+*Can you produce an identical plot for the 112th Congress?*
+
+```{r, echo=F}
+
+
+```
+
+*What do these plots show us? Does the measure have face validity?*
+
+```{r 112th Congress, eval=T, echo=F}
+
+
+
+
+plot(dem112$dwnom1, dem112$dwnom2, pch = 16, col = "blue", xlim = c(-1.5,1.5), ylim = c(-1.5,1.5),xlab = "Economic liber alism/conservatism", ylab = "Racial liberalism/conservatism", main = "112th Congress")
+points(rep112$dwnom1, rep112$dwnom2, pch = 17, col = "red")
+text(-0.75, 1, "Democrats")
+text(1, -1, "Republicans")
+```
+
+### Let's Dig into this Further
+
+How have the median R and D Members of Congress changed over time?
+
+First calculate the median for each party by Congress:
+
+```{r Medians, echo=T}
+dem.median <- tapply(dem$dwnom1, dem$congress, median) #Find the median of dwnom1 for each congress. You won't need to use tapply on problem sets etc, but it is pretty handy
+rep.median <- tapply(rep$dwnom1, rep$congress, median)
+```
+
+tapply is a useful command, but you won't need it for problem sets etc. Dplyr group_by does similar things
+
+Now let's plot those medians for each party over time:
+
+```{r Time Series Code, eval=F, echo=T}
+plot(names(dem.median), dem.median, col = "blue", type = "l",
+     xlim = c(80, 115), ylim = c(-1, 1), xlab = "Congress",
+     ylab = "DW-NOMINATE score (1st dimension)")
+lines(names(rep.median), rep.median, col = "red")
+text(110, -0.6, "Democratic\n Party")
+text(110, 0.85, "Republican\n Party")
+```
+
+### Now repeat for the 2nd Dimension
+
+```{r}
+dem.median2 <- tapply(dem$dwnom2, dem$congress, median) #Find the median of dwnom1 for each congress. You won't need to use tapply on problem sets etc, but it is pretty handy
+rep.median2 <- tapply(rep$dwnom2, rep$congress, median)
+
+plot(names(dem.median2), dem.median2, col = "blue", type = "l",
+     xlim = c(80, 115), ylim = c(-1, 1), xlab = "Congress",
+     ylab = "DW-NOMINATE score (2nd dimension)")
+lines(names(rep.median2), rep.median2, col = "red")
+text(92, 0.6, "Democratic\n Party")
+text(92, -0.85, "Republican\n Party")
+
+```
+
+### Bonus:
+
+Why might we want to use the median instead of the mean here? Does using the mean change the broader story?
+
+Really interesting visualization of DW Nominate data: <https://www.youtube.com/watch?v=M193ZIOFk0k>
+
+Make sure to knit and, if you'd like, save the data.

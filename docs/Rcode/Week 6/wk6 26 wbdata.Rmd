@@ -1,0 +1,134 @@
+---
+title: "Class 5"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+editor_options: 
+  chunk_output_type: console
+---
+
+# Introduction
+
+Today we're going to use data from wbstats package. This package allows us to pull data directly from online data provided by the world bank. Find more information [here](https://cran.r-project.org/web/packages/wbstats/vignettes/wbstats.html)
+
+# Packages and Working Directory
+```{r}
+# install.packages("wbstats")
+# install.packages("tidyr") 
+
+library(wbstats)
+library(dplyr)
+library(tidyr)
+```
+
+Always setwd, in this case we can save data here.
+
+```{r}
+setwd("~/Dropbox/POLS 641/F26 641/f26course/Rcode/Week 6")
+```
+
+
+# Pulling Data
+```{r}
+# We'll start by pulling some data. Here I'm pulling variabls and renaming them, from just countries, and the year 2020
+options(timeout = 200) # keeps trying to pull data
+
+df <-  wb_data(
+  indicator = c(
+    gdp_pc            = "NY.GDP.PCAP.CD",
+    gdp_growth        = "NY.GDP.MKTP.KD.ZG",
+    gini              = "SI.POV.GINI",
+    population        = "SP.POP.TOTL",
+    urban_pct         = "SP.URB.TOTL.IN.ZS",
+    life_expectancy   = "SP.DYN.LE00.IN",
+    migrant_stock_pct = "SM.POP.TOTL.ZS",
+    remittances_pct   = "BX.TRF.PWKR.DT.GD.ZS",
+    enroll_secondary  = "SE.SEC.ENRR"
+  ),
+  country = "countries_only",
+  start_date = 2020, end_date = 2020)
+```
+
+``
+
+# There is a lot of data accessible from this package
+```{r}
+education_inds<- wb_search("education") #finds all the indicators that contain education
+
+disability <- wb_search("disability")
+
+gendervars <- wb_search("gender")
+```
+
+## Create your own dataset
+```{r}
+
+
+```
+
+
+### In case of problems
+```{r}
+back_up <- read_csv("wb_indicators_2020.csv")
+```
+
+
+Measures of central tendency, variance, Standard deviation, boxplots exploring a single variable
+
+First, pick one of the wb indicators from above and get summary statistics
+
+(you're familiar with most of these. Just replace x with your dataset\$variablename)
+
+```{r}
+mean(df$remittances_pct, na.rm = TRUE)      # mean
+median(df$remittances_pct, na.rm = TRUE)    # median — less pulled by outliers than the mean
+var(df$remittances_pct, na.rm = TRUE)       # variance (squared units — hard to interpret directly)
+sd(df$remittances_pct, na.rm = TRUE)        # standard deviation (same units as df$remittances_pct)
+range(df$remittances_pct, na.rm = TRUE)     # min and madf$remittances_pct
+IQR(df$remittances_pct, na.rm = TRUE)       # interquartile range (Q3 - Q1), a alternative spread measure
+quantile(df$remittances_pct, na.rm = TRUE)  # 0, 25, 50, 75, 100th percentiles
+summary(df$remittances_pct)
+```
+
+```{r}
+
+hist(df$life_expectancy,
+     breaks = 20,
+     main = "Life expectancy across countries, 2020",
+     xlab = "Years", col = "grey85", border = "white")
+abline(v = mean(df$life_expectancy, na.rm=T),  col = "red",  lwd = 2)
+abline(v = median(df$life_expectancy, na.rm=T), col = "blue", lwd = 2, lty = 2)
+
+mean(df$life_expectancy)
+
+
+hist(df$gdp_pc,
+     breaks = 20,
+     main = "GDP Per Capita across countries, 2020",
+     xlab = "Dollars", col = "grey85", border = "white")
+abline(v = mean(df$gdp_pc, na.rm=T),  col = "red",  lwd = 2)
+abline(v = median(df$gdp_pc, na.rm=T), col = "blue", lwd = 2, lty = 2)
+```
+
+```{r}
+
+boxplot(df$life_expectancy,
+        main = "Life expectancy across countries, 2020",
+        ylab = "Years")
+
+
+boxplot(df$gdp_pc,
+        main = "GDP per capita across countries, 2020",
+        ylab = "Years")
+
+```
+
+
+
+### Play with WDI package
+```{r}
+install.packages("WDI")
+library("WDI")
+
+```
+
