@@ -20,3 +20,7 @@ Slides are in PDF format. Click a link to open or right-click to download.
 [Day 6 Bonus - Horst T-Test Illustrations](Slides/6HorstTtest.pdf)
 
 [Day 7- Bivariate Regression](Slides/7Bivariate.pdf)
+
+[Day 8- Multivariate Regression](Slides/8multivariate.pdf)
+
+[Day 9- Dummy and Categorical Variables](Slides/9Dummies.pdf)

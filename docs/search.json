@@ -347,7 +347,7 @@
     "href": "slides.html",
     "title": "Lecture Slides",
     "section": "",
-    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement\nDay 6- Hypothesis Testing\nDay 6 Bonus - Horst T-Test Illustrations\nDay 7- Bivariate Regression"
+    "text": "Slides are in PDF format. Click a link to open or right-click to download.\nDay 1- Introductions\nDay 2- Causality\nDay 3- Probability\nDay 4- Random Variables\nDay 5- Measurement\nDay 6- Hypothesis Testing\nDay 6 Bonus - Horst T-Test Illustrations\nDay 7- Bivariate Regression\nDay 8- Multivariate Regression\nDay 9- Dummy and Categorical Variables"
   },
   {
     "objectID": "rcode.html#week-9-multivariate",
