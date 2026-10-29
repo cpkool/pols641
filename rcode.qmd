@@ -95,3 +95,13 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="Rcode/Week8/prem.RData" download>prem.RData</a>
 
 <a href="Rcode/Week8/wages.csv" download>wages.csv</a>
+
+## Week 10: Discrete Independent Variables
+
+<a href="Rcode/Week9/9%20Discreteandmerge26.Rmd" download>9 Discreteandmerge26.Rmd</a>
+
+<a href="Rcode/Week9/HeightWage_MenWomenUS_HW.csv" download>HeightWage_MenWomenUS_HW.csv</a>
+
+<a href="Rcode/Week9/p4v2016.csv" download>p4v2016.csv</a>
+
+<a href="Rcode/Week9/worldbank.csv" download>worldbank.csv</a>

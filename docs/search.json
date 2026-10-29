@@ -362,5 +362,12 @@
     "title": "R Code",
     "section": "Week 9: Multivariate Regression",
     "text": "Week 9: Multivariate Regression\n8 multivariate.Rmd\nprem.RData\nwages.csv"
+  },
+  {
+    "objectID": "rcode.html#week-10-discrete-independent-variables",
+    "href": "rcode.html#week-10-discrete-independent-variables",
+    "title": "R Code",
+    "section": "Week 10: Discrete Independent Variables",
+    "text": "Week 10: Discrete Independent Variables\n9 Discreteandmerge26.Rmd\nHeightWage_MenWomenUS_HW.csv\np4v2016.csv\nworldbank.csv"
   }
 ]

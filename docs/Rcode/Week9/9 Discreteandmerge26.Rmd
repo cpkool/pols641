@@ -1,0 +1,317 @@
+---
+title: "9 Discrete IVs and Merging"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Packages
+
+```{r}
+library(foreign)
+library(ggcorrplot)
+library(tidyverse)
+library(modelsummary)
+```
+
+Load the height wage data(HeightWage_MenWomenUS_HW.csv)from the textbook
+
+```{r}
+
+
+```
+
+## Codebook
+Codebook - Use visual to see
+
+| Variable name | Description |
+| --- | --- |
+| male | Male (1 = yes, 0 = no) |
+| white | White (1 = yes, 0 = no) |
+| black | Black (1 = yes, 0 = no) |
+| hispanic | Hispanic (1 = yes, 0 = no) |
+| wage96 | Adult hourly wages (dollars) reported in 1996 (salary and wages in past calendar year divided by hours worked in past calendar year) |
+| height85 | Adult height (inches), self-reported in 1985 |
+| height81 | Adolescent height (inches), self-reported in 1981 |
+| athlets | Participation in high school athletics (1 = yes, 0 = no) |
+| clubnum | Number of club memberships in high school, excluding athletics, academic/honor society clubs, and vocational clubs |
+| momed79 | Mother's years of education |
+| daded79 | Father's years of education |
+| mompro2 | Mother in a professional/managerial occupation (1 = yes, 0 = no) |
+| poppro2 | Father in a professional/managerial occupation (1 = yes, 0 = no) |
+| siblings | Number of siblings |
+| age | Age (years) in 1996 |
+| esteem80 | Score on Rosenberg Self-Esteem Scale as an adolescent in 1980 (higher values indicate higher self-esteem) |
+| hgc96 | Highest grade of education completed in 1996 |
+| **REGION** |  |
+| norest96 | Northeast (1 = yes, 0 = no) |
+| norcen96 | North Central (1 = yes, 0 = no) |
+| south96 | South (1 = yes, 0 = no) |
+| west96 | West (1 = yes, 0 = no) |
+
+# Getting to Know the Data
+Explore the data, we are mostly interested in wage:
+
+```{r}
+
+
+```
+
+## DV
+```{r}
+summary(hw$wage96)
+hist(hw$wage96)
+
+summary(lm(wage96 ~ esteem80, data=hw))
+
+```
+
+## Regression Review
+
+Using just continuous variables, a multivariate model predicting wage. Practice our interpretation.
+
+```{r}
+ckbi <- lm(wage96~ height85, data=hw)
+summary(ckbi)
+
+plot(hw$height85, hw$wage96, main="Height and Wage")
+abline(ckbi)
+
+plot(hw$height85, hw$wage96, main="Height and Wage", ylim=c(0, 50))
+abline(ckbi, lwd=3, lty=6)
+
+
+ck1 <- lm(wage96~ height85 + siblings + age + hgc96, data=hw)
+summary(ck1)
+
+summary(lm(wage96~ hgc96, data=hw))
+
+
+modelsummary(list(ckbi, ck1),stars    = TRUE,title  = "Multivariate Regression Models")
+```
+
+##Dummy Variables
+
+Can add to our multivariate regression
+
+```{r}
+table(hw$white)
+
+table(hw$male)
+
+ck1a <- (lm(wage96~male, data=hw))#Tells us average for males and non-males
+summary(ck1a)
+
+hw %>% group_by(male) %>% summarise(mean=mean(wage96, na.rm=T))
+13.37+1.51
+
+t.test(hw$wage96[hw$male==1], hw$wage96[hw$male==0], var.equal = FALSE)
+
+plot(hw$male,hw$wage96, ylim=c(0,25)) #Really zooming in. Black lines are just a bunch of dots
+abline(h=13.37, col="red")
+abline(h=13.37+1.51, col="blue")
+abline(abline(ck1a, lty=6, col="purple"))
+
+
+plot(hw$wage96~jitter(hw$male, 1), ylim=c(0,25)) #jitter will spread out your data a bit. in some cases with super large N I will take a random sample to get a better feel for the data.
+abline(h=13.37, col="red")
+abline(h=13.37+1.51, col="blue")
+abline(abline(ck1a, lty=6, col="purple"))
+```
+
+Indicate dummy on Multivariate plot
+
+```{r}
+ck3 <- lm(wage96~  age + male, data=hw) #Shows differences between males and females
+summary(ck3)
+
+plot(jitter(hw$age[hw$male==0]),(hw$wage96[hw$male==0]), col="red", pch=1, xlab="Age", ylab="Hourly Wage", main="Age as a Determinent of \n Wage by Gender", ylim=c(0,100)) #plots female  note: \n creats new line 
+#Shorten ylim to show difference
+points(jitter(hw$age[hw$male==1]), hw$wage96[hw$male==1], col="blue", pch=1) #plots male
+legend(50,90, legend=c("Female", "Male"), col=c("red", "blue"), pch=c(1, 16), bty="n")
+abline(a=11.405, b=.052, col="red") # intercept and slope from above
+abline(a=(11.405+1.708), b=.052, col="blue")
+```
+
+More Multivariate Models
+
+```{r}
+ck2 <- lm(wage96~ male+ height85 + siblings + age, data=hw) #Shows differences between males and females
+summary(ck2)
+
+ck2a <- lm(wage96~ male+ height85 + siblings + age, data=hw)
+summary(ck2a)
+
+modelsummary(list(ck1a, ck2, ck2a, ck3),stars    = TRUE,title  = "Multivariate Regression Models")
+```
+
+Question: Does participation in high school athletics(athlets) have an affect on wage?
+
+```{r}
+
+```
+
+#Categorical Variable
+
+```{r}
+#Use region variables, these have already been converted into dummy variables
+reg1 <-lm(wage96~norest96+norcen96+west96+south96, data=hw) #why is south NA?  . . .. perfect multicollinearity. We need a reference category
+summary(reg1)
+
+reg2 <-lm(wage96~norcen96+west96+south96, data=hw) #Take south out to compare to 
+summary(reg2)#remember we interpret these coefficients as the difference between each region and the reference category. 
+
+reg3 <-lm(wage96~hgc96+norest96+norcen96+west96, data=hw) #add in education
+summary(reg3)
+
+plot(hw$hgc96, hw$wage96, xlab="Education level", ylab="Hourly Wage", main="Education as a Determinent of \n Wage by Region", ylim=c(0,100))
+abline(a=-9.073, b=1.634, col="red") # The South
+abline(a=(-9.073+3.97), b=1.634, col="blue") #Northeast
+abline(a=(-9.073+1.613), b=1.634, col="hotpink") #NorthCentral
+abline(a=(-9.073+2.739), b=1.634, col="green") #West
+legend(0,95, legend=c("South", "Northeast", "North Central", "West"), col=c("red", "blue", "hotpink", "green"),lty=1, bty="n")
+```
+
+```{r}
+#Racial category
+cat1 <- lm(wage96~ black + hispanic, data=hw) #Wage difference compared to white
+summary(cat1)
+
+sink <- lm(wage96~ male+ norcen96+west96+south96+ black + hispanic, data=hw)
+summary(sink)
+```
+
+Summarizing regression models
+
+```{r}
+#Last week we used modelsummary. we can also use stargazer to create nice regression tables
+library("stargazer")
+stargazer(ck1a,reg3, sink, type="text", title = "Multivariate Regression Models")
+
+#We can also use the coefplot package. 
+library(coefplot)#New Package. Will need to install
+
+coefplot(ck1a)#point is equal to coefficient. Lines are confidence interval. When CI does not overlap 0 coefficient is significant
+coefplot(reg2)
+coefplot(sink, intercept = FALSE, newNames=c(hispanic="Hispanic", black="Black", south96="South", west96="West", norcen96="North Central", male="Male"), title="Predictors of Wage \n 1996", xlab="")
+
+multiplot(sink, reg2, intercept=FALSE)
+
+
+coefplot(ck2, intercept = FALSE)#remember comparing size of effect only makes sense when range is the same. 
+```
+
+Bonus: Based on your extensive knowledge of wages and statistics create your version of the best regression model(or models) Double Bonus: Create a table using stargazer
+
+```{r}
+
+```
+
+
+
+# Merging data round #2
+#################################################################
+```{r}
+#install.packages("countrycode") #package for helping combine datasets that use different country codes
+#https://cran.r-project.org/web/packages/coefplot/coefplot.pdf
+library(countrycode)
+
+#install.packages("Amelia") #package for finding missing data
+library(Amelia)
+```
+
+
+
+Load data downloaded from Polity IV and worldbank
+(Usually easier to open in excel to rename variables)
+```{r}
+#Loading polity IV data(11/16/17) http://www.systemicpeace.org/inscr/p4manualv2016.pdf
+polity <- read.csv("p4v2016.csv", strip.white=T )
+head(polity)
+dim(polity)
+
+#Dealing with Missing Values
+table(polity$polity) #-77, -88 still need converted to NA
+hist(polity$polity)
+
+polity[polity == -66 ] <- NA
+polity[polity == -77 ] <- NA
+polity[polity == -88 ] <- NA
+
+str(polity)
+hist(polity$polity)
+
+#Loading Worldbank data  
+#http://databank.worldbank.org/data/reports.aspx?source=world-development-indicators
+#Use layout tab to download with each case(country x year) as row and variable as column
+worldbank <- read.csv("worldbank.csv", strip.white = T, na.strings="..")
+head(worldbank)
+names(worldbank)
+```
+
+
+
+You need the EXACT same identifier across both datasets to have a successful merge. This could be a state name, a respondent ID, etc. 
+ 
+ 
+World bank and polity use different country codes. Polity uses corrrelates of war and WB uses its own. Luckily the countrycode package makes conversion easy. You could write code to convert, but luckily in this case a package already exists. https://cran.r-project.org/web/packages/countrycode/countrycode.pdf
+```{r}
+#View(codelist) shows different uses
+worldbank$scode<- countrycode(worldbank$Country.Code, "wb", "cowc", warn=T)#converting from world bank code to correlates of war character code
+    #In many non-Ir cases you may need to this conversion using code or by hand
+```
+
+Before merging lets subset just one year
+```{r}
+polity05 <- filter(polity, year == 2005)
+worldbank05 <- filter(worldbank, Time == 2005)
+```
+
+
+Merging
+```{r}
+merged1 <- merge(worldbank05, polity05, by=c("scode"), all.x=F, all.y=T) #We want all rows in polity, but not in worldbank. scode is common between both data sets. 
+head(merged1)
+#Woooohooo we just saved ourselves a bunch of excel time and its replicable
+#Check to make sure merge worked correctly. 
+
+#dplyr has its own language that does the same thing - check out R cheat sheet for different types of merges
+joined1 <- inner_join(worldbank05, polity05, by="scode")
+#How merged will depend on data availablity and what population you are exploring. 
+```
+
+
+Merging by country and year to create a time series dataset
+```{r}
+worldbank$year <- worldbank$Time
+
+merged2 <- merge(worldbank, polity, by=c("scode", "year"), all.x=F, all.y=T)
+dim(merged2)
+```
+
+######################################################################
+
+# Special bonus - Missing Data
+
+Missing Data - Missing data is systematic(which it almost always is) can bias your results. 
+
+Use the Amelia(think Earhart) package
+```{r}
+#Can visualize helpful in finding patters of missing data. 
+missmap(merged1) #Some countries with more missing than others
+
+missmap(merged2) #More in yearly. Use subsets to zoom in 
+
+#Amelia is mainly for implementing multiple imputation for missing data. Beyond the scope of this course, but something you want to look into later. https://cran.r-project.org/web/packages/Amelia/index.html
+
+#Missing values by variable
+colSums(is.na(merged1))
+
+
+#Missing values by observation
+rowSums(is.na(merged1))
+
+merged1$nacount <- rowSums(is.na(merged1)) #add to dataframe
+```
