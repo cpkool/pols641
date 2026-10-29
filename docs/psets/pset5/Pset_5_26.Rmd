@@ -1,0 +1,116 @@
+---
+title: 'Pset #5'
+author: "Your Name Here"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE}
+library(formatR)#
+# Set so that long lines in R will be wrapped:
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=80), tidy=TRUE)
+```
+
+Problem set #5. 
+
+# Question 1: Review a Research Paper
+*(A) Read Daniel Triesman "The Causes of Corruption: A Cross-National Study." What is the dependent variable? What evidence does the author use to suggest that this is a valid and reliable measure?  *
+
+*(B) Triesman gives two reasons why OLS regressions "while an essential starting point need to be supplemented where possible by an exploration of the direction of causation." In your own words, explain the two reasons why OLS regression is insufficient.*
+
+*(C) Table 3 reports the results of 15 different regression models. Pick one and fully interpret it. As a whole, what are these models telling us? *
+
+*(D) Read through the explanation of the results. What are two examples of robustness checks run by the author? *
+
+*(E) The models include different regions of the world. What type of variable is this? Interpret the results for one region.*
+
+
+# Question 2: Corruption
+
+In the paper above, “The Causes of Corruption: A Cross-National Study,” Daniel Treisman examines possible determinants of perceived corruption. Below is the list of the variables.
+
+Variable Name  | Description 
+------------- | ------------- 
+TI98 | Transparency International’s annual index of “perceived corruption” for 1998, ranging from 0 (least corrupt) to 10 (most corrupt).
+commonlaw | 1 if common law legal system, 0 if civil law legal system.
+britcolony | 1 if UK or former British colony, 0 otherwise.
+noncolony | 1 if never a colony, 0 otherwise.
+pctprot | protestants as a % of total population.
+elf | ethnolinguistic fractionalization index, measuring the probability as of 1960 that two randomly selected people from the given country will not belong to the same ethnolinguistic group (simply put, higher scores mean higher levels of fragmentation).
+FMMexports93 | the proportion of exports comprising fuels, metals, and minerals in 1993, from the World Bank’s World Development Reports.
+govwage | average govt wages as a percentage of per capita GDP
+
+As usual, set your working directory and load the corruption data.
+
+*(A) Descriptive statistics: Using standard statistics and figures explore the percieved corruption variable. Interpret your plot and discuss about how corruption is distributed across countries. (Remember, when you have missing data you often need to include "na.rm=T" in your code).*
+
+*(B)Using the data write out an alternative and null hypothesis for the causes of corruption. Then graph the bivariate relationship.*
+
+*(C)Write out the notation for this regression then create a table for the regression model and fully interpret the results.*
+
+
+*(D) Recreate models 1 through 5 for the year 1998 in table 3 of the paper using modelsummary. What are the important takeaways from these results? Why does your degrees of freedom drop after running some models? Why might this be a problem?*
+
+*(E) Create a correlation matrix for your variables from 2b(you may need to use complete.obs=T). Could multicollineary be a concern. Run a variance inflation factor(VIF) test to test. What do your results tell us?*
+
+*(F) Run a bivariate regression with ethnolinguistic fractionalization(elf) as your independent variable. Interpret the results. Create a residual plot. Is heteroskedacity a concern?*
+
+*(G) Use the gvlma package to test acceptability of regression assumptions for model 5 on table 3(from 2b). Are there reasons to be concerned?*
+
+*(H) You question if the impact of the ethnolinguistic fractionalization depends on if a country was a colony or not. Add this interaction term to the same model(model 5). Report and fully interpret the results.*
+
+
+
+# Question 3: Corruption in Indonesia
+
+A researcher was interested in the effect of monitoring on corruption. She went to Indonesia twice, first to run an experiment and then to collect data from towns across the country. She gathered the following variables:
+
+
+|    town_id   |                                                   An ID for each, unique town.                                                  |
+|:------------:|:-------------------------------------------------------------------------------------------------------------------------------:|
+|    monitor   | A treatment variable, indicating whether or not she randomly assigned that town to have a budget monitor, in the previous year. |
+| pct_missing: |                     variable indicating the percent of money missing from the budget, in the following year.                    |
+|   mosques:   |                                   The average number of mosques in each of the nearest towns.                                   |
+|   hhincome:  |         The average ANNUAL household income for each family in that town, in THOUSANDS of rupees, in the following year.        |
+|   nfadult:   |                    The average number of female adults in each household in that town, in the following year.                   |
+|   nmadult:   |                     The average number of male adults in each household in that town, in the following year.                    |
+|    nfkids:   |                     The average number of female kids in each household in that town, in the following year.                    |
+|    nmkids:   |                      The average number of male kids in each household in that town, in the following year.                     |
+
+The researcher has knowledge of experimental design and quantitative analysis, but does not know how to use R. She has tasked you to run the data analysis for her. Her primary hypothesis is that the presence of a monitor will decrease the percentage of money missing from the budget. Open a seperate Rmarkdown file(which you will submit with this one)and provide her with the initial data analysis based on your expertise in quantitative methods. The resulting html or pdf file should contain nicely formatted tables, figures, and some commentary providing initial analysis of the results. The resulting document should be professional with all R code hidden, no error printouts, and easily understandable tables and figures. Make sure to be comprehensive and give the researcher all the quantitative information she needs. 
+
+
+
+
+
+
+
+# Question 4:   Your statistically curious acquaintance (too annoying to still be a friend)
+
+*(A) What is heteroskedacitity and why is it a problem?*
+
+*(B) What is multicollinearity and why is it a problem?*
+
+*(C) What is a categorical variable? How is it different from a dummy variables? Give examples of at least three categorical variables you might see in political science.*
+
+*(D) Explain the difference between statistical and substantive significance. Then, using something we've discussed in class provide an example.*  
+
+*(E) Your acquaintance rudely peers over your shoulder while you are looking at Triesman's table 2. He asks, what is the point of having all those numbers? Shouldn't you just able to run one model and be done with it? Patiently explain why Triesman shows the results of all 19 models*
+
+*(F) What aspect of your final project are you struggling the with most?*
+
+*(G) What dataset that we used this quarter(both in problem sets and in-class) was you favorite? Least favorite? Why? What sorts of data would you have liked to look at?*
+
+
+*(H) If you could give your week 1 self advice for doing well in this course, what would it be? aka what advice to you have for your next year's students.*
+
+
+
+
+
+
+
+
+
+
+

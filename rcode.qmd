@@ -96,7 +96,7 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 <a href="Rcode/Week8/wages.csv" download>wages.csv</a>
 
-## Week 10: Discrete Independent Variables
+## Week 10: Discrete IVs and Country Merging
 
 <a href="Rcode/Week9/9%20Discreteandmerge26.Rmd" download>9 Discreteandmerge26.Rmd</a>
 

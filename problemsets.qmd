@@ -53,6 +53,18 @@ Problem sets are completed individually, but you can work with each other as you
 [BARKS Data](psets/pset4/barks23.csv)
 
 [Battig Bernauer](psets/pset4/Battig Bernauer 09.pdf)
+
+
+
+# Problem Set #5
+
+<a href="psets/pset5/Pset_5_26.Rmd" download>Pset 5</a>
+
+<a href="psets/pset5/corruption.Rdata" download>corruption.Rdata</a>
+
+<a href="psets/pset5/Indo.csv" download>Indo.csv</a>
+
+<a href="psets/pset5/treisman_causes_corruption.pdf" target="_blank" rel="noopener">Treisman — Causes of Corruption</a>
 :::
 
 ::: {.column width="40%"}
