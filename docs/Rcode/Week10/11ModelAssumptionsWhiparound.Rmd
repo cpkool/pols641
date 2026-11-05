@@ -1,0 +1,502 @@
+---
+title: "10 Regression Assumptions, Interactions, and Diagnostics"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options:
+  chunk_output_type: console
+---
+
+Packages
+```{r message=FALSE, warning=FALSE}
+library(car) #new
+library(lmtest) #new
+library(sandwich) #new
+library(tidyverse)
+library(interactions) #new
+library(modelsummary)
+library(ggeffects)
+```
+
+Load the data (guns.csv and states.csv). 
+```{r}
+setwd("~/Dropbox/POLS 641/F26 641/Rcode undedited/Week 10")
+
+guns   <- read.csv("guns.csv")
+states <- read.csv("states.csv")
+```
+
+State level data from all 50 states plus DC, 1977-1999. It comes out of the
+"More Guns, Less Crime?" argument between John Lott and Ayres & Donohue. That debate was mostly about model specification. 
+
+We will use this data to briefly introduce a variety of mispecification and modeling errors. The idea here is to giving you an introductory knowledge of these issues, not for your to master them. 
+
+## Codebook
+
+| Variable | Description |
+| --- | --- |
+| state | State name |
+| year | Year, 1977-1999 |
+| violent | Violent crime rate per 100,000 |
+| murder | Murder rate per 100,000 |
+| robbery | Robbery rate per 100,000 |
+| prisoners | Incarceration rate per 100,000 in the previous year |
+| afam | Percent of state population that is African-American, ages 10 to 64 |
+| cauc | Percent of state population that is Caucasian, ages 10 to 64 |
+| male | Percent of state population that is male, ages 10 to 29 |
+| population | State population, in millions |
+| income | Real per capita personal income |
+| density | Population per square mile, divided by 1,000 |
+| law | "yes" if a shall-issue concealed carry law was in effect that year |
+
+And from states.csv:
+
+| Variable | Description |
+| --- | --- |
+| abb | State abbreviation |
+| region | Census region (ENC, ESC, MA, MTN, NE, PAC, SA, WNC, WSC) |
+| pop | Population in 1000s |
+| SATV / SATM | Average verbal and math SAT scores |
+| percent | Percent of graduates taking the SAT |
+| dollars | Education spending per student, in $1000s |
+| pay | Average teacher salary, in $1000s |
+
+# Getting to Know the Data
+
+What is our unit of analysis?
+```{r}
+dim(guns)
+names(guns)
+str(guns)
+```
+
+```{r}
+table(guns$year)
+length(unique(guns$state))
+(table(guns$state))
+
+```
+
+### The DV
+
+```{r}
+summary(guns$violent)
+hist(guns$violent)
+```
+
+1. What is the shape of this distribution?
+2. What does that tell us about the states at the far right?
+
+Which states are at the extremes?
+```{r}
+guns %>% group_by(state) %>%
+  summarise(avg = mean(violent)) %>%
+  arrange(desc(avg)) %>%
+  head(10)
+```
+
+
+
+#### Looking at change over time
+
+```{r}
+guns %>%
+  group_by(year) %>%
+  summarise(avg = mean(violent)) %>%
+  plot(type = "b", main = "Average violent crime rate by year")
+```
+
+A few states, plotted individually:
+```{r}
+ggplot(filter(guns, state %in% c("Illinois", "California", "Texas", "District of Columbia")),
+       aes(x = year, y = violent, color = state)) +
+  geom_line(linewidth = 1) +
+  labs(x = "Year", y = "Violent crime rate", title = "Violent Crime Over Time")
+```
+These are all commands you've used before, we're just putting them together in different ways. 
+
+## IV - Concealed Carry Laws
+
+```{r}
+table(guns$law)
+
+# How many states ever adopt the law?
+conceal <- guns %>% group_by(state) %>%
+  summarise(ever = any(law == "yes")) 
+table(conceal)
+```
+
+### Other IVs Summary
+
+```{r}
+summary(guns[, c("prisoners", "density", "income", "afam", "male")])
+
+hist(guns$density)
+hist(guns$income)
+```
+
+
+### Correlation matrix
+
+Same idea as week 8. Get a feel for what goes with what before you model anything.
+```{r}
+mainvars <- guns %>% select(violent, murder, prisoners, density, income, afam, cauc, male)
+round(cor(mainvars), 2)
+
+pairs(mainvars)
+cor(mainvars)
+```
+
+
+
+
+
+
+
+# Transformations
+
+Look at the distributions of key variables to if normally distributed. Could do one by one, but feeling a bit fancy today. 
+```{r}
+guns %>% 
+  select(prisoners, density, income, afam, male) %>% 
+  pivot_longer(everything(), names_to = "variable", values_to = "value") %>% 
+  ggplot(aes(x = value)) +
+  geom_histogram(bins = 30) +
+  facet_wrap(~ variable, scales = "free") +
+  labs(title = "Raw Independent Variables")
+```
+
+
+
+Our DV(violent) has a long right tail. We log it to make the *residuals* better behaved,
+not because OLS requires normally distributed variables. It does not. Normality
+is an assumption about the errors and it mostly matters in small samples.
+
+```{r}
+
+hist(guns$violent, main = "Raw")
+
+guns$lviolent <- log(guns$violent)
+
+
+hist(guns$lviolent, main = "Logged")
+```
+
+Density is worse, and logging nearly fixes it.
+```{r}
+guns$ldensity <- log(guns$density)
+
+hist(guns$density, main = "Raw")
+hist(guns$ldensity, main = "Logged")
+```
+
+Remember that logging changes your interpretation. 
+
+
+# Non-linearity
+```{r}
+m1 <- lm(lviolent ~ density, data = guns)
+summary(m1)
+
+plot(lviolent ~ density, data = guns)
+abline(m1, col = "red")
+```
+Ugh. 
+
+
+Look at that scatterplot. What is wrong with fitting a straight line here?
+
+The RESET test puts a number on it. A small p-value says the functional form is wrong.
+```{r}
+resettest(m1)
+```
+
+Fix A, log the predictor:
+```{r}
+m2 <- lm(lviolent ~ ldensity, data = guns)
+summary(m2)
+
+plot(lviolent ~ ldensity, data = guns)
+abline(m2, col = "red")
+
+
+
+```
+
+Fix B, add a quadratic term. Use `I()` so the model knows the term is derived.
+A hand-made "density squared" column will silently break `predict()` later.
+```{r}
+m3 <- lm(lviolent ~ density + I(density^2), data = guns)
+summary(m3)
+
+plot(lviolent ~ density, data = guns)
+nd <- data.frame(density = seq(min(guns$density), max(guns$density), length = 100))
+lines(nd$density, predict(m3, newdata = nd), col = "red", lwd = 2)
+```
+I'm not sure this would actually be the best approach given that Alaska is such a huge outlier. We also don't theoretical reasons to expect non-lienarity but it is illustrative of how you could deal with non-linearity
+
+
+# Concealed laws
+
+Same idea as last week. A dummy shifts the intercept and leaves the slope alone.
+```{r}
+guns$shall <- guns$law == "yes"
+
+m4 <- lm(lviolent ~ ldensity + shall, data = guns)
+summary(m4)
+```
+
+```{r}
+plot(lviolent ~ ldensity, data = guns, main = "Density and Crime, by Law")
+points(guns$ldensity[guns$shall], guns$lviolent[guns$shall], col = "red", pch = 19)
+abline(coef(m4)[1], coef(m4)[2])                 # no law
+abline(coef(m4)[1] + coef(m4)[3], coef(m4)[2], col = "red")   # shall-issue
+legend("topleft", legend = c("No law", "Shall-issue"), col = c("black", "red"), lty = 1, bty = "n")
+```
+
+
+
+# Interaction Terms
+
+An interaction says the effect of one variable depends on the value of another.
+Here: does a shall-issue law relate to crime differently in dense urban states
+than in sparse rural ones? 
+
+In R the `*` gives you both main effects and the product.
+```{r}
+m5bi <- lm(lviolent ~ ldensity * shall, data = guns)
+summary(m5bi)
+
+m5 <- lm(lviolent ~ ldensity * shall + prisoners + income + afam + male, data = guns)
+summary(m5)
+```
+
+Always plot an interaction. 
+```{r}
+interact_plot(m5bi, pred = ldensity, modx = shall, plot.points = TRUE) #basic
+
+interact_plot(m5bi, pred = ldensity, modx = shall,
+              plot.points = TRUE, interval = TRUE,
+              x.label = "log(density)",
+              y.label = "log(violent crime rate)",
+              legend.main = "Shall-issue law")
+
+```
+      
+Important: once there is an interaction in the model, the coefficient on`shall` is NOT "the effect of the law." It is the effect when `ldensity` iszero. The same goes for `ldensity`. This is a common mistake
+people make reading interaction models. Don't interpret main effects, only the interaction
+
+Check Where on the x-axis do the two lines actually differ? Is there data there?
+
+# What Could Go Wrong
+
+The rest of today is about the assumptions behind OLS and how to tell when they
+have been violated. A short version of what each problem costs you:
+
+| Problem | What it breaks |
+| --- | --- |
+| Omitted variables | The coefficients (bias) |
+| Wrong functional form | The coefficients (bias) |
+| Outliers | The coefficients (bias) |
+| Multicollinearity | The standard errors only |
+| Heteroskedasticity | The standard errors only |
+| Autocorrelation | The standard errors only |
+| Non-normal errors | Mostly nothing, at large sample size |
+
+## Outliers
+
+Three different things that often get lumped together:
+
+- Outlier: a big residual, the model predicts this case badly
+- Leverage: an unusual value on X, the case has the potential to pull the line
+- Influence: both at once, which is what you actually care about. Cook's D measures this.
+
+```{r}
+m6 <- lm(lviolent ~ ldensity + prisoners + income + afam + male, data = guns)
+
+par(mfrow = c(2, 2))
+plot(m6, labels.id = guns$state)
+par(mfrow = c(1, 1))   # always set this back
+```
+
+The four plots, in order: residuals vs fitted (curve = non-linearity), normal
+Q-Q (should be a straight line), scale-location (a V shape suggests
+heteroskedasticity), residuals vs leverage (influential points).
+
+Washington DC runs away with all of them.
+```{r}
+cd <- cooks.distance(m6)
+head(guns[order(-cd), c("state", "year", "violent")], 5)
+
+mean(guns$violent[guns$state == "District of Columbia"])
+mean(guns$violent[guns$state != "District of Columbia"]) #without DC
+```
+
+Does the result survive dropping it? Run it both ways and report both. Do not
+quietly delete cases. Here we have a theoretically informed reason (DC not a state ) to remove
+```{r}
+outdc <-  subset(guns, state != "District of Columbia")
+m6b <- lm(lviolent ~ ldensity + prisoners + income + afam + male,
+          data = outdc )
+
+modelsummary(c(list(m6, m6b)), stars = T)
+```
+
+Would you keep DC in the model? What is your justification, and is it a statistical one or a theoretical one?
+
+
+# Multicollinearity
+
+`afam` and `cauc` are shares of the same population, so they are nearly
+redundant by construction. 
+```{r}
+cor(guns$afam, guns$cauc)
+
+m7 <- lm(lviolent ~ prisoners + income + density + afam + cauc + male, data = guns)
+summary(m7)
+vif(m7)
+```
+
+Rule of thumb is VIF above 10, though that number is fairly arbitrary. Drop one
+of the pair and watch what happens.
+```{r}
+m8 <- lm(lviolent ~ prisoners + income + density + afam + male, data = guns)
+vif(m8)
+
+m8a <- lm(lviolent ~ prisoners + income + density + cauc + male, data = guns)
+
+modelsummary(c(list(m7, m8, m8a)), stars = T)
+```
+
+ We removed a variable to fix a variance problem, which
+risks introducing bias. That is usually the wrong trade. It is defensible here
+only because the two shares are genuinely measuring the same thing.
+
+When would dropping a collinear variable be the wrong call?
+
+
+# Heteroskedasticity
+
+Non-constant variance in the errors. It does not bias your coefficients, it
+just makes your standard errors wrong.
+```{r}
+plot(m8, which = 1)
+plot(m8, which = 3)
+
+bptest(m8) # Breusch-Pagan test
+
+```
+
+The fix is a different estimator for the standard errors, not a different model.
+```{r}
+summary(m8)
+coeftest(m8, vcov = vcovHC(m8, type = "HC1"))
+```
+
+
+
+# Autocorrelation
+
+This is a real panel, so the row order means something. Sort by state and year
+before you test, otherwise you are testing an arbitrary ordering.
+```{r}
+guns_sorted <- guns[order(guns$state, guns$year), ]
+m9 <- lm(lviolent ~ ldensity + prisoners + income + afam + male, data = guns_sorted)
+
+durbinWatsonTest(m9)
+hist(resid(m9))
+```
+
+The statistic should sit near 2. This one does not come close . . . . because  crime in
+a state this year tells you a lot about crime in that state next year.
+
+
+# Checking Everything at Once
+
+Two packages that run the whole battery for you.
+```{r}
+library(gvlma)
+summary(gvlma(m8))
+```
+
+Global Stat asks whether the relationships are roughly linear. Skewness and
+Kurtosis ask whether you need a transformation. Link Function asks whether your
+DV is really continuous. Heteroscedasticity is the same test as above. A small
+p-value means that assumption failed.
+
+Useful reality check: `summary(m8)` looks perfectly healthy and most of these
+still fail.
+
+```{r}
+library(performance)
+check_heteroskedasticity(m8)
+check_normality(m8)
+check_collinearity(m7)
+check_autocorrelation(m9)
+model_performance(m8)
+
+# check_model(m8) does all of the above in one plot
+# needs: install.packages(c("see", "qqplotr", "patchwork"))
+```
+
+# Merging
+
+Same problem as the Polity and World Bank data a couple of weeks ago. Our two
+files identify states differently, so we need a common identifier before we can
+merge.
+```{r}
+head(guns$state)
+head(states$abb)
+
+# base R has state.name and state.abb built in
+guns$abb <- state.abb[match(guns$state, state.name)]
+```
+
+Before merging, check that the conversion worked.
+```{r}
+unique(guns$state[is.na(guns$abb)])
+
+setdiff(state.abb, states$abb)
+```
+
+Two separate problems. `state.name` only has the 50 states, so there is no
+match for DC. And states.csv codes Connecticut as "CN" rather than the standard
+"CT".
+
+```{r}
+merged <- merge(guns, states, by = "abb", all.x = TRUE)
+dim(merged)
+
+sum(is.na(merged))
+unique(merged$state[is.na(merged$region)])
+```
+
+That merge looked like it worked. It quietly produced 345 missing values. Always check a merge against what you expected to get back.
+
+How would you fix these two problems?
+```{r}
+
+
+
+```
+
+
+
+
+# Bonus
+
+Build the best model you can for `lviolent`. Then check it against everything
+we did today. Does it survive?
+```{r}
+
+
+
+```
+
+Bonus 2: run the whole analysis with `murder` as the DV instead of `violent`.
+Do the conclusions change? Should they?
+```{r}
+
+
+
+```

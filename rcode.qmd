@@ -105,3 +105,12 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="Rcode/Week9/p4v2016.csv" download>p4v2016.csv</a>
 
 <a href="Rcode/Week9/worldbank.csv" download>worldbank.csv</a>
+
+## Week 11: Assumptions and Model Whip Around
+
+<a href="Rcode/Week10/11ModelAssumptionsWhiparound.Rmd" download>11ModelAssumptionsWhiparound.Rmd</a>
+
+<a href="Rcode/Week10/guns.csv" download>guns.csv</a>
+
+<a href="Rcode/Week10/states.csv" download>states.csv</a>
+

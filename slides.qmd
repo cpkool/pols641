@@ -24,3 +24,5 @@ Slides are in PDF format. Click a link to open or right-click to download.
 [Day 8- Multivariate Regression](Slides/8multivariate.pdf)
 
 [Day 9- Dummy and Categorical Variables](Slides/9Dummies.pdf)
+
+[Day 10- Regression Assumptions](Slides/10Assumptions.pdf)
