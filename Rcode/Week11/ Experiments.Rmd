@@ -1,0 +1,141 @@
+---
+title: "12 Experiments"
+author: "Colin Kuehl"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+Set working directory and unpack packages
+```{r}
+#install.packages("pwr")
+#install.packages("AER")
+library(haven)
+library(tidyverse)
+library(pwr)
+library(AER)
+library(stargazer)
+library(coefplot)
+
+#More info here: https://www.statmethods.net/stats/power.html
+```
+
+Recall, with experiments we're focused more on design than statistical analysis. 
+
+
+#Practice data from the textbook. 
+```{r}
+GGD <- read_csv("GerberGreenData.csv")
+summary(GGD)
+
+
+#check balance across wards
+b1 <- table(GGD$Ward, GGD$ContactAssigned)
+prop.table(b1, 1) #Balance looks good. 
+summary(lm(GGD$ContactAssigned~GGD$Ward)) # Can run T-test or regression to see if sig dif. Ward is not correlated with treatment assignment
+
+#across # of people in household
+b2 <- table(GGD$PeopleHH, GGD$ContactAssigned)
+prop.table(b2, 1)
+
+#use dplyr
+balance <- GGD %>% group_by(ContactAssigned)%>% summarise(People=mean(PeopleHH), Ward=mean(Ward))
+t(balance)
+
+
+#Experimental results: Does talking to people increase likelihood of voting? 
+
+#ITT does being assigned to treatment actually effect the likilood of voting(regardless of compliance)?
+ITT <-(lm(GGD$Voted~GGD$ContactAssigned))
+summary(ITT)
+
+#Voting is dummy variable and this is experimental. When we use OLS on a dummy we call it a linear probablity model and it is interpreted as percentage change in Y from a one unit change in X. We will talk in 642 about the advantages of LPM vs logit or probit for binary DVs.  
+
+#What variables are we missing from our model?
+
+summary(lm(Voted ~ ContactAssigned+Ward+PeopleHH, data=GGD))#adding controls does not change coefficient, only signifigance
+
+#Compliance: 
+  
+#ATE model
+ATE <-(lm(GGD$Voted~GGD$ContactObserved)) #The effect of actually being treated
+summary(ATE)
+
+
+#percentage of those assigned to treatment actually treated
+summary(lm(ContactObserved ~ ContactAssigned, data=GGD))#table 10.2 in book. 
+
+twosls <- ivreg(Voted ~ ContactObserved | ContactAssigned, data=GGD) 
+summary(twosls)
+
+
+
+stargazer(ATE,ITT, twosls,  type="text", title = "Comparison of Experimental Models")
+
+
+multiplot(ATE,ITT, twosls, title = "Comparison of Experimental Models", xlab="Effect Size(Percentage)", intercept=FALSE)
+
+```
+
+
+Heterogeneous Treatment Effects
+```{r}
+#We have limited data, but say we were interested in if the effect of contact was dependent on the number of people in the household
+
+hhe <- (lm(Voted~ContactObserved*PeopleHH, data=GGD))
+summary(hhe)
+```
+
+
+
+#Power Analysis
+
+t-test
+```{r}
+pwr.t.test( d = .2 , sig.level = .05 , power = .8 , type = c("one.sample"))
+
+# n is the sample size, d is the effect size, and type indicates a two-sample t-test, one-sample t-test or paired t-test. 
+#You can try to calculate your expected effect size(Cohen's d can be calculated as the difference between the means divided by the pooled SD), but rule of thumb is .2 is small, medium is .5 and large is .8
+```
+
+
+For Linear regression
+```{r}
+pwr.f2.test(u = 4, f2 = .15, sig.level = .01 , power = .8)
+
+#where u and v are the numerator(number of groups -1) and denominator(N-number of groups) degrees of freedom. We use f2 as the effect size measure( f2 values of 0.02, 0.15, and 0.35 represent small, medium, and large effect sizes).
+
+#How does the necessary N change if we change sig level to .01?
+```
+
+
+ANOVA - like t-test, but for more than two groups
+```{r}
+pwr.anova.test(k =5 , f = .03 , sig.level = .05 , power = .8)
+
+#k = groups f=effect size
+```
+
+
+#Randomizr - FYI if you need to create random assigment the randomizr package is easy and has some useful options. https://cran.r-project.org/web/packages/randomizr/randomizr.pdf
+
+```{r}
+
+install.packages("randomizr")
+library(randomizr)
+
+Z <- complete_ra(N = 100, m = 50)
+table(Z)
+
+Z1 <- complete_ra(N = 10, m=5,
+               conditions=c("Tuesday", "Thursday"))
+Z1
+
+
+```
+
+
+I haven't used it much, but DeclareDesign has good stuff on thinking through experimental designs (https://declaredesign.org/r/declaredesign/)
+

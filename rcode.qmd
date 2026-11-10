@@ -114,3 +114,7 @@ Download these three files and put in their own folder. Assuming you have R and 
 
 <a href="Rcode/Week10/states.csv" download>states.csv</a>
 
+## Week 12: Experiments
+<a href="Rcode/Week11/Experiments.Rmd" download>Experiments.Rmd</a>
+
+<a href="Rcode/Week11/GerberGreenData.csv" download>GerberGreenData.csv</a>
