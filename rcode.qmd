@@ -118,3 +118,8 @@ Download these three files and put in their own folder. Assuming you have R and 
 <a href="Rcode/Week11/Experiments.Rmd" download>Experiments.Rmd</a>
 
 <a href="Rcode/Week11/GerberGreenData.csv" download>GerberGreenData.csv</a>
+
+## Week 14: Mixed Methods
+
+<a href="Rcode/Week12/Visual1.Rmd" download>Data Visualization</a>
+

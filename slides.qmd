@@ -29,4 +29,4 @@ Slides are in PDF format. Click a link to open or right-click to download.
 
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [Day 10 Bonus - Regression Table](Slides/10table.pdf)
 
-[Day 11- Experiments and Causal Inference](Slides/12Experiments.pdf)
+[Day 11- Experiments and Causal Inference](Slides/12experiments.pdf)
